@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "dstoade0@cornell.edu",
+      "name": "brainFart"
+    },
+    {
+      "id": 2,
+      "email": "wthorneloe1@usa.gov",
+      "name": "WindyWendy21"
+        },
+    {
+      "id": 3,
+      "email": "Kawtaryazzouzi@gmail.com",
+      "name": "Kawtar"
+    },
+    {
+      "id": 4,
+      "email": "jerryrules@yahoo.com",
+      "name": "jerry"
+    },
+    {
+      "id": 5,
+      "email": "ko.azzouzi@gmail.com",
+      "name": "Kawtar Azzouzi"
+    }
+  ],
+  "taskSchemes": [
+    {
+      "id": 0,
+      "userId": "",
+      "taskDescription": "finish this cool app project",
+      "setPoints": 0,
+      "expireOnDate": 0,
+      "completedOn": 0
+    }
+  ],
+  "rewards": [
+    {
+      "id": 0,
+      "userId": "",
+      "rewardsName": "ice cream",
+      "description": "get an ice cream cone",
+      "setPoints": 0,
+      "expireOnDate": 0,
+      "completedOn": 0
+    }
+  ],
+  "redeemedRewards": [
+    {
+      "id": 0,
+      "rewardsId": 0,
+      "reedeemedOnDate": 0
+    }
+  ]
+}

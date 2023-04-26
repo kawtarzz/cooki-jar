@@ -1,0 +1,70 @@
+.h1, h1 {
+    font-size: 2rem;
+    text-align: center;
+    color:#df9c0e
+}
+.h2 {
+    font-size: 1rem;
+    text-align: center;
+    color: rgb(255, 80, 80)
+}
+
+
+fieldset {
+    min-width: 0;
+    padding: 1rem 0;
+    margin: 0;
+    border: 0;
+}
+
+.form--login {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+    color: darkblue;
+}
+
+.form--login > fieldset > input[type="email"] {
+    width: 25em;
+}
+
+.label--login {
+    width: 8rem;
+    display: inline-block;
+}
+
+.form-control {
+    display: block;
+    width: 94%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgb(18, 2, 43);
+    background-color: #b6d5ff;
+    background-clip: padding-box;
+    border: 1px solid #366492;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.container--login {
+    text-align: center;
+}
+
+.form--login {
+    background-position-x: center;
+    min-height: 25rem;
+    min-width: 45rem;
+    background-color: rgb(242, 255, 168);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+}
+
+.button--close {
+    position: relative;
+    bottom: -2rem;
+}
+
