@@ -1,51 +1,55 @@
 import { useEffect, useState } from "react"
 import "./Tasks.css"
+import { useNavigate } from "react-router-dom";
 
 export const TaskList = () => {
-    // tickets holds an empty array, set tickets is our function, use state lets us view array in current state
     const [tasks, setTasks] = useState([]);
-    const [filteredTasks, setFilteredTasks] = useState([]);
-    const [completed, setCompleted] = useState(false)
+    const navigate = useNavigate()
 
-    const localcookiJarUser = localStorage.getItem("cookijar_user")
-    const cookijarUserObject = JSON.parse(localcookiJarUser)
+    const getTasks = () => {
+        fetch("http://localhost:8088/tasks")
+            .then((res) => res.json())
+            .then(setTasks);
+    };
 
-    useEffect(() => {
-        fetch(`http://localhost:8088/tasks`)
-            .then(response => response.json())
-            .then((tasks) => { setTasks(tasks) });
-    }, [])
+    const deleteTask = (id) => {
+        fetch(`http://localhost:8088/tasks/${id}`, {
+            method: "DELETE",
+        }).then((res) => res.json());
+    };
 
-    useEffect(() => {
-        if (completed === true) {
-            const incompleteTasks = filteredTasks.filter(filteredTask => filteredTask.completed === false)
-            setTasks(incompleteTasks)
-        } else {
-            setCompleted(tasks)
-        }
-    }, [tasks])
-
-    useEffect(() => {
-        if (cookijarUserObject === true) {
-            const myTasks = filteredTasks.filter(filteredTask => filteredTask.userId === parseInt(cookijarUserObject.id))
-            setFilteredTasks(myTasks)
-        } else { setFilteredTasks(tasks) }
-    }, [filteredTasks])
-
+    useEffect(()=>{
+        getTasks();
+    }, []);
+    
     return (
         <>
-        <div id="task__divListBlock">
-            <h2>Hello, {cookijarUserObject.name}!</h2>
-            {tasks.map(task => <div id="task__divListRow" className="task" key={task.id}>
-                <article>
-
-                            <h3> {task.taskDescription}</h3>
-                            <p>Point Value: {task.points}</p>
-                            <button className="task__delete">Delete</button>
-                </article>
-            </div>)}
-                    </div>
+        <input type="button"
+            value="Add Task"
+            onClick={() => { 
+                navigate("/create");
+                }}/>
+        <ul> 
+            {tasks.map((task) => (
+                    <li style={{ listStyle: "none" }} key={task.id}>
+                      {task.taskDescription}
+                    Point Value: {task.points}
+                    <input 
+                        type="button"
+                        value="Edit"
+                        onClick={()=> {
+                            navigate(`/edit/${task.id}`);
+                        }} 
+                        />
+                        <input
+                        type="button"
+                        value="Delete"
+                        onClick={()=> {
+                            deleteTask(task.id);
+                        }}
+                        />
+                        </li>
+            ))}</ul>
         </>
-    )
+    );
 }
-

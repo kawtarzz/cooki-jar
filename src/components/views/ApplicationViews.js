@@ -16,7 +16,7 @@ export const ApplicationViews = () => {
                 </>
             }>
 
-                <Route path="/tasks/create" element={< CreateTask />} />
+                <Route path="//create" element={< CreateTask />} />
                 <Route path="/edit/:id" element={< EditTask />} />
                 <Route path="/tasks" element={< TaskList />} />
             </Route>

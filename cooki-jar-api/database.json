@@ -159,37 +159,10 @@
     },
     {
       "userId": 5,
-      "taskDescription": "fdfdfd",
-      "points": 15,
-      "completed": false,
-      "id": 20
-    },
-    {
-      "userId": 5,
       "taskDescription": "hi",
       "points": 20,
       "completed": false,
       "id": 21
-    },
-    {
-      "userId": 5,
-      "taskDescription": "this works",
-      "points": 15,
-      "completed": false,
-      "id": 22
-    },
-    {
-      "userId": 5,
-      "taskDescription": "did i need that use effect",
-      "points": 15,
-      "completed": false,
-      "id": 23
-    },
-    {
-      "taskDescription": "reach mvp",
-      "points": "15",
-      "completed": "",
-      "id": 24
     }
   ],
   "rewards": [
