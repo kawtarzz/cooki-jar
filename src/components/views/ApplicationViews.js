@@ -1,24 +1,26 @@
 import { Outlet, Route, Routes } from "react-router-dom"
-import { TaskContainer } from "../tasks/TaskContainer.js"
-import { TaskForm } from "../tasks/TaskForm.js"
+import { TaskList } from "../tasks/TaskList.js"
+import EditTask from "../tasks/EditTask.js"
+import CreateTask from "../tasks/CreateTask.js"
+
 
 export const ApplicationViews = () => {
-	return (
+    return (
         <Routes>
             <Route path="/" element={
                 <>
                     <h1>cookiJar</h1>
-                    <div>the sweet reward of productivity</div>
+                    <div>Welcome </div>
 
                     <Outlet />
                 </>
             }>
 
-                <Route path="tasks" element={<TaskContainer />} />
-                
-            
-                <Route path="task/create" element={<TaskForm />} />
+                <Route path="/tasks/create" element={< CreateTask />} />
+                <Route path="/edit/:id" element={< EditTask />} />
+                <Route path="/tasks" element={< TaskList />} />
             </Route>
         </Routes>
     )
 }
+
