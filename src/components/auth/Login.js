@@ -21,7 +21,7 @@ export const Login = () => {
                         name: user.name,
                         email: user.email
                     }))
-                    navigate("/home")
+                    navigate("/tasks")
                     window.alert('Welcome back ' + user.name + '!')
                 }
                 else {

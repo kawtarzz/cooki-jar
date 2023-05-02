@@ -1,5 +1,5 @@
 import { Authorized } from "./components/views/Authorized.js"
-import { ApplicationViews } from "./components/views/ApplicationViews.js"
+import Dashboard from "./components/views/ApplicationViews.js"
 import { NavBar } from "./components/nav/NavBar.js"
 import { Login } from "./components/auth/Login.js"
 import { Register } from "./components/auth/Register.js"
@@ -14,7 +14,8 @@ export const App = () => {
       <Authorized>
         <>
           <NavBar />
-          <ApplicationViews />
+
+          <Dashboard />
 
         </>
       </Authorized>

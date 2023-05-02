@@ -19,19 +19,16 @@ export default function EditTask() {
     }, [id]);
 
     const onFormSubmit = (evt) => {
-        evt.preventDefault()
-
-        return fetch(`http://localhost:8088/tasks/${id}`, {
+        evt.preventDefault();
+        fetch(`http://localhost:8088/tasks/${id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(task),
-        })
-            .then(response => response.json())
-            .then(() => {
-                navigate("/")
-            })
+        }).then(() => {
+        navigate("/");
+    })
     };
     if (!task) {
         return null;

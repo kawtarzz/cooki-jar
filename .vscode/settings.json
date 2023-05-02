@@ -1,2 +1,11 @@
 {
+    "editor.wordWrap": "on",
+    "explorer.excludeGitIgnore": true,
+    "explorer.fileNesting.enabled": true,
+    "explorer.incrementalNaming": "smart",
+    "explorer.openEditors.minVisible": 1,
+    "explorer.openEditors.sortOrder": "alphabetical",
+    "explorer.openEditors.visible": 3,
+    "explorer.sortOrder": "foldersNestsFiles",
+    "terminal.explorerKind": "integrated"
 }
