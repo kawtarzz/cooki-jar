@@ -2,56 +2,140 @@
   "users": [
     {
       "id": 1,
-      "email": "dstoade0@cornell.edu",
-      "name": "brainFart"
+      "email": "everyonelovesmolly@cornell.edu",
+      "name": "Molly",
+      "usersTotalPoints": 0
     },
     {
       "id": 2,
-      "email": "wthorneloe1@usa.gov",
-      "name": "WindyWendy21"
-        },
+      "email": "WendyJoan@usa.gov",
+      "name": "WendyJoan21",
+      "usersTotalPoints": 0
+    },
     {
       "id": 3,
-      "email": "Kawtaryazzouzi@gmail.com",
-      "name": "Kawtar"
+      "email": "jerryrules@yahoo.com",
+      "name": "jerry",
+      "usersTotalPoints": 0
     },
     {
       "id": 4,
-      "email": "jerryrules@yahoo.com",
-      "name": "jerry"
+      "email": "crazytom@hotmail.com",
+      "name": "Tom John",
+      "usersTotalPoints": 0
     },
     {
+      "email": "hannah@aol.com",
+      "name": "hannah",
       "id": 5,
-      "email": "ko.azzouzi@gmail.com",
-      "name": "Kawtar Azzouzi"
+      "usersTotalPoints": 0
+    },
+    {
+      "email": "evan@coolguy.com",
+      "name": "Evan",
+      "id": 6,
+      "usersTotalPoints": 0
     }
   ],
-  "taskSchemes": [
+  "tasks": [
     {
-      "id": 0,
-      "userId": "",
-      "taskDescription": "finish this cool app project",
-      "setPoints": 0,
-      "expireOnDate": 0,
-      "completedOn": 0
+      "userId": 2,
+      "taskDescription": "go on a run",
+      "points": 0,
+      "completed": false,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "taskDescription": "register new car, sell old car",
+      "points": 20,
+      "completed": false,
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "taskDescription": "hello does this work",
+      "points": 20,
+      "completed": false,
+      "id": 4
+    },
+    {
+      "userId": 3,
+      "taskDescription": "gym",
+      "points": 15,
+      "completed": false,
+      "id": 6
+    },
+    {
+      "userId": 3,
+      "taskDescription": "reach crud",
+      "points": 15,
+      "completed": false,
+      "id": 7
+    },
+    {
+      "userId": 2,
+      "taskDescription": "grocery shopping",
+      "points": 15,
+      "completed": false,
+      "id": 10
+    },
+    {
+      "userId": 5,
+      "taskDescription": "errands",
+      "points": 15,
+      "completed": false,
+      "id": 19
+    },
+    {
+      "userId": 5,
+      "taskDescription": "reach mvp",
+      "points": 10,
+      "completed": false,
+      "id": 25
+    },
+    {
+      "userId": 5,
+      "taskDescription": "move out of house",
+      "points": 20,
+      "completed": false,
+      "id": 26
+    },
+    {
+      "userId": 1,
+      "taskDescription": "list 5 items on etsy",
+      "points": 15,
+      "completed": "",
+      "id": 27
+    },
+    {
+      "userId": 1,
+      "taskDescription": "dentist appointment",
+      "points": 5,
+      "completed": false,
+      "id": 28
     }
   ],
   "rewards": [
     {
-      "id": 0,
-      "userId": "",
-      "rewardsName": "ice cream",
+      "id": 1,
       "description": "get an ice cream cone",
-      "setPoints": 0,
-      "expireOnDate": 0,
-      "completedOn": 0
-    }
-  ],
-  "redeemedRewards": [
+      "points": 5
+    },
     {
-      "id": 0,
-      "rewardsId": 0,
-      "reedeemedOnDate": 0
+      "id": 2,
+      "description": "get an ice cream cone",
+      "points": 5
+    },
+    {
+      "id": 3,
+      "description": "get an ice cream cone",
+      "points": 5
+    },
+    {
+      "id": 4,
+      "description": "get an ice cream cone",
+      "points": 5
     }
   ]
 }

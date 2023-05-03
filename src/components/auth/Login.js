@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+import "./Login.css"
 
 
 export const Login = () => {
-    const [email, set] = useState("")
+    const [email, set] = useState("hannah@aol.com")
     const navigate = useNavigate()
 
     const handleLogin = (e) => {
@@ -12,22 +13,21 @@ export const Login = () => {
 
         return fetch(`http://localhost:8088/users?email=${email}`)
             .then(res => res.json())
-            .then(foundUsers => {
-                if (foundUsers.length === 1) {
-                    const user = foundUsers[0]
-                    localStorage.setItem("cooki_jar", JSON.stringify({
+            .then(foundUser => {
+                if (foundUser.length === 1) {
+                    const user = foundUser[0]
+                    localStorage.setItem("cookijar_user", JSON.stringify({
                         id: user.id,
+                        name: user.name,
                         email: user.email
-                        
                     }))
-
-                    navigate("/")
+                    navigate("/tasks")
+                    window.alert('Welcome back ' + user.name + '!')
                 }
                 else {
-                    window.alert("Invalid login")
+                    window.alert("Invalid login. Please Try again.")
                 }
-            })
-    }
+            })}
 
     return (
     <main className="container--login">
@@ -36,7 +36,7 @@ export const Login = () => {
                 <h1>cookiJar</h1>
                 <h2>Please sign in</h2>
                 <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
+                    <label htmlFor="inputEmail">Email address</label>
                     <input type="email"
                         value={email}
                         onChange={evt => set(evt.target.value)}
