@@ -88,13 +88,6 @@
       "id": 19
     },
     {
-      "userId": 1,
-      "taskDescription": "test",
-      "points": 5,
-      "completed": false,
-      "id": 24
-    },
-    {
       "userId": 5,
       "taskDescription": "reach mvp",
       "points": 10,
