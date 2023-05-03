@@ -2,83 +2,79 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function TaskList() {
-    const [tasks, setTasks] = useState([]);
-    const [myTasks, setMyTasks] = useState([])
-    const [complete, setComplete] = useState(false)
+    const [tasks, setMyTasks] = useState([])
+    const [ filteredTasks, setFiltered] = useState([])
+    const [complete, setCompleted] = useState(false)
     const navigate = useNavigate()
 
     const localcookiJarUser = localStorage.getItem("cookijar_user");
     const cookijarUserObject = JSON.parse(localcookiJarUser)
 
-    const getTasks = () => {
-        fetch(`http://localhost:8088/tasks`)
-            .then((res) => res.json())
-            .then(setTasks);
-    };
+    useEffect(()=>{
+        if (complete) {
+            const completedTasks = tasks.filter(task => task.completed === true) 
+                setCompleted(true)
+            } else {
+                setFiltered(tasks)
+            } 
+        }, [filteredTasks]
+    )
 
     const deleteTask = (id) => {
         fetch(`http://localhost:8088/tasks/${id}`, {
             method: "DELETE",
         }).then((res) => res.json())
-        .then(() => {
-            getTasks()
-        });
-    };
+            .then(() => { getMyTasks() }
+            );};
 
-    
-    useEffect(()=> {
-        fetch(`http://localhost:8088/tasks?userId=${cookijarUserObject.id}`)
+    const getMyTasks = () => {
+       fetch(`http://localhost:8088/tasks?userId=${cookijarUserObject.id}`)
             .then((res) => res.json())
-            .then(setMyTasks);
-    },[])
-
-   const completeTask = (evt) => {
-    evt.preventDefault();
-    fetch(`http://localhost:8088/tasks/${id}`, {
-        method: "PUT",
-    }).
-   }
+            .then(setMyTasks);}
+                
+    useEffect(() => {
+        getMyTasks()
+        }, [])
 
     return (
         <><aside>
-        <input type="button"
-            value="Add Task"
-            onClick={() => { 
-                navigate("/create");
+            <input type="button"
+                value="Add Task"
+                onClick={() => {
+                    navigate("/create");
                 }}
             /></aside>
+            <ul>
+                {tasks.map((task) => (
+                    <li style={{ listStyle: "none" }} key={task.id}>
+                        <h3>Task:</h3> <h4>{task.taskDescription}</h4>
+                        <h5>Point Value: {task.points}{""}</h5>
+                        <h6>{task.completed}</h6>
 
-        <ul> 
-            {myTasks.map((t) => (
-                    
-                        
-                    <li style={{ listStyle: "none" }} key={t.id}>
-                      <h3>Tasks:</h3> <h4>{t.taskDescription}</h4>
-                    <h5>Point Value: {t.points}{""}</h5>
-               
-                    <input 
-                        type="button"
-                        value="Edit"
-                        onClick={()=> {
-                            navigate(`/edit/${t.id}`);
-                        }} 
+                        <input
+                            type="button"
+                            value="Edit"
+                            onClick={() => {
+                                navigate(`/edit/${task.id}`);
+                            }}
                         />
                         <input
-                        type="button"
-                        value="Complete"
-                        onClick={()=> {
-                            setComplete(t.id)  
-                        }}/>
-                        <input
-                        type="button"
-                        value="Delete"
-                        onClick={()=> {
-                            deleteTask(t.id);
-                        }}
+                            type="button"
+                            value="Delete"
+                            onClick={() => {
+                                deleteTask(task.id);
+                            }}
                         />
-                        
-                        </li>
-            ))}</ul>
+                        <input
+                            type="button"
+                            value="Complete"
+                            onClick={() => {
+                                setCompleted(true);
+                            }}
+                        />
+                    </li>
+                ))}</ul>
         </>
     );
 }
+   

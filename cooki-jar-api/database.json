@@ -81,88 +81,46 @@
       "id": 10
     },
     {
-      "userId": 1,
-      "taskDescription": "Filter by user!",
-      "points": 5,
-      "completed": false,
-      "id": 13
-    },
-    {
-      "userId": 1,
-      "taskDescription": "go to gym",
-      "points": 10,
-      "completed": false,
-      "id": 14
-    },
-    {
-      "userId": 1,
-      "taskDescription": "assign points",
-      "points": 15,
-      "completed": false,
-      "id": 15
-    },
-    {
-      "userId": 1,
-      "taskDescription": "hello ",
-      "points": 5,
-      "completed": false,
-      "id": 16
-    },
-    {
-      "userId": 5,
-      "taskDescription": "do homework",
-      "points": 5,
-      "id": 18
-    },
-    {
       "userId": 5,
       "taskDescription": "errands",
       "points": 15,
+      "completed": false,
       "id": 19
     },
     {
-      "userId": 5,
-      "taskDescription": "clean room",
-      "points": 15,
-      "id": 20
-    },
-    {
       "userId": 1,
-      "taskDescription": "mow lawn",
+      "taskDescription": "test",
       "points": 5,
-      "id": 21
-    },
-    {
-      "userId": 1,
-      "taskDescription": "do homework",
-      "points": 10,
-      "id": 22
-    },
-    {
-      "userId": 1,
-      "taskDescription": "update resume",
-      "points": 10,
-      "id": 23
-    },
-    {
-      "userId": 1,
-      "taskDescription": "mvp ",
-      "points": 15,
+      "completed": false,
       "id": 24
     },
     {
-      "userId": 1,
-      "taskDescription": "Create Task",
-      "points": 5,
-      "completed": "",
+      "userId": 5,
+      "taskDescription": "reach mvp",
+      "points": 10,
+      "completed": false,
       "id": 25
     },
     {
-      "userId": 1,
-      "taskDescription": "errands",
-      "points": 5,
+      "userId": 5,
+      "taskDescription": "move out of house",
+      "points": 20,
       "completed": false,
       "id": 26
+    },
+    {
+      "userId": 1,
+      "taskDescription": "list 5 items on etsy",
+      "points": 15,
+      "completed": "",
+      "id": 27
+    },
+    {
+      "userId": 1,
+      "taskDescription": "dentist appointment",
+      "points": 5,
+      "completed": false,
+      "id": 28
     }
   ],
   "rewards": [
