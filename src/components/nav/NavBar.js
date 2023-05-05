@@ -7,15 +7,17 @@ export const NavBar = () => {
     return (
     <>
         <div className="container">
-            <header className="header"> cookiJar</header>
+            <header className="header">  <Link to="/home">cookiJar</Link></header>
            
             <nav className="logout">
-                <aside className="logout">
-                    <Link to="" onClick={() => {
+                <aside>
+                    <Link to="/login" className="button" onClick={() => {
                         localStorage.removeItem("cookijar_user")
                         navigate("/", { replace: true })
                     }}>Logout</Link>
+
                 </aside>
+               
             </nav>
         </div>
         <footer className="nav__aside">

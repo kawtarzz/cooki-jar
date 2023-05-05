@@ -7,7 +7,7 @@ export default function CreateTask() {
     const localcookiJarUser = localStorage.getItem("cookijar_user");
     const cookijarUserObject = JSON.parse(localcookiJarUser)
 
-    const [task, setNewTask] = useState({
+    const [task, setTask] = useState({
         userId: cookijarUserObject.id,
         taskDescription: "",
         points: "",
@@ -33,7 +33,7 @@ export default function CreateTask() {
             <h1>Add a  new Task</h1>
             <TaskForm
                 task={task}
-                setNewTask={setNewTask}
+                setTask={setTask}
                 onSubmit={onFormSubmit}
             />
         </>

@@ -5,13 +5,13 @@ import TaskForm from "./NewTaskForm";
 export default function EditTask() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const [task, setNewTask] = useState(null)
+    const [task, setTask] = useState()
 
 
     const getTask = (id) => {
         fetch(`http://localhost:8088/tasks/${id}`)
             .then((res) => res.json())
-            .then(setNewTask);
+            .then(setTask);
     };
 
     useEffect(() => {
@@ -39,7 +39,7 @@ export default function EditTask() {
             <h1>Edit {task.id}</h1>
             <TaskForm
                 task={task}
-                setNewTask={setNewTask}
+                setTask={setTask}
                 onSubmit={onFormSubmit}
             />
         </>

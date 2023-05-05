@@ -1,58 +1,71 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./Tasks.css"
 
 export default function TaskList() {
-    const [tasks, setMyTasks] = useState([])
-    const [ filteredTasks, setFiltered] = useState([])
-    const [complete, setCompleted] = useState(false)
-    const navigate = useNavigate()
+    const [tasks, setTasks] = useState([])
 
+    const navigate = useNavigate()
     const localcookiJarUser = localStorage.getItem("cookijar_user");
     const cookijarUserObject = JSON.parse(localcookiJarUser)
 
-    useEffect(()=>{
-        if (complete) {
-            const completedTasks = tasks.filter(task => task.completed === true) 
-                setCompleted(true)
-            } else {
-                setFiltered(tasks)
-            } 
-        }, [filteredTasks]
-    )
+    const getMyTasks = () => {
+        fetch(`http://localhost:8088/tasks?userId=${cookijarUserObject.id}&completed=false`)
+            .then((res) => res.json())
+            .then(setTasks);
+    }
+
+    const setCompletedTask = (task) => {
+        const sendToApi = {
+            userId: cookijarUserObject.id,
+            taskDescription: task.taskDescription,
+            points: task.points,
+            completed: true
+        }
+        fetch(`http://localhost:8088/tasks/${task.id}?userId=${cookijarUserObject.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sendToApi)
+        })
+
+        getMyTasks()
+    }
 
     const deleteTask = (id) => {
+        console.log('deleteTask...');
         fetch(`http://localhost:8088/tasks/${id}`, {
             method: "DELETE",
         }).then((res) => res.json())
-            .then(() => { getMyTasks() }
-            );};
+            .then(() => { getMyTasks() })
+    }
 
-    const getMyTasks = () => {
-       fetch(`http://localhost:8088/tasks?userId=${cookijarUserObject.id}`)
-            .then((res) => res.json())
-            .then(setMyTasks);}
-                
     useEffect(() => {
-        getMyTasks()
-        }, [])
+        console.log('useEffect...');
+        const myTasks = getMyTasks()
+    }, [])
 
     return (
-        <><aside>
+        <> <br></br>
             <input type="button"
                 value="Add Task"
+                className="button_add"
                 onClick={() => {
                     navigate("/create");
                 }}
-            /></aside>
+            /><center>
             <ul>
                 {tasks.map((task) => (
-                    <li style={{ listStyle: "none" }} key={task.id}>
+                    <li style={{ listStyle:"none" }} key={task.id} >
+                        <div className="task_list">
                         <h3>Task:</h3> <h4>{task.taskDescription}</h4>
                         <h5>Point Value: {task.points}{""}</h5>
                         <h6>{task.completed}</h6>
-
+                        
                         <input
                             type="button"
+                            className="button_edit"
                             value="Edit"
                             onClick={() => {
                                 navigate(`/edit/${task.id}`);
@@ -60,7 +73,9 @@ export default function TaskList() {
                         />
                         <input
                             type="button"
+                            className="button_delete"
                             value="Delete"
+                            
                             onClick={() => {
                                 deleteTask(task.id);
                             }}
@@ -68,13 +83,14 @@ export default function TaskList() {
                         <input
                             type="button"
                             value="Complete"
+                            className="button_complete"
                             onClick={() => {
-                                setCompleted(true);
+                                setCompletedTask(task);
                             }}
                         />
-                    </li>
-                ))}</ul>
+                   
+                    </div> </li>
+                ))}</ul></center>
         </>
-    );
+    )
 }
-   

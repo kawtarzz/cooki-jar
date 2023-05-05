@@ -1,12 +1,12 @@
 .h1, h1 {
     font-size: 2rem;
     text-align: center;
-    color:#df9c0e
+    color:#1404bd
 }
 .h2 {
     font-size: 1rem;
     text-align: center;
-    color: rgb(255, 80, 80)
+    color: rgb(223, 64, 15)
 }
 
 
@@ -21,7 +21,7 @@ fieldset {
     display: inline-block;
     margin: 0 auto;
     text-align: left;
-    color: darkblue;
+    color: rgb(245, 141, 30);
 }
 
 .form--login > fieldset > input[type="email"] {
@@ -58,9 +58,6 @@ fieldset {
     background-position-x: center;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: rgb(242, 255, 168);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
 }
 
 .button--close {

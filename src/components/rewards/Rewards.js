@@ -18,14 +18,13 @@ export const RewardsList = () => {
                     setRewards(rewards)
                 });
         },
-        [rewards] // When this array is empty, you are observing initial component state
+        [] // When this array is empty, you are observing initial component state
     );
 
     return (
     <>
-     <button onClick={() => navigate("/rewards/create")}>Create Rewards</button>
             
-            <h2>List of Rewards</h2>
+            <h2>Rewards</h2>
             <article className="rewards">
                 {
                     rewards.map(
@@ -43,3 +42,6 @@ export const RewardsList = () => {
             </article>
         </>)
 }
+
+// if task.completed = true user.points = x + task.points 
+

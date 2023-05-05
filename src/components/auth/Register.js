@@ -6,6 +6,7 @@ export const Register = () => {
     const [user, setUser] = useState({
         email: "",
         name: "",
+        points: 0
     })
     let navigate = useNavigate()
 
@@ -22,7 +23,9 @@ export const Register = () => {
                 if (createdUser.hasOwnProperty("id")) {
                     localStorage.setItem("cookijar_user", JSON.stringify({
                         id: createdUser.id,
-                        name: createdUser.name
+                        name: createdUser.name,
+                        email: createdUser.email,
+                        points: createdUser.points
                     }))
                     navigate("/")
        }

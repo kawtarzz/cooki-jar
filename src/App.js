@@ -5,23 +5,21 @@ import { Login } from "./components/auth/Login.js"
 import { Register } from "./components/auth/Register.js"
 import { Route, Routes } from "react-router-dom"
 
+
 export const App = () => {
-    return <Routes>
+    return (<Routes>
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
   
     <Route path="*" element={
-      <Authorized>
-        <>
+      <Authorized><>
           <NavBar />
-
           <Dashboard />
-
         </>
-      </Authorized>
-  
-    } />
+      </Authorized> } />
   </Routes>
+        
+        )
   }
   
   export default App;

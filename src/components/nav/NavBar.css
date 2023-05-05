@@ -10,14 +10,17 @@
 }
 .header {
     text-align: left;
-    padding: 2%;
+    padding: 3%;
 }
-.logout {
-    text-align: right;
+.button {
+    position: right;
+    text-align: left;
+    color: blue;
+    background-color: yellow;
 }
-.logout:hover {
-    text-align: right;
-    background-color: yellow; opacity: 30%;
+.button:hover {
+    text-align: left;
+    background-color: rgb(0, 81, 255); opacity: 30%;
 }
 .navlinks {
     display: inline-flex;
