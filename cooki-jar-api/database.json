@@ -1,57 +1,305 @@
 {
   "users": [
     {
-      "id": 1,
-      "email": "dstoade0@cornell.edu",
-      "name": "brainFart"
+      "email": "molly@email.com",
+      "name": "Molly",
+      "points": 0,
+      "id": 1
     },
     {
-      "id": 2,
-      "email": "wthorneloe1@usa.gov",
-      "name": "WindyWendy21"
-        },
-    {
-      "id": 3,
-      "email": "Kawtaryazzouzi@gmail.com",
-      "name": "Kawtar"
+      "email": "sam@email.com",
+      "name": "Sam",
+      "points": 0,
+      "id": 2
     },
     {
-      "id": 4,
-      "email": "jerryrules@yahoo.com",
-      "name": "jerry"
+      "email": "",
+      "name": "mir@email.com",
+      "points": 0,
+      "id": 3
     },
     {
-      "id": 5,
-      "email": "ko.azzouzi@gmail.com",
-      "name": "Kawtar Azzouzi"
+      "email": "jane@email.com",
+      "name": "Jane",
+      "points": 0,
+      "id": 4
+    },
+    {
+      "email": "maria@dance.com",
+      "name": "Maria",
+      "points": 0,
+      "id": 5
+    },
+    {
+      "email": "evan@coolguy.com",
+      "name": "Evan",
+      "points": 0,
+      "id": 6
+    },
+    {
+      "email": "feedme123@yahoo.com",
+      "name": "cookie monster",
+      "points": 0,
+      "id": 7
+    },
+    {
+      "email": "kawtaryazzouzi@gmail.com",
+      "name": "Kawtar",
+      "points": 0,
+      "id": 8
+    },
+    {
+      "email": "Mom@email.com",
+      "name": "Mom",
+      "points": 0,
+      "id": 9
+    },
+    {
+      "email": "Mom@email.com",
+      "name": "Mom",
+      "points": 0,
+      "id": 10
     }
   ],
-  "taskSchemes": [
+  "tasks": [
     {
-      "id": 0,
-      "userId": "",
-      "taskDescription": "finish this cool app project",
-      "setPoints": 0,
-      "expireOnDate": 0,
-      "completedOn": 0
+      "userId": 6,
+      "taskDescription": "eat some bugs",
+      "points": 20,
+      "completed": false,
+      "id": 1
+    },
+    {
+      "userId": 6,
+      "taskDescription": "do a poop",
+      "points": 5,
+      "completed": false,
+      "id": 2
+    },
+    {
+      "userId": 8,
+      "taskDescription": "shrimp",
+      "points": 10,
+      "completed": false,
+      "id": 3
+    },
+    {
+      "userId": 8,
+      "taskDescription": "root beer",
+      "points": 10,
+      "completed": false,
+      "id": 4
+    },
+    {
+      "userId": 8,
+      "taskDescription": "butt",
+      "points": 10,
+      "completed": false,
+      "id": 5
+    },
+    {
+      "userId": 8,
+      "taskDescription": "yrdh",
+      "points": 10,
+      "completed": false,
+      "id": 6
+    },
+    {
+      "userId": 8,
+      "taskDescription": "hello",
+      "points": 10,
+      "completed": false,
+      "id": 7
+    },
+    {
+      "userId": 5,
+      "taskDescription": "walk the dog",
+      "points": 5,
+      "completed": false,
+      "id": 8
+    },
+    {
+      "userId": 5,
+      "taskDescription": "hello",
+      "points": 20,
+      "completed": false,
+      "id": 9
+    },
+    {
+      "userId": 5,
+      "taskDescription": "1",
+      "points": 5,
+      "completed": false,
+      "id": 10
+    },
+    {
+      "userId": 5,
+      "taskDescription": "2",
+      "points": 15,
+      "completed": false,
+      "id": 11
+    },
+    {
+      "userId": 5,
+      "taskDescription": "1",
+      "points": 10,
+      "completed": false,
+      "id": 12
+    },
+    {
+      "userId": 5,
+      "taskDescription": "4",
+      "points": 20,
+      "completed": false,
+      "id": 13
+    },
+    {
+      "userId": 5,
+      "taskDescription": "1",
+      "points": 10,
+      "completed": false,
+      "id": 14
+    },
+    {
+      "userId": 5,
+      "taskDescription": "1",
+      "points": 10,
+      "completed": false,
+      "id": 15
+    },
+    {
+      "userId": 5,
+      "taskDescription": "4",
+      "points": 20,
+      "completed": false,
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "taskDescription": "homework",
+      "points": 5,
+      "completed": true,
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "taskDescription": "mow the lawn",
+      "points": 15,
+      "completed": true,
+      "id": 18
+    },
+    {
+      "userId": 1,
+      "taskDescription": "walk the dog",
+      "points": 15,
+      "completed": true,
+      "id": 19
+    },
+    {
+      "userId": 1,
+      "taskDescription": "write presentation",
+      "points": 15,
+      "completed": true,
+      "id": 21
+    },
+    {
+      "userId": 1,
+      "taskDescription": "edit resume",
+      "points": 15,
+      "completed": true,
+      "id": 22
+    },
+    {
+      "userId": 1,
+      "taskDescription": "reach mvp ",
+      "points": 10,
+      "completed": true,
+      "id": 23
+    },
+    {
+      "userId": 8,
+      "taskDescription": "test",
+      "points": 5,
+      "completed": false,
+      "id": 24
+    },
+    {
+      "userId": 1,
+      "taskDescription": "reach mvp",
+      "points": 5,
+      "completed": false,
+      "id": 25
+    },
+    {
+      "userId": 1,
+      "taskDescription": "",
+      "points": 15,
+      "completed": true,
+      "id": 26
+    },
+    {
+      "userId": 1,
+      "taskDescription": "",
+      "points": 20,
+      "completed": true,
+      "id": 27
+    },
+    {
+      "userId": 1,
+      "taskDescription": "2",
+      "points": 10,
+      "completed": false,
+      "id": 28
+    },
+    {
+      "userId": 1,
+      "taskDescription": "test 2",
+      "points": 5,
+      "completed": false,
+      "id": 29
+    },
+    {
+      "userId": 1,
+      "taskDescription": "test 4",
+      "points": 10,
+      "completed": false,
+      "id": 30
+    },
+    {
+      "userId": 1,
+      "taskDescription": "x",
+      "points": 10,
+      "completed": false,
+      "id": 31
+    },
+    {
+      "userId": 1,
+      "taskDescription": "x",
+      "points": 10,
+      "completed": false,
+      "id": 32
     }
   ],
   "rewards": [
     {
-      "id": 0,
-      "userId": "",
-      "rewardsName": "ice cream",
+      "id": 1,
       "description": "get an ice cream cone",
-      "setPoints": 0,
-      "expireOnDate": 0,
-      "completedOn": 0
-    }
-  ],
-  "redeemedRewards": [
+      "points": 5
+    },
     {
-      "id": 0,
-      "rewardsId": 0,
-      "reedeemedOnDate": 0
+      "id": 2,
+      "description": "get an ice cream cone",
+      "points": 5
+    },
+    {
+      "id": 3,
+      "description": "get an ice cream cone",
+      "points": 5
+    },
+    {
+      "id": 4,
+      "description": "get an ice cream cone",
+      "points": 5
     }
   ]
 }

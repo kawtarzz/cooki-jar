@@ -1,23 +1,39 @@
 import { Outlet, Route, Routes } from "react-router-dom"
-import { TaskContainer } from "../tasks/TaskContainer.js"
-import { TaskForm } from "../tasks/TaskForm.js"
+import TaskList from "../tasks/TaskList"
+import CreateTask from "../tasks/CreateTask"
+import EditTask from "../tasks/EditTask"
+import { useEffect, useState } from "react"
 
-export const ApplicationViews = () => {
-	return (
+export default function Dashboard() {
+    const localcookiJarUser = localStorage.getItem("cookijar_user")
+    const cookijarUserObject = JSON.parse(localcookiJarUser)
+    const [points, setPoints] = useState(0)
+
+
+    useEffect(() => {
+        fetch(`http://localhost:8088/users?id=${cookijarUserObject.id}`)
+            .then((res) => res.json())
+            .then(res => setPoints(JSON.stringify(res[0].points)))
+    }, [])
+
+    return (
+        
         <Routes>
             <Route path="/" element={
-                <>
-                    <h1>cookiJar</h1>
-                    <div>the sweet reward of productivity</div>
+                <><center>
 
+                    <h1> cookiJar</h1>
+                    <h3>Rewarding productivity!</h3>
+                    {`Welcome back ${cookijarUserObject.name} You have ${parseInt(points)} points!`}
+                </center>
                     <Outlet />
-                </>
-            }>
+                </>}>
 
-                <Route path="tasks" element={<TaskContainer />} />
-                
-            
-                <Route path="task/create" element={<TaskForm />} />
+                <Route path="tasks" element={<TaskList />} />
+                <Route path="/create" element={< CreateTask />} />
+                <Route path="/edit/:id" element={< EditTask />} />
+
+
             </Route>
         </Routes>
     )

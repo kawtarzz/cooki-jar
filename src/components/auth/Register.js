@@ -1,10 +1,12 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-export const Register = (props) => {
+export const Register = () => {
     const [user, setUser] = useState({
         email: "",
-        userName: "",
+        name: "",
+        points: 0
     })
     let navigate = useNavigate()
 
@@ -21,11 +23,12 @@ export const Register = (props) => {
                 if (createdUser.hasOwnProperty("id")) {
                     localStorage.setItem("cookijar_user", JSON.stringify({
                         id: createdUser.id,
+                        name: createdUser.name,
                         email: createdUser.email,
+                        points: createdUser.points
                     }))
-
                     navigate("/")
-                }
+       }
             })
     }
 
@@ -51,8 +54,9 @@ export const Register = (props) => {
         setUser(copy)
     }
 
+
     return (
-        <main style={{ textAlign: "center" }}>  
+                <main style={{ textAlign: "center" }}>  
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Please Register for cookiJar </h1>
                 <fieldset>
@@ -75,4 +79,6 @@ export const Register = (props) => {
         </main>
     )
 }
+
+
 
