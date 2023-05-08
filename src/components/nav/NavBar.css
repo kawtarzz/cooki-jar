@@ -2,7 +2,7 @@
     display: flex;  
     flex-flow: row wrap;
     font-weight: bold;
-    background: tomato;
+    background: rgb(65, 100, 239);
 }
 .container > * {
     padding: 5px;
@@ -15,43 +15,19 @@
 .button {
     position: right;
     text-align: left;
-    color: blue;
+    color: rgb(255, 107, 53);
     background-color: yellow;
 }
 .button:hover {
     text-align: left;
-    background-color: rgb(0, 81, 255); opacity: 30%;
+    background-color: rgb(0, 225, 255); opacity: 30%;
 }
 .navlinks {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
-.navlinks_1{
-    padding: 1%;
+.logout {
+  flex-direction: row;
+  margin-right: 0rem ;
 }
-.navlinks_2 {
-    padding: 1%;
-
-}
-.navlinks_3 {
-    padding: 1%;
-}
-  .row:hover {
-    background: #1180ff;
-  }
-  
-  @media all and (max-width: 800px) {
-    .navigation {
-      justify-content: space-around;
-    }
-  }
-  
-  @media all and (max-width: 600px) {
-    .navigation {
-      flex-flow: column wrap;
-      padding: 0;
-    } }
-
-    .footer {
-        background: lightgreen;
-      }

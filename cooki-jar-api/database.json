@@ -66,6 +66,7 @@
       "userId": 6,
       "taskDescription": "eat some bugs",
       "points": 20,
+      "date": "",
       "completed": false,
       "id": 1
     },
@@ -73,6 +74,7 @@
       "userId": 6,
       "taskDescription": "do a poop",
       "points": 5,
+      "date": "",
       "completed": false,
       "id": 2
     },
@@ -80,6 +82,7 @@
       "userId": 8,
       "taskDescription": "shrimp",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 3
     },
@@ -87,6 +90,7 @@
       "userId": 8,
       "taskDescription": "root beer",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 4
     },
@@ -94,6 +98,7 @@
       "userId": 8,
       "taskDescription": "butt",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 5
     },
@@ -101,6 +106,7 @@
       "userId": 8,
       "taskDescription": "yrdh",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 6
     },
@@ -108,6 +114,7 @@
       "userId": 8,
       "taskDescription": "hello",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 7
     },
@@ -115,6 +122,7 @@
       "userId": 5,
       "taskDescription": "walk the dog",
       "points": 5,
+      "date": "",
       "completed": false,
       "id": 8
     },
@@ -122,6 +130,7 @@
       "userId": 5,
       "taskDescription": "hello",
       "points": 20,
+      "date": "",
       "completed": false,
       "id": 9
     },
@@ -129,6 +138,7 @@
       "userId": 5,
       "taskDescription": "1",
       "points": 5,
+      "date": "",
       "completed": false,
       "id": 10
     },
@@ -136,6 +146,7 @@
       "userId": 5,
       "taskDescription": "2",
       "points": 15,
+      "date": "",
       "completed": false,
       "id": 11
     },
@@ -143,6 +154,7 @@
       "userId": 5,
       "taskDescription": "1",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 12
     },
@@ -150,6 +162,7 @@
       "userId": 5,
       "taskDescription": "4",
       "points": 20,
+      "date": "",
       "completed": false,
       "id": 13
     },
@@ -157,6 +170,7 @@
       "userId": 5,
       "taskDescription": "1",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 14
     },
@@ -164,6 +178,7 @@
       "userId": 5,
       "taskDescription": "1",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 15
     },
@@ -171,6 +186,7 @@
       "userId": 5,
       "taskDescription": "4",
       "points": 20,
+      "date": "",
       "completed": false,
       "id": 16
     },
@@ -192,34 +208,39 @@
       "userId": 1,
       "taskDescription": "walk the dog",
       "points": 15,
-      "completed": true,
+      "date": "",
+      "completed": false,
       "id": 19
     },
     {
       "userId": 1,
       "taskDescription": "write presentation",
       "points": 15,
-      "completed": true,
+      "date": "",
+      "completed": false,
       "id": 21
     },
     {
       "userId": 1,
       "taskDescription": "edit resume",
       "points": 15,
-      "completed": true,
+      "date": "",
+      "completed": false,
       "id": 22
     },
     {
       "userId": 1,
       "taskDescription": "reach mvp ",
       "points": 10,
-      "completed": true,
+      "date": "",
+      "completed": false,
       "id": 23
     },
     {
       "userId": 8,
       "taskDescription": "test",
       "points": 5,
+      "date": "",
       "completed": false,
       "id": 24
     },
@@ -227,6 +248,7 @@
       "userId": 1,
       "taskDescription": "reach mvp",
       "points": 5,
+      "date": "",
       "completed": false,
       "id": 25
     },
@@ -234,20 +256,23 @@
       "userId": 1,
       "taskDescription": "",
       "points": 15,
-      "completed": true,
+      "date": "",
+      "completed": false,
       "id": 26
     },
     {
       "userId": 1,
       "taskDescription": "",
       "points": 20,
-      "completed": true,
+      "date": "",
+      "completed": false,
       "id": 27
     },
     {
       "userId": 1,
       "taskDescription": "2",
       "points": 10,
+      "date": "",
       "completed": false,
       "id": 28
     },
@@ -278,6 +303,41 @@
       "points": 10,
       "completed": false,
       "id": 32
+    },
+    {
+      "userId": 1,
+      "taskDescription": "hello",
+      "points": 10,
+      "completed": false,
+      "id": 33
+    },
+    {
+      "userId": 1,
+      "taskDescription": "assign points",
+      "points": 5,
+      "completed": false,
+      "id": 34
+    },
+    {
+      "userId": 1,
+      "taskDescription": "walk the dog",
+      "points": 10,
+      "completed": false,
+      "id": 35
+    },
+    {
+      "userId": 1,
+      "taskDescription": "walk the dog",
+      "points": 10,
+      "completed": false,
+      "id": 36
+    },
+    {
+      "userId": 1,
+      "taskDescription": "workout",
+      "points": 15,
+      "completed": false,
+      "id": 37
     }
   ],
   "rewards": [
