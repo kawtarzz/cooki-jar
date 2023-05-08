@@ -14,14 +14,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #100d1b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(198, 225, 240);
 }
 
 .App-link {
@@ -35,4 +35,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+body {
+min-height: 100vh;
+display: grid;
+grid-template-rows: 1fr auto;
+}
+footer {
+  margin-top: auto;
+}
+.button__tasks{
+  background-color: #f7d84c;
+  border: 2px solid black;
+  color: rgb(255, 255, 255);
+  padding: 2px 24px;
+  margin: 2rem;
+  display: inline-block;
+  font-size: 16px;
 }

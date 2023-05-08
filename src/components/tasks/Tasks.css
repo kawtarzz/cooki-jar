@@ -1,21 +1,9 @@
-.tasks {
-    display: flex;
-    flex-direction: column;
-}
-
-.task {
-    background-color: rgb(71, 100, 153);
-    text-align: center;
-    color: bisque;
-    border: 1px dotted rgb(38, 38, 122);
-    padding: 0.7rem;
-}
 
 .form-group {
     display: flex;
 }
 
-.button_edit {
+.button__edit {
     background-color: #1da1d1; 
     border: 2px solid black;
     color: rgb(255, 255, 255);
@@ -26,7 +14,7 @@
     display: inline-block;
     font-size: 16px;
   }
-  .button_delete {
+  .button__delete {
     background-color: #ff4400;
     border: 2px solid black;
     color: rgb(255, 255, 255);
@@ -36,7 +24,7 @@
     display: inline-block;
     font-size: 16px;
   }
-  .button_complete {
+  .button__complete {
     background-color: #e6d005;
     border: 2px solid black;
     color: rgb(255, 255, 255);
@@ -46,31 +34,33 @@
     display: inline-block;
     font-size: 16px;
   }
-  .button_complete:hover {
+  .button__complete:hover {
     background-color: pink;
   }
-  .button_delete:hover {
+  .button__delete:hover {
     background-color: green;
   }
-  .button_edit:hover {
+  .button__edit:hover {
     background-color: #ffaa00;
   }
-  .button_add {
+  .button__add {
     background-color: #f74ca2;
     border: 2px solid black;
     color: rgb(255, 255, 255);
     padding: 2px 24px;
-    margin: auto;
-    text-align: center;
-    text-decoration: none;
+    margin: 2rem;
     display: inline-block;
     font-size: 16px;
   }
+  .button__add:hover{
+    background-color: #ffaa00;
+  }
   .task_list {
-    background-color: rgb(243, 243, 230);
+    background-color: rgb(255, 255, 247);
     border: 2px solid rgb(0, 0, 0);
-    color: rgb(1, 3, 59);
-    padding: 2px 24px;
-    margin: auto;
+    color: rgb(0, 3, 104);
+    padding: 10px 1px;
+    margin: 2rem;
+    align-items: center;
     text-align: center;
   }

@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
+import Logo from '../views/logo.svg'
 
 
 export const NavBar = () => {
@@ -7,34 +8,16 @@ export const NavBar = () => {
     return (
     <>
         <div className="container">
-            <header className="header">  <Link to="/home">cookiJar</Link></header>
-           
-            <nav className="logout">
-                <aside>
-                    <Link to="/login" className="button" onClick={() => {
-                        localStorage.removeItem("cookijar_user")
-                        navigate("/", { replace: true })
-                    }}>Logout</Link>
-
-                </aside>
-               
-            </nav>
-        </div>
-        <footer className="nav__aside">
-            <aside className="nav__aside">
-
-           <ul>
+            <header className="header">  <img src={Logo} width="50" height="50" alt="Logo"/><br/><h5>cookiJar</h5>
+            </header></div>
             
-           <li>
-             <Link to="/tasks">Tasks</Link> 
-            </li>
-        <li>
-            <Link to="/create">Create Task</Link>
-        </li>
-            </ul> 
-            </aside>
-   </footer> </>
-
+                <div>
+                <Link to="/login" className="logout" onClick={() => {
+                    localStorage.removeItem("cookijar_user")
+                    navigate("/", { replace: true })
+                }}>Logout</Link>
+        </div>
+        </>
 
     )
 }
