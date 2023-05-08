@@ -227,7 +227,7 @@
       "userId": 1,
       "taskDescription": "reach mvp",
       "points": 5,
-      "completed": false,
+      "completed": true,
       "id": 25
     },
     {
@@ -248,14 +248,14 @@
       "userId": 1,
       "taskDescription": "2",
       "points": 10,
-      "completed": false,
+      "completed": true,
       "id": 28
     },
     {
       "userId": 1,
       "taskDescription": "test 2",
       "points": 5,
-      "completed": false,
+      "completed": true,
       "id": 29
     },
     {
