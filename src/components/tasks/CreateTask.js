@@ -11,6 +11,7 @@ export default function CreateTask() {
         userId: cookijarUserObject.id,
         taskDescription: "",
         points: "",
+        date: "",
         completed: false
         
     });

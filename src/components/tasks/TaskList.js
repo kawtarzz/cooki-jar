@@ -42,30 +42,32 @@ export default function TaskList() {
     }
 
     useEffect(() => {
-        console.log('useEffect...');
         const myTasks = getMyTasks()
     }, [])
 
     return (
         <> <br></br>
-            <input type="button"
+            <center>
+                <input type="button"
                 value="Add Task"
-                className="button_add"
+                className="button__add"
                 onClick={() => {
                     navigate("/create");
                 }}
-            /><center>
+            />
+                
             <ul>
                 {tasks.map((task) => (
                     <li style={{ listStyle:"none" }} key={task.id} >
                         <div className="task_list">
                         <h3>Task:</h3> <h4>{task.taskDescription}</h4>
                         <h5>Point Value: {task.points}{""}</h5>
-                        <h6>{task.completed}</h6>
+                        <h5>Start: {task.date}</h5>
+                        <h6>Completed?:{task.completed}</h6>
                         
                         <input
                             type="button"
-                            className="button_edit"
+                            className="button__edit"
                             value="Edit"
                             onClick={() => {
                                 navigate(`/edit/${task.id}`);
@@ -73,7 +75,7 @@ export default function TaskList() {
                         />
                         <input
                             type="button"
-                            className="button_delete"
+                            className="button__delete"
                             value="Delete"
                             
                             onClick={() => {
@@ -83,7 +85,7 @@ export default function TaskList() {
                         <input
                             type="button"
                             value="Complete"
-                            className="button_complete"
+                            className="button__complete"
                             onClick={() => {
                                 setCompletedTask(task);
                             }}
