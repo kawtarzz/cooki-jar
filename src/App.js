@@ -9,7 +9,6 @@ import "./App.css"
 
 export const App = () => {
     return <> <section className="App">
-
       <Routes>
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
@@ -19,16 +18,16 @@ export const App = () => {
       
           <NavBar />
           <ApplicationViews />
+          <Link className="button__delete" to="/tasks">Tasks</Link> <Link className="button__edit" to="/create">Create Task</Link>
         </>
       </Authorized> } />
   </Routes>
 
-  <Link className="button__delete" to="/tasks">Tasks</Link> <Link className="button__edit" to="/create">Create Task</Link>
+
      
       </section>
       </>
   }
-  
+
   export default App;
 
-  

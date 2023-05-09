@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Tasks.css"
 
-export default function TaskList() {
+export default function TaskList({ sumPoints }) {
     const [tasks, setTasks] = useState([])
 
     const navigate = useNavigate()
@@ -20,6 +20,7 @@ export default function TaskList() {
             userId: cookijarUserObject.id,
             taskDescription: task.taskDescription,
             points: task.points,
+            date: task.date,
             completed: true
         }
         fetch(`http://localhost:8088/tasks/${task.id}?userId=${cookijarUserObject.id}`, {
@@ -29,8 +30,8 @@ export default function TaskList() {
             },
             body: JSON.stringify(sendToApi)
         })
-
-        getMyTasks()
+        // getMyTasks()
+        sumPoints()
     }
 
     const deleteTask = (id) => {
@@ -42,8 +43,10 @@ export default function TaskList() {
     }
 
     useEffect(() => {
-        const myTasks = getMyTasks()
-    }, [])
+        getMyTasks()
+    },[])
+
+
 
     return (
         <> <br></br>
@@ -96,3 +99,16 @@ export default function TaskList() {
         </>
     )
 }
+const SetUserPoints = () => {
+    const localcookiJarUser = localStorage.getItem("cookijar_user")
+    const cookijarUserObject = JSON.parse(localcookiJarUser)
+    const [completed, setCompleted] = useState([])
+
+    const onCompletedTask = () => {
+        fetch(`http://localhost:8088/tasks?userId=${cookijarUserObject.id}&completed=true`)
+            .then((res) => res.json())
+            .then(res => setCompleted(JSON.stringify(res)))
+    }
+    onCompletedTask()
+    console.log('completed')
+    }  

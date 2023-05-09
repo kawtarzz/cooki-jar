@@ -3,7 +3,7 @@
     {
       "email": "molly@email.com",
       "name": "Molly",
-      "points": 0,
+      "points": 10,
       "id": 1
     },
     {
@@ -208,32 +208,28 @@
       "userId": 1,
       "taskDescription": "walk the dog",
       "points": 15,
-      "date": "",
-      "completed": false,
+      "completed": true,
       "id": 19
     },
     {
       "userId": 1,
       "taskDescription": "write presentation",
       "points": 15,
-      "date": "",
-      "completed": false,
+      "completed": true,
       "id": 21
     },
     {
       "userId": 1,
       "taskDescription": "edit resume",
       "points": 15,
-      "date": "",
-      "completed": false,
+      "completed": true,
       "id": 22
     },
     {
       "userId": 1,
       "taskDescription": "reach mvp ",
       "points": 10,
-      "date": "",
-      "completed": false,
+      "completed": true,
       "id": 23
     },
     {
@@ -248,40 +244,28 @@
       "userId": 1,
       "taskDescription": "reach mvp",
       "points": 5,
-<<<<<<< HEAD
       "completed": true,
-=======
-      "date": "",
-      "completed": false,
->>>>>>> 7137aeb8ef66b0d4e9d3cb9095113d2759435946
       "id": 25
     },
     {
       "userId": 1,
       "taskDescription": "",
       "points": 15,
-      "date": "",
-      "completed": false,
+      "completed": true,
       "id": 26
     },
     {
       "userId": 1,
       "taskDescription": "",
       "points": 20,
-      "date": "",
-      "completed": false,
+      "completed": true,
       "id": 27
     },
     {
       "userId": 1,
       "taskDescription": "2",
       "points": 10,
-<<<<<<< HEAD
       "completed": true,
-=======
-      "date": "",
-      "completed": false,
->>>>>>> 7137aeb8ef66b0d4e9d3cb9095113d2759435946
       "id": 28
     },
     {
@@ -295,28 +279,28 @@
       "userId": 1,
       "taskDescription": "test 4",
       "points": 10,
-      "completed": false,
+      "completed": true,
       "id": 30
     },
     {
       "userId": 1,
       "taskDescription": "x",
       "points": 10,
-      "completed": false,
+      "completed": true,
       "id": 31
     },
     {
       "userId": 1,
       "taskDescription": "x",
       "points": 10,
-      "completed": false,
+      "completed": true,
       "id": 32
     },
     {
       "userId": 1,
       "taskDescription": "hello",
       "points": 10,
-      "completed": false,
+      "completed": true,
       "id": 33
     },
     {

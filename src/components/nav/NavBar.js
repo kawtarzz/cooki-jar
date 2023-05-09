@@ -8,7 +8,9 @@ export const NavBar = () => {
     return (
     <>
         <div className="container">
-            <header className="header">  <img src={Logo} width="50" height="50" alt="Logo"/><br/><h5>cookiJar</h5>
+            <header className="header">  <Link to ="/" onClick={()=> {navigate("/")}} > 
+            <img src={Logo} width="50" height="50" alt="Logo"/><br/><h5>cookiJar</h5>
+            </Link>
             </header></div>
             
                 <div>
