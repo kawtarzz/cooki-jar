@@ -6,11 +6,19 @@ export default function CreateTask() {
     const navigate = useNavigate();
     const localcookiJarUser = localStorage.getItem("cookijar_user");
     const cookijarUserObject = JSON.parse(localcookiJarUser)
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+
+    const newdate = month + "/" + day + "/" + year;
 
     const [task, setTask] = useState({
         userId: cookijarUserObject.id,
         taskDescription: "",
         points: "",
+        completedDate: "",
+        startDate: "",
         completed: false
         
     });
@@ -30,12 +38,16 @@ export default function CreateTask() {
 
     return (
         <>
-            <h1>Add a  new Task</h1>
+           <header>
+                <h2>Add a  new Task</h2>
+                </header><br></br>
+            
             <TaskForm
                 task={task}
                 setTask={setTask}
                 onSubmit={onFormSubmit}
-            />
+                />
+               
         </>
     );
 }

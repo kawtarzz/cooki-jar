@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import "./Login.css"
 
-
 export const Login = () => {
     const [email, set] = useState("molly@email.com")
     const navigate = useNavigate()
@@ -21,7 +20,7 @@ export const Login = () => {
                         name: user.name,
                         email: user.email
                     }))
-                    navigate("/tasks")
+                    navigate("/")
                     window.alert('Welcome back ' + user.name + '!')
                 }
                 else {

@@ -2,56 +2,21 @@
     display: flex;  
     flex-flow: row wrap;
     font-weight: bold;
-    background: tomato;
+    background:#ffce0a;
 }
 .container > * {
-    padding: 5px;
+    padding: 3px;
     flex: 1 100%;
 }
-.header {
-    text-align: left;
-    padding: 3%;
-}
-.button {
-    position: right;
-    text-align: left;
-    color: blue;
-    background-color: yellow;
-}
-.button:hover {
-    text-align: left;
-    background-color: rgb(0, 81, 255); opacity: 30%;
-}
+
+
 .navlinks {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
-.navlinks_1{
-    padding: 1%;
-}
-.navlinks_2 {
-    padding: 1%;
-
-}
-.navlinks_3 {
-    padding: 1%;
-}
-  .row:hover {
-    background: #1180ff;
-  }
+.logout {
+    position: right;
+  flex-direction: row;
   
-  @media all and (max-width: 800px) {
-    .navigation {
-      justify-content: space-around;
-    }
-  }
-  
-  @media all and (max-width: 600px) {
-    .navigation {
-      flex-flow: column wrap;
-      padding: 0;
-    } }
-
-    .footer {
-        background: lightgreen;
-      }
+}

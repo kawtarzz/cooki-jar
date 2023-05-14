@@ -1,9 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./Tasks.css"
+import { Card } from "react-bootstrap";
+import ListGroup from "react-bootstrap/ListGroup";
+import { Button } from "react-bootstrap"
 
-export default function TaskList() {
+
+export default function TaskList({ sumPoints }) {
     const [tasks, setTasks] = useState([])
+
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+
+    const newdate = month + "/" + day + "/" + year;
 
     const navigate = useNavigate()
     const localcookiJarUser = localStorage.getItem("cookijar_user");
@@ -20,6 +30,8 @@ export default function TaskList() {
             userId: cookijarUserObject.id,
             taskDescription: task.taskDescription,
             points: task.points,
+            startDate: task.startDate,
+            completedDate: newdate,
             completed: true
         }
         fetch(`http://localhost:8088/tasks/${task.id}?userId=${cookijarUserObject.id}`, {
@@ -29,8 +41,9 @@ export default function TaskList() {
             },
             body: JSON.stringify(sendToApi)
         })
-
+        window.alert(`Great job ${cookijarUserObject.name}!`)
         getMyTasks()
+        sumPoints()
     }
 
     const deleteTask = (id) => {
@@ -42,55 +55,39 @@ export default function TaskList() {
     }
 
     useEffect(() => {
-        console.log('useEffect...');
-        const myTasks = getMyTasks()
+        getMyTasks()
     }, [])
 
     return (
-        <> <br></br>
-            <input type="button"
-                value="Add Task"
-                className="button_add"
-                onClick={() => {
-                    navigate("/create");
-                }}
-            /><center>
-            <ul>
-                {tasks.map((task) => (
-                    <li style={{ listStyle:"none" }} key={task.id} >
-                        <div className="task_list">
-                        <h3>Task:</h3> <h4>{task.taskDescription}</h4>
-                        <h5>Point Value: {task.points}{""}</h5>
-                        <h6>{task.completed}</h6>
+        <> <center>
+
+            {tasks.map((task) => (
+                <>
+                <div className="sheet" key={task.id}>
+                <header className="card-title">
+                <span className="card-title">
+                  <b>Task:</b> {task.taskDescription} </span>
+                </header> 
+                <p className="card-text">
+
+            <b>Point Value:</b> {task.points}{""}
+                     
+                        <b>Start:</b> {task.startDate} {""}
                         
-                        <input
-                            type="button"
-                            className="button_edit"
-                            value="Edit"
-                            onClick={() => {
-                                navigate(`/edit/${task.id}`);
-                            }}
-                        />
-                        <input
-                            type="button"
-                            className="button_delete"
-                            value="Delete"
-                            
-                            onClick={() => {
-                                deleteTask(task.id);
-                            }}
-                        />
-                        <input
-                            type="button"
-                            value="Complete"
-                            className="button_complete"
-                            onClick={() => {
-                                setCompletedTask(task);
-                            }}
-                        />
-                   
-                    </div> </li>
-                ))}</ul></center>
-        </>
+                         <b>Completed?:</b> {task.completed}{" "}
+            
+
+                        <Button onClick={() => {navigate(`/edit/${task.id}`);
+                            }}>Edit Task</Button>
+                        <Button variant="success" onClick={() => {setCompletedTask(task);}}>Completed</Button>
+                        <Button variant="danger" onClick={() => {deleteTask(task.id);}}>Delete</Button>
+                        </p>     
+                                 </div>
+                            </>
+                                           ))}
+    </center>
+    </>
     )
 }
+
+      
