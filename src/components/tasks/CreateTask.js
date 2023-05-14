@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import TaskForm from "./NewTaskForm"
 
+
 export default function CreateTask() {
     const navigate = useNavigate();
     const localcookiJarUser = localStorage.getItem("cookijar_user");
@@ -32,12 +33,14 @@ export default function CreateTask() {
             },
             body: JSON.stringify(task),
         }).then(() => {
+          window.alert('You got this!')
             navigate("/tasks");
         });
     };
 
     return (
-        <>
+        <> <center>
+
            <header>
                 <h2>Add a  new Task</h2>
                 </header><br></br>
@@ -48,6 +51,7 @@ export default function CreateTask() {
                 onSubmit={onFormSubmit}
                 />
                
+                </center>
         </>
     );
 }

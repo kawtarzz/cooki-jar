@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
-import ListGroup from "react-bootstrap/ListGroup";
 import { Button } from "react-bootstrap"
 
 
@@ -60,33 +58,36 @@ export default function TaskList({ sumPoints }) {
 
     return (
         <> <center>
-
             {tasks.map((task) => (
-                <>
-                <div className="sheet" key={task.id}>
-                <header className="card-title">
-                <span className="card-title">
-                  <b>Task:</b> {task.taskDescription} </span>
-                </header> 
-                <p className="card-text">
+        <div className="notecard">
+            <header key={task.id} className="card header">
+                <span class="card-title"><h4> <b>Task:</b>{task.id}</h4><h5>{task.taskDescription}</h5>
+  </span></header>
+                <br></br>
+    <p className="card-text">
 
-            <b>Point Value:</b> {task.points}{""}
-                     
-                        <b>Start:</b> {task.startDate} {""}
-                        
-                         <b>Completed?:</b> {task.completed}{" "}
-            
-
+       
+            <br></br>
+       <h6><b>Point Value:</b> {task.points}{""}</h6>
+       <h6><b>Start:</b> {task.startDate} {""}</h6>
+   
+            <h6><b>Completed?:</b> {task.completed}{" "}</h6>
+   
+                       <br></br>
+  
                         <Button onClick={() => {navigate(`/edit/${task.id}`);
                             }}>Edit Task</Button>
                         <Button variant="success" onClick={() => {setCompletedTask(task);}}>Completed</Button>
                         <Button variant="danger" onClick={() => {deleteTask(task.id);}}>Delete</Button>
-                        </p>     
-                                 </div>
-                            </>
-                                           ))}
-    </center>
-    </>
+                
+                            </p>
+       
+                     </div>
+                     
+                     ))}
+               
+                </center>
+               </>
     )
 }
 

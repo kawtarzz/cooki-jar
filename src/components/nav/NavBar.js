@@ -8,7 +8,9 @@ export const NavBar = () => {
     const navigate = useNavigate()
     return (
     <>  
-    <Nav fill variant="tabs" defaultActiveKey="/home">                
+            
+
+    <Nav fill variant="tabs" className="mb-3" defaultActiveKey="/">                
         <Nav.Item>
          <Nav.Link eventkey="link-1" onClick={()=> {navigate("/tasks")}}>Tasks</Nav.Link>{' '}
         </Nav.Item>
@@ -27,6 +29,7 @@ export const NavBar = () => {
                
         </Nav.Item>
         </Nav>
+
         </>
 
     )

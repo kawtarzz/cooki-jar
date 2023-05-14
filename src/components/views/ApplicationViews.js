@@ -4,6 +4,9 @@ import CreateTask from "../tasks/CreateTask"
 import EditTask from "../tasks/EditTask"
 import { useEffect, useState } from "react"
 import Logo from './logo.svg'
+import { Button } from "react-bootstrap"
+import { RewardsList } from "../rewards/Rewards"
+
 
 export default function ApplicationViews() {
     const [points, setPoints] = useState(0)
@@ -31,8 +34,13 @@ export default function ApplicationViews() {
             <div className="App-logo">
                 <img src={Logo} alt="App-logo" width="300" height="350" className="App-logo" />
             </div>
-           
-            {`Welcome back ${cookijarUserObject.name} You have ${parseInt(points)} points!`}</center> </header><Outlet />
+                <h2 style={{color: "yellow"}}>
+            {`Welcome back ${cookijarUserObject.name} You have ${parseInt(points)} points!`}
+                </h2>
+                <Button variant="warning" onClick={()=> {navigate("/create")}}>Add Task</Button>
+                <Button variant="primary" onClick={()=> {navigate("/tasks")}}>My Tasks</Button>
+                <Button variant="success" onClick={()=> {navigate("/rewards")}}>Cash-In</Button>
+            </center> </header><Outlet />
 
         
         </>}>
@@ -40,6 +48,7 @@ export default function ApplicationViews() {
         <Route path="/tasks" element={<TaskList sumPoints={sumPoints} />} />
         <Route path="/create" element={< CreateTask />} />
         <Route path="/edit/:id" element={< EditTask />} />
+        <Route path="/rewards" element={< RewardsList />} />
 
     </Route>
 </Routes>

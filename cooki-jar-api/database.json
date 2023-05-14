@@ -255,11 +255,8 @@
       "userId": 1,
       "taskDescription": "reach mvp",
       "points": 5,
-<<<<<<< HEAD
-=======
       "startDate": "",
       "completedDate": "5/14/2023",
->>>>>>> 46a95e8a5ab495efdb73f5de99b5cf280f8069af
       "completed": true,
       "id": 25
     },
@@ -285,65 +282,45 @@
       "userId": 1,
       "taskDescription": "2",
       "points": 10,
-<<<<<<< HEAD
-      "completed": true,
-=======
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": false,
->>>>>>> 46a95e8a5ab495efdb73f5de99b5cf280f8069af
+      "completed": true,
       "id": 28
     },
     {
       "userId": 1,
       "taskDescription": "test 2",
       "points": 5,
-<<<<<<< HEAD
-      "completed": true,
-=======
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": false,
->>>>>>> 46a95e8a5ab495efdb73f5de99b5cf280f8069af
+      "completed": true,
       "id": 29
     },
     {
       "userId": 1,
       "taskDescription": "test 4",
       "points": 10,
-<<<<<<< HEAD
-      "completed": true,
-=======
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": false,
->>>>>>> 46a95e8a5ab495efdb73f5de99b5cf280f8069af
+      "completed": true,
       "id": 30
     },
     {
       "userId": 1,
       "taskDescription": "x",
       "points": 10,
-<<<<<<< HEAD
-      "completed": true,
-=======
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": false,
->>>>>>> 46a95e8a5ab495efdb73f5de99b5cf280f8069af
+      "completed": true,
       "id": 31
     },
     {
       "userId": 1,
       "taskDescription": "x",
       "points": 10,
-<<<<<<< HEAD
-      "completed": true,
-=======
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": false,
->>>>>>> 46a95e8a5ab495efdb73f5de99b5cf280f8069af
+      "completed": true,
       "id": 32
     },
     {
@@ -352,7 +329,7 @@
       "points": 10,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": false,
+      "completed": true,
       "id": 33
     },
     {
@@ -361,7 +338,7 @@
       "points": 10,
       "startDate": "2023-05-17",
       "completedDate": "5/14/2023",
-      "completed": false,
+      "completed": true,
       "id": 34
     },
     {
@@ -390,6 +367,24 @@
       "completedDate": "5/14/2023",
       "completed": false,
       "id": 37
+    },
+    {
+      "userId": 1,
+      "taskDescription": "fix errors in capstone project",
+      "points": 10,
+      "completedDate": "",
+      "startDate": "2023-05-15",
+      "completed": false,
+      "id": 38
+    },
+    {
+      "userId": 1,
+      "taskDescription": "buy plane tickets",
+      "points": 10,
+      "completedDate": "",
+      "startDate": "2023-05-31",
+      "completed": false,
+      "id": 39
     }
   ],
   "rewards": [

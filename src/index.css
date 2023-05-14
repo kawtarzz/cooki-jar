@@ -4,9 +4,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:#1a184f;
+  background-color:#03004f;
   font-family:'Roboto';
-  color: antiquewhite;
+  color: rgb(15, 5, 70);
 }
 
 code {
@@ -38,7 +38,7 @@ font-size: 20px;
 }
 
 /* Styling specific to an index card */
-.card{
+.notecard{
 font-family: Courier, monospace;
 background-color: white;
 background: repeating-linear-gradient(white, white 25px, #9198e5 26px, #9198e5 27px);
@@ -46,7 +46,9 @@ background-position-y: 34px;
 height: 300px;
 width: 500px;
 padding: 0;
-margin-top: 50px;
+border: solid #03004f;
+border-radius: 2% 2%;
+margin-top: 30px;
 
 margin-right: 15px;
 }
@@ -57,23 +59,23 @@ height: 36px;
 .card-title {
 position: relative;
 left: 10px;
-top: 8px;
-font-size: 30px;
+top: 10px;
+font-size: 40px;
 font-weight: bold;
 }
 .card-text {
 position: relative;
-top: 30px;
-font-size: 18px;
+top: 20px;
+font-size: 22px;
 margin: 0 20px;
-line-height: 27px;
+line-height: 20px;
 }
+
 
 /* Styling specific to a sheet of lined paper */
 .sheet{
-font-family: 'Indie Flower', cursive;
+font-family:'Courier New', Courier, monospace;
 background-color: white;
-background: repeating-linear-gradient(white, white 25px, #9198e5 26px, #9198e5 27px);
 background-position-y: 49px;
 height: 550px;
 width: 450px;

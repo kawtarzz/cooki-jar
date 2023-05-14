@@ -1,6 +1,20 @@
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button';
+
 export default function TaskForm({ task, setTask, onSubmit }){ 
   return (
-    <form className="task--form">
+    <center>
+      <div className="notecard">
+      <Card>
+
+    <form>
+
+      <Card.Header style={{backgroundColor:"#ffffff" }}><h3>
+
+        Add New Task
+      </h3>
+      </Card.Header>
+
       <label htmlFor="taskDescription"><h5>
         Task Description:
         </h5>
@@ -30,8 +44,12 @@ export default function TaskForm({ task, setTask, onSubmit }){
       <input type="date" name="startDate" value={task.startDate} onChange={(e) => {
         setTask({...task, startDate: e.target.value});
       }}/><br></br>
-      <input type="submit" value="Save" onClick={onSubmit}/>
+      <Button type="submit" value="Save" onClick={onSubmit}>Save</Button>
       
     </form>
+      </Card>
+      </div>
+      </center>
+      
   );
 }
