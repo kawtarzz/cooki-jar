@@ -3,8 +3,8 @@
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: auto;
+  pointer-events: all;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,19 +13,23 @@
   }
 }
 
+.button__complete:hover {
+  background-color: pink;
+}
+
 .App-header {
-  background-color: #100d1b;
-  min-height: 100vh;
+  background-color: #03004f;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(198, 225, 240);
+  color: #03004F;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fbd761;
 }
 
 @keyframes App-logo-spin {
@@ -37,7 +41,7 @@
   }
 }
 body {
-min-height: 100vh;
+min-height: 80vh;
 display: grid;
 grid-template-rows: 1fr auto;
 }
@@ -45,11 +49,11 @@ footer {
   margin-top: auto;
 }
 .button__tasks{
-  background-color: #f7d84c;
-  border: 2px solid black;
-  color: rgb(255, 255, 255);
-  padding: 2px 24px;
-  margin: 2rem;
+  background-color:#03004F;
+  border: 1px solid rgb(0, 6, 26);
+  color: #03004f;
+  padding: 6px 24px;
+  margin: 3rem 1rem;
   display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
 }

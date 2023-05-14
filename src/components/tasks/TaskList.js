@@ -1,9 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./Tasks.css"
+import { Card } from "react-bootstrap";
+import ListGroup from "react-bootstrap/ListGroup";
+import { Button } from "react-bootstrap"
+
 
 export default function TaskList({ sumPoints }) {
     const [tasks, setTasks] = useState([])
+
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+
+    const newdate = month + "/" + day + "/" + year;
 
     const navigate = useNavigate()
     const localcookiJarUser = localStorage.getItem("cookijar_user");
@@ -20,7 +30,8 @@ export default function TaskList({ sumPoints }) {
             userId: cookijarUserObject.id,
             taskDescription: task.taskDescription,
             points: task.points,
-            date: task.date,
+            startDate: task.startDate,
+            completedDate: newdate,
             completed: true
         }
         fetch(`http://localhost:8088/tasks/${task.id}?userId=${cookijarUserObject.id}`, {
@@ -30,7 +41,8 @@ export default function TaskList({ sumPoints }) {
             },
             body: JSON.stringify(sendToApi)
         })
-        // getMyTasks()
+        window.alert(`Great job ${cookijarUserObject.name}!`)
+        getMyTasks()
         sumPoints()
     }
 
@@ -44,71 +56,46 @@ export default function TaskList({ sumPoints }) {
 
     useEffect(() => {
         getMyTasks()
-    },[])
-
-
+    }, [])
 
     return (
-        <> <br></br>
-            <center>
-                <input type="button"
-                value="Add Task"
-                className="button__add"
-                onClick={() => {
-                    navigate("/create");
-                }}
-            />
-                
+        <> <center>
+
+                <div className="task_list">
             <ul>
                 {tasks.map((task) => (
-                    <li style={{ listStyle:"none" }} key={task.id} >
-                        <div className="task_list">
-                        <h3>Task:</h3> <h4>{task.taskDescription}</h4>
-                        <h5>Point Value: {task.points}{""}</h5>
-                        <h5>Start: {task.date}</h5>
-                        <h6>Completed?:{task.completed}</h6>
-                        
-                        <input
-                            type="button"
-                            className="button__edit"
-                            value="Edit"
-                            onClick={() => {
-                                navigate(`/edit/${task.id}`);
-                            }}
-                        />
-                        <input
-                            type="button"
-                            className="button__delete"
-                            value="Delete"
-                            
-                            onClick={() => {
-                                deleteTask(task.id);
-                            }}
-                        />
-                        <input
-                            type="button"
-                            value="Complete"
-                            className="button__complete"
-                            onClick={() => {
-                                setCompletedTask(task);
-                            }}
-                        />
-                   
-                    </div> </li>
-                ))}</ul></center>
-        </>
+                     <ListGroup as="ul" key={task.id}>
+                        <Card style={{backgroundColor:"#ffffff", color: "rgb(3, 0, 79)", margin: "4rem", maxWidth: "670px"}}>
+                        <Card.Header style={{backgroundColor: "#D2DBF4", color: "rgb(3, 0, 79)"}}>   <ListGroup.Item>
+                            <h5><b>Task:</b> {task.taskDescription} </h5></ListGroup.Item></Card.Header>
+                        <Card.Body>
+                        <ListGroup.Item><h6><b>Point Value:</b> {task.points}{""}</h6></ListGroup.Item>
+                        <ListGroup.Item>
+                            <h6><b>Start:</b> {task.startDate} {""}</h6>
+                            </ListGroup.Item>
+                       <ListGroup.Item>
+                         <h6><b>Completed?:</b> {task.completed}{" "}</h6>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+
+                        <Button onClick={() => {navigate(`/edit/${task.id}`);
+                            }}>Edit Task</Button>
+                        <Button variant="success" onClick={() => {setCompletedTask(task);}}>Completed</Button>
+                        <Button variant="danger" onClick={() => {deleteTask(task.id);}}>Delete</Button>
+                            </ListGroup.Item>
+                            </Card.Body>
+                   <br></br>
+          
+    
+                   </Card>
+                   </ListGroup>
+                     ))}
+               
+                     </ul>
+                     </div>
+                </center>
+               </>
     )
 }
-const SetUserPoints = () => {
-    const localcookiJarUser = localStorage.getItem("cookijar_user")
-    const cookijarUserObject = JSON.parse(localcookiJarUser)
-    const [completed, setCompleted] = useState([])
 
-    const onCompletedTask = () => {
-        fetch(`http://localhost:8088/tasks?userId=${cookijarUserObject.id}&completed=true`)
-            .then((res) => res.json())
-            .then(res => setCompleted(JSON.stringify(res)))
-    }
-    onCompletedTask()
-    console.log('completed')
-    }  
+      

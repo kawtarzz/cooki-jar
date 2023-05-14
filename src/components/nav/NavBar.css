@@ -2,32 +2,21 @@
     display: flex;  
     flex-flow: row wrap;
     font-weight: bold;
-    background: rgb(65, 100, 239);
+    background:#ffce0a;
 }
 .container > * {
-    padding: 5px;
+    padding: 3px;
     flex: 1 100%;
 }
-.header {
-    text-align: left;
-    padding: 3%;
-}
-.button {
-    position: right;
-    text-align: left;
-    color: rgb(255, 107, 53);
-    background-color: yellow;
-}
-.button:hover {
-    text-align: left;
-    background-color: rgb(0, 225, 255); opacity: 30%;
-}
+
+
 .navlinks {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 .logout {
+    position: right;
   flex-direction: row;
-  margin-right: 0rem ;
+  
 }

@@ -20,7 +20,7 @@ export const Login = () => {
                         name: user.name,
                         email: user.email
                     }))
-                    navigate("/tasks")
+                    navigate("/")
                     window.alert('Welcome back ' + user.name + '!')
                 }
                 else {

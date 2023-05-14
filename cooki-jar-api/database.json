@@ -66,7 +66,8 @@
       "userId": 6,
       "taskDescription": "eat some bugs",
       "points": 20,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 1
     },
@@ -74,7 +75,8 @@
       "userId": 6,
       "taskDescription": "do a poop",
       "points": 5,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 2
     },
@@ -82,7 +84,8 @@
       "userId": 8,
       "taskDescription": "shrimp",
       "points": 10,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 3
     },
@@ -90,7 +93,8 @@
       "userId": 8,
       "taskDescription": "root beer",
       "points": 10,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 4
     },
@@ -98,7 +102,8 @@
       "userId": 8,
       "taskDescription": "butt",
       "points": 10,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 5
     },
@@ -106,7 +111,8 @@
       "userId": 8,
       "taskDescription": "yrdh",
       "points": 10,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 6
     },
@@ -114,7 +120,8 @@
       "userId": 8,
       "taskDescription": "hello",
       "points": 10,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 7
     },
@@ -122,7 +129,8 @@
       "userId": 5,
       "taskDescription": "walk the dog",
       "points": 5,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 8
     },
@@ -130,7 +138,8 @@
       "userId": 5,
       "taskDescription": "hello",
       "points": 20,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 9
     },
@@ -138,7 +147,8 @@
       "userId": 5,
       "taskDescription": "1",
       "points": 5,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 10
     },
@@ -146,7 +156,8 @@
       "userId": 5,
       "taskDescription": "2",
       "points": 15,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 11
     },
@@ -154,7 +165,8 @@
       "userId": 5,
       "taskDescription": "1",
       "points": 10,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 12
     },
@@ -162,7 +174,8 @@
       "userId": 5,
       "taskDescription": "4",
       "points": 20,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 13
     },
@@ -170,7 +183,8 @@
       "userId": 5,
       "taskDescription": "1",
       "points": 10,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 14
     },
@@ -178,7 +192,8 @@
       "userId": 5,
       "taskDescription": "1",
       "points": 10,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 15
     },
@@ -186,7 +201,8 @@
       "userId": 5,
       "taskDescription": "4",
       "points": 20,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 16
     },
@@ -194,6 +210,8 @@
       "userId": 1,
       "taskDescription": "homework",
       "points": 5,
+      "startDate": "",
+      "completedDate": "5/14/2023",
       "completed": true,
       "id": 17
     },
@@ -201,6 +219,8 @@
       "userId": 1,
       "taskDescription": "mow the lawn",
       "points": 15,
+      "startDate": "",
+      "completedDate": "5/14/2023",
       "completed": true,
       "id": 18
     },
@@ -208,35 +228,26 @@
       "userId": 1,
       "taskDescription": "walk the dog",
       "points": 15,
+      "startDate": "",
+      "completedDate": "5/14/2023",
       "completed": true,
       "id": 19
     },
     {
       "userId": 1,
-      "taskDescription": "write presentation",
-      "points": 15,
-      "completed": true,
-      "id": 21
-    },
-    {
-      "userId": 1,
       "taskDescription": "edit resume",
       "points": 15,
+      "startDate": "",
+      "completedDate": "5/14/2023",
       "completed": true,
       "id": 22
-    },
-    {
-      "userId": 1,
-      "taskDescription": "reach mvp ",
-      "points": 10,
-      "completed": true,
-      "id": 23
     },
     {
       "userId": 8,
       "taskDescription": "test",
       "points": 5,
-      "date": "",
+      "startDate": "",
+      "completedDate": "",
       "completed": false,
       "id": 24
     },
@@ -244,6 +255,8 @@
       "userId": 1,
       "taskDescription": "reach mvp",
       "points": 5,
+      "startDate": "",
+      "completedDate": "5/14/2023",
       "completed": true,
       "id": 25
     },
@@ -251,6 +264,8 @@
       "userId": 1,
       "taskDescription": "",
       "points": 15,
+      "startDate": "",
+      "completedDate": "5/14/2023",
       "completed": true,
       "id": 26
     },
@@ -258,6 +273,8 @@
       "userId": 1,
       "taskDescription": "",
       "points": 20,
+      "startDate": "",
+      "completedDate": "5/14/2023",
       "completed": true,
       "id": 27
     },
@@ -265,69 +282,89 @@
       "userId": 1,
       "taskDescription": "2",
       "points": 10,
-      "completed": true,
+      "startDate": "",
+      "completedDate": "5/14/2023",
+      "completed": false,
       "id": 28
     },
     {
       "userId": 1,
       "taskDescription": "test 2",
       "points": 5,
-      "completed": true,
+      "startDate": "",
+      "completedDate": "5/14/2023",
+      "completed": false,
       "id": 29
     },
     {
       "userId": 1,
       "taskDescription": "test 4",
       "points": 10,
-      "completed": true,
+      "startDate": "",
+      "completedDate": "5/14/2023",
+      "completed": false,
       "id": 30
     },
     {
       "userId": 1,
       "taskDescription": "x",
       "points": 10,
-      "completed": true,
+      "startDate": "",
+      "completedDate": "5/14/2023",
+      "completed": false,
       "id": 31
     },
     {
       "userId": 1,
       "taskDescription": "x",
       "points": 10,
-      "completed": true,
+      "startDate": "",
+      "completedDate": "5/14/2023",
+      "completed": false,
       "id": 32
     },
     {
       "userId": 1,
-      "taskDescription": "hello",
+      "taskDescription": "make doctors appointment",
       "points": 10,
-      "completed": true,
+      "startDate": "",
+      "completedDate": "5/14/2023",
+      "completed": false,
       "id": 33
     },
     {
       "userId": 1,
-      "taskDescription": "assign points",
-      "points": 5,
+      "taskDescription": "apply for jobs",
+      "points": 10,
+      "startDate": "2023-05-17",
+      "completedDate": "5/14/2023",
       "completed": false,
       "id": 34
     },
     {
       "userId": 1,
-      "taskDescription": "walk the dog",
+      "taskDescription": "does this work",
       "points": 10,
+      "startDate": "2023-05-24",
+      "completedDate": "5/14/2023",
       "completed": false,
       "id": 35
     },
     {
       "userId": 1,
-      "taskDescription": "walk the dog",
-      "points": 10,
+      "taskDescription": "ok i guess i fixed it ugh",
+      "points": 15,
+      "startDate": "2023-05-31",
+      "completedDate": "5/14/2023",
       "completed": false,
       "id": 36
     },
     {
       "userId": 1,
-      "taskDescription": "workout",
-      "points": 15,
+      "taskDescription": "test",
+      "points": 5,
+      "startDate": "2023-05-31",
+      "completedDate": "5/14/2023",
       "completed": false,
       "id": 37
     }

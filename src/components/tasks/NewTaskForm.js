@@ -1,16 +1,17 @@
-import "./Tasks.css"
-
 export default function TaskForm({ task, setTask, onSubmit }){ 
   return (
-    <form>
-      <div className="task--form">
-
-      <label htmlFor="taskDescription">Task Description:</label>
+    <form className="task--form">
+      <label htmlFor="taskDescription"><h5>
+        Task Description:
+        </h5>
+        </label>
       <input type="text" name="taskDescription" value={task.taskDescription} onChange={(e) => {
         setTask({...task, taskDescription: e.target.value});
       }}/>
     
-    <label htmlFor="points">Task Point Value:</label>
+    <label htmlFor="points"><h5>
+    Task Point Value:</h5>
+      </label>
       <select id="points" name="points" value={task.points} onChange={(e) => {
         setTask({...task, points: parseInt(e.target.value)});}}>
         <option value="0">Select Points</option>
@@ -19,13 +20,18 @@ export default function TaskForm({ task, setTask, onSubmit }){
         <option value="15">15</option>
         <option value="20">20</option>
          </select>
-      
-      <label htmlFor="date">Select Start date:</label>
-      <input type="date" name="date" value={task.date} onChange={(e) => {
-        setTask({...task, date: e.target.value});
-      }}/>
+
+         <br></br>
+      <label htmlFor="startDate">
+        <h5>
+        Date to Start:
+        </h5>
+        </label>
+      <input type="date" name="startDate" value={task.startDate} onChange={(e) => {
+        setTask({...task, startDate: e.target.value});
+      }}/><br></br>
       <input type="submit" value="Save" onClick={onSubmit}/>
-      </div>
+      
     </form>
   );
 }

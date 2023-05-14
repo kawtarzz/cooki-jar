@@ -1,26 +1,33 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./NavBar.css"
-import Logo from '../views/logo.svg'
+import { Button } from "react-bootstrap"
+import { Nav } from "react-bootstrap"
 
 
 export const NavBar = () => {
     const navigate = useNavigate()
     return (
-    <>
-        <div className="container">
-            <header className="header">  <Link to ="/" onClick={()=> {navigate("/")}} > 
-            <img src={Logo} width="50" height="50" alt="Logo"/><br/><h5>cookiJar</h5>
-            </Link>
-            </header></div>
+    <>  
+    <Nav fill variant="tabs" defaultActiveKey="/home">                
+        <Nav.Item>
+         <Nav.Link eventkey="link-1" onClick={()=> {navigate("/tasks")}}>Tasks</Nav.Link>{' '}
+        </Nav.Item>
             
-                <div>
-                <Link to="/login" className="logout" onClick={() => {
+        <Nav.Item>
+            <Nav.Link eventkey="2" to="/create"
+                onClick={() => { navigate("/create");}}>
+                    Add Task</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+           
+                <Button variant ="danger"to="/login" className="logout" onClick={() => {
                     localStorage.removeItem("cookijar_user")
                     navigate("/", { replace: true })
-                }}>Logout</Link>
-        </div>
+                }}>Logout</Button>{' '}
+               
+        </Nav.Item>
+        </Nav>
         </>
 
     )
 }
-
