@@ -61,40 +61,32 @@ export default function TaskList({ sumPoints }) {
     return (
         <> <center>
 
-                <div className="task_list">
-            <ul>
-                {tasks.map((task) => (
-                     <ListGroup as="ul" key={task.id}>
-                        <Card style={{backgroundColor:"#ffffff", color: "rgb(3, 0, 79)", margin: "4rem", maxWidth: "670px"}}>
-                        <Card.Header style={{backgroundColor: "#D2DBF4", color: "rgb(3, 0, 79)"}}>   <ListGroup.Item>
-                            <h5><b>Task:</b> {task.taskDescription} </h5></ListGroup.Item></Card.Header>
-                        <Card.Body>
-                        <ListGroup.Item><h6><b>Point Value:</b> {task.points}{""}</h6></ListGroup.Item>
-                        <ListGroup.Item>
-                            <h6><b>Start:</b> {task.startDate} {""}</h6>
-                            </ListGroup.Item>
-                       <ListGroup.Item>
-                         <h6><b>Completed?:</b> {task.completed}{" "}</h6>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
+            {tasks.map((task) => (
+                <>
+                <div className="sheet" key={task.id}>
+                <header className="card-title">
+                <span className="card-title">
+                  <b>Task:</b> {task.taskDescription} </span>
+                </header> 
+                <p className="card-text">
+
+            <b>Point Value:</b> {task.points}{""}
+                     
+                        <b>Start:</b> {task.startDate} {""}
+                        
+                         <b>Completed?:</b> {task.completed}{" "}
+            
 
                         <Button onClick={() => {navigate(`/edit/${task.id}`);
                             }}>Edit Task</Button>
                         <Button variant="success" onClick={() => {setCompletedTask(task);}}>Completed</Button>
                         <Button variant="danger" onClick={() => {deleteTask(task.id);}}>Delete</Button>
-                            </ListGroup.Item>
-                            </Card.Body>
-                   <br></br>
-          
-    
-                   </Card>
-                   </ListGroup>
-                     ))}
-               
-                     </ul>
-                     </div>
-                </center>
-               </>
+                        </p>     
+                                 </div>
+                            </>
+                                           ))}
+    </center>
+    </>
     )
 }
 
