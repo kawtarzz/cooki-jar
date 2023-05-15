@@ -57,38 +57,39 @@ export default function TaskList({ sumPoints }) {
     }, [])
 
     return (
-        <> <center>
-            {tasks.map((task) => (
-        <div className="notecard">
-            <header key={task.id} className="card header">
-                <span class="card-title"><h4> <b>Task:</b>{task.id}</h4><h5>{task.taskDescription}</h5>
-  </span></header>
-                <br></br>
-    <p className="card-text">
+        <>
+            <center>
+                {tasks.map((task) => (
+                    <div className="notecard" key={task.id}>
+                        <header className="card header">
+                            <span class="card-title"><h4> <b>Task:</b> {task.id}</h4><h5>{task.taskDescription}</h5>
+                            </span></header>
+                        <br></br>
+                        <p className="card-text">
 
-       
-            <br></br>
-       <h6><b>Point Value:</b> {task.points}{""}</h6>
-       <h6><b>Start:</b> {task.startDate} {""}</h6>
-   
-            <h6><b>Completed?:</b> {task.completed}{" "}</h6>
-   
-                       <br></br>
-  
-                        <Button onClick={() => {navigate(`/edit/${task.id}`);
+
+                            <br></br>
+                            <h6><b>Point Value:</b> {task.points}{""}</h6>
+                            <h6><b>Start:</b> {task.startDate} {""}</h6>
+
+                            <h6><b>Completed?:</b> {task.completed}{" "}</h6>
+
+                            <br></br>
+
+                            <Button onClick={() => {
+                                navigate(`/edit/${task.id}`);
                             }}>Edit Task</Button>
-                        <Button variant="success" onClick={() => {setCompletedTask(task);}}>Completed</Button>
-                        <Button variant="danger" onClick={() => {deleteTask(task.id);}}>Delete</Button>
-                
-                            </p>
-       
-                     </div>
-                     
-                     ))}
-               
-                </center>
-               </>
+                            <Button variant="success" onClick={() => { setCompletedTask(task); }}>Completed</Button>
+                            <Button variant="danger" onClick={() => { deleteTask(task.id); }}>Delete</Button>
+
+                        </p>
+
+                    </div>
+
+                ))}
+
+            </center>
+        </>
     )
 }
 
-      

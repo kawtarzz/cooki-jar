@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "email": "molly@email.com",
+      "id": 1,
       "name": "Molly",
-      "points": 10,
-      "id": 1
+      "email": "molly@email.com",
+      "points": 0
     },
     {
       "email": "sam@email.com",
@@ -346,8 +346,8 @@
       "taskDescription": "does this work",
       "points": 10,
       "startDate": "2023-05-24",
-      "completedDate": "5/14/2023",
-      "completed": false,
+      "completedDate": "5/15/2023",
+      "completed": true,
       "id": 35
     },
     {
@@ -385,26 +385,54 @@
       "startDate": "2023-05-31",
       "completed": false,
       "id": 39
+    },
+    {
+      "userId": 1,
+      "taskDescription": "poop jerry",
+      "points": 5,
+      "completedDate": "",
+      "startDate": "2023-05-15",
+      "completed": false,
+      "id": 40
+    },
+    {
+      "userId": 1,
+      "taskDescription": "tea and cookies",
+      "points": 15,
+      "completedDate": "",
+      "startDate": "2023-05-17",
+      "completed": false,
+      "id": 41
     }
   ],
   "rewards": [
     {
-      "id": 1,
+      "id": 5,
       "description": "get an ice cream cone",
       "points": 5
     },
     {
-      "id": 2,
+      "id": 6,
       "description": "get an ice cream cone",
       "points": 5
     },
     {
-      "id": 3,
+      "id": 7,
       "description": "get an ice cream cone",
       "points": 5
     },
     {
-      "id": 4,
+      "id": 8,
+      "description": "get an ice cream cone",
+      "points": 5
+    },
+    {
+      "id": 9,
+      "description": "get an ice cream cone",
+      "points": 5
+    },
+    {
+      "id": 10,
       "description": "get an ice cream cone",
       "points": 5
     }

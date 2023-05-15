@@ -39,7 +39,6 @@ font-size: 20px;
 
 /* Styling specific to an index card */
 .notecard{
-font-family: Courier, monospace;
 background-color: white;
 background: repeating-linear-gradient(white, white 25px, #9198e5 26px, #9198e5 27px);
 background-position-y: 34px;
