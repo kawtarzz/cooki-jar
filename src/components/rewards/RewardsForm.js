@@ -1,38 +1,33 @@
 import { click } from "@testing-library/user-event/dist/click"
 import { useState } from "react"
 import { json, useNavigate } from "react-router-dom"
-import { createNewReward } from "./Rewards.js"
+import RewardsList from "./Rewards.js"
 
-export const RewardForm = () => {
+export const RewardsForm = () => {
+    const navigate = useNavigate();
+    const localcookiJarUser = localStorage.getItem("cookijar_user");
+    const cookijarUserObject = JSON.parse(localcookiJarUser)
     /*
         TODO: Add the correct default properties to the
         initial state object
     */
     const [reward, update] = useState({
-        rewardDescription: "",
-        setPoints: "",
-        expireOnDate: "Date"
+        rewardsDescription: "",
+        pointsNeeded: "",
     })
     /*
         TODO: Use the useNavigation() hook so you can redirect
         the user to the reward list
     */
 
-    const navigate = useNavigate()
-
-    const localcookiJarUser = localStorage.getItem("cookijar_user")
-    const cookijarUserObject = JSON.parse(localcookiJarUser)
-
-    handleSaveButtonClick = (event) => {
+    const handleSaveButtonClick = (event) => {
         event.preventDefault()
-
-        // TODO: Create the object to be saved to the API
 
         const rewardToSendToAPI = {
             userId: cookijarUserObject.id,
-            rewardDescription: reward.description,
-            setPoints: reward.setPoints,
-            expireOnDate: reward.expireOnDate
+            rewardsDescription: reward.rewardsDescription,
+            points: reward.points,
+            redeemed: false
         }
         // TODO: Perform the fetch() to POST the object to the API
         return fetch(`http://localhost:8088/rewards`, {
@@ -49,48 +44,16 @@ export const RewardForm = () => {
     }
 
     return (
-        <form className="rewardForm">
-            <h2 className="rewardForm__title">New reward</h2>
-           
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="rewardDescription">reward Description:</label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        placeholder="Brief description of reward"
-                        value={reward.description}
-                        onChange={
-                            (evt) => {
-                                const copy = { ...reward }
-                                copy.description = evt.target.value
-                                update(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-                  
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="expire">Expiration:</label>
-                    <input type="time" id="expire" name="expire" min="09:00" max="18:00" required
-                        value={reward.expireOnDate}
-                        onChange={
-                            (evt) => {
-                                const copy = { ...reward }
-                                copy.expireOnDate = evt.target.value
-                                update(copy)
-                                createNewReward(evt)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <button
-                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="submit">
-                Submit
-            </button>
-        </form>
+
+        <> <h2> Add New Reward</h2><div className="reward__header">
+            {console.log("hello")}
+            <RewardsForm
+                reward={reward}
+
+            />
+        </div>
+
+        </>
+
     )
 }

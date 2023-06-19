@@ -1,53 +1,93 @@
-import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button';
+import './tasks.css'
+import Card from 'react-bootstrap/Card'
 
-export default function TaskForm({ task, setTask, onSubmit }) {
-  return (
-    <center>
-      <div className="notecard">
-        <Card>
+export default function TaskForm({ task, setTask, onSubmit, type, setType }) {
+  return (<>
+    <Card>
+      <Card.Header className="task__header">
+        <h2>Add New task</h2>
+      </Card.Header>
+      <Card.Body className="task__list">
+        <form>
+          <fieldset>
+            <div className="task__list">
+              <label htmlFor="taskDescription">
+                Task Description:
+              </label>
+              <input
+                required autoFocus
+                type="text"
+                className="form-control"
+                placeholder="short task description"
+                value={task.taskDescription}
+                onChange={(e) => {
+                  setTask({ ...task, taskDescription: e.target.value })
+                }} />
+            </div>
 
-          <form>
+          </fieldset>
 
-            <Card.Header style={{ backgroundColor: "#ffffff" }}>
-              <h3>Add New Task</h3>
-            </Card.Header>
+          <fieldset>
+            <div className="task__list">
+              <label htmlFor="type">
+                Category/Type:
+              </label>
+              <select name="type"
+                className="form-control"
+                placeholder="Select task type"
+                value={type.id}
+                onChange={(e) => {
+                  setType({ ...type, id: e.target.value });
+                }}>
+                <option value="0">Select Task Type</option>
+                <option value="1">Errands</option>
+                <option value="2">School</option>
+                <option value="3">Work</option>
+                <option value="4">Chores</option>
+              </select>
+            </div>
+          </fieldset>
 
-            <label htmlFor="taskDescription">
-              <h5>Task Description:</h5>
-            </label>
-            <input type="text" name="taskDescription" value={task.taskDescription} onChange={(e) => {
-              setTask({ ...task, taskDescription: e.target.value });
-            }} />
+          <fieldset>
+            <div className="task__list">
+              <label htmlFor="points">Set Point Value:</label>
+              <select name="points"
+                placeholder="Select Points"
+                value={task.points}
+                onChange={(e) => {
+                  setTask({ ...task, points: e.target.value });
+                }}>
+                <option value="0">0</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+              </select>
+            </div>
+          </fieldset>
 
-            <label htmlFor="points"><h5>
-              Task Point Value:</h5>
-            </label>
-            <select id="points" name="points" value={task.points} onChange={(e) => {
-              setTask({ ...task, points: parseInt(e.target.value) });
-            }}>
-              <option value="0">Select Points</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-            </select>
-
-            <br></br>
-            <label htmlFor="startDate">
-              <h5>
+          <fieldset>
+            <div className="task__list">
+              <label htmlFor="startDate">
                 Date to Start:
-              </h5>
-            </label>
-            <input type="date" name="startDate" value={task.startDate} onChange={(e) => {
-              setTask({ ...task, startDate: e.target.value });
-            }} /><br></br>
-            <Button type="submit" value="Save" onClick={onSubmit}>Save</Button>
-
-          </form>
-        </Card>
-      </div>
-    </center>
-
+              </label>
+              <input
+                required autoFocus
+                type="date"
+                name="startDate"
+                value={task.startDate}
+                onChange={(e) => {
+                  setTask({ ...task, startDate: e.target.value });
+                }} />
+            </div>
+          </fieldset>
+          <Button type="submit" value="Save" variant="primary"
+            onClick={onSubmit}>Save</Button>
+        </form>
+      </Card.Body>
+    </Card>
+  </>
   );
 }

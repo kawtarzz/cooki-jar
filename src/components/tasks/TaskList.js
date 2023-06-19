@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap"
-
+import { Button, ListGroup, ListGroupItem } from "react-bootstrap"
+import Card from "react-bootstrap/Card"
+import './tasks.css'
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 export default function TaskList({ sumPoints }) {
     const [tasks, setTasks] = useState([])
 
-    var dateObj = new Date();
+    var dateObj = new Date()
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
@@ -27,6 +29,7 @@ export default function TaskList({ sumPoints }) {
         const sendToApi = {
             userId: cookijarUserObject.id,
             taskDescription: task.taskDescription,
+            typeId: task.typeId,
             points: task.points,
             startDate: task.startDate,
             completedDate: newdate,
@@ -56,40 +59,65 @@ export default function TaskList({ sumPoints }) {
         getMyTasks()
     }, [])
 
-    return (
-        <>
-            <center>
-                {tasks.map((task) => (
-                    <div className="notecard" key={task.id}>
-                        <header className="card header">
-                            <span class="card-title"><h4> <b>Task:</b> {task.id}</h4><h5>{task.taskDescription}</h5>
-                            </span></header>
-                        <br></br>
-                        <p className="card-text">
+    return (<>
+        <Card style={{ margin: "1rem 1rem", padding: "1%" }}>
+            <Card.Header className="list__header">
+                <h3>
+                    My Tasks
+                </h3>
+            </Card.Header>
 
+            <ListGroup className="list__row">
+                {tasks.map(task => {
+                    return <>
+                        <ListGroupItem key={task.id}>
+                            <b>
+                                Task Description:
+                            </b>
+                            <h5 className="task__header">
+                                {task.taskDescription} {" "}
+                            </h5>
+                        </ListGroupItem>
 
-                            <br></br>
-                            <h6><b>Point Value:</b> {task.points}{""}</h6>
-                            <h6><b>Start:</b> {task.startDate} {""}</h6>
+                        <ListGroupItem key={task.id}>
+                            <h6>
+                                Task Type:
+                            </h6>
+                            {task.typeId}{" "}
+                        </ListGroupItem>
 
-                            <h6><b>Completed?:</b> {task.completed}{" "}</h6>
+                        <ListGroupItem key={task.id}>
+                            <h6>
+                                Point Value:
+                            </h6>
+                            {task.points}{" "}
+                        </ListGroupItem>
 
-                            <br></br>
+                        <ListGroupItem key={task.id}>
+                            <h6>Start:</h6>
+                            {task.startDate} {" "}
+                        </ListGroupItem>
 
-                            <Button onClick={() => {
-                                navigate(`/edit/${task.id}`);
-                            }}>Edit Task</Button>
-                            <Button variant="success" onClick={() => { setCompletedTask(task); }}>Completed</Button>
-                            <Button variant="danger" onClick={() => { deleteTask(task.id); }}>Delete</Button>
+                        <Card.Footer className="task__list">
+                            <ButtonGroup>
+                                {task.completed}{" "}
+                                <Button variant="success" onClick={() => { setCompletedTask(task); }}>Completed</Button>
 
-                        </p>
+                                <Button onClick={() => {
+                                    navigate(`/edit/${task.id}`);
+                                }}>Edit Task</Button>
 
-                    </div>
+                                <Button variant="danger" onClick={() => { deleteTask(task.id); }}>Delete</Button>
+                            </ButtonGroup>
+                        </Card.Footer>
+                    </>
 
-                ))}
+                })}
+            </ListGroup>
+        </Card >
 
-            </center>
-        </>
-    )
+    </>)
 }
+
+
 

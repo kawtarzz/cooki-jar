@@ -4,14 +4,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:#03004f;
+  background-color:#e8f1ff;
   font-family:'Roboto';
   color: rgb(15, 5, 70);
 }
+.task__list{
+background-color: #ecf9ff;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+}
+.task{
+    background-color: #ecf9ff;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.centered-bg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
 }
 HTML CSS 
 
@@ -19,7 +38,7 @@ Result
 Skip Results Iframe
 
 body {
-background-color: #555;
+background-color: #ecf9ff;
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
@@ -37,6 +56,14 @@ content: " said:";
 font-size: 20px;
 }
 
+a {
+ color: white;
+}
+
+a:hover {
+  color: white;
+}
+
 /* Styling specific to an index card */
 .notecard{
 background-color: white;
@@ -44,7 +71,6 @@ background: repeating-linear-gradient(white, white 25px, #9198e5 26px, #9198e5 2
 background-position-y: 34px;
 height: 300px;
 width: 500px;
-padding: 0;
 border: solid #03004f;
 border-radius: 2% 2%;
 margin-top: 30px;
@@ -73,7 +99,6 @@ line-height: 20px;
 
 /* Styling specific to a sheet of lined paper */
 .sheet{
-font-family:'Courier New', Courier, monospace;
 background-color: white;
 background-position-y: 49px;
 height: 550px;

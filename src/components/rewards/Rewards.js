@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-export const RewardsList = ({ setPoints, points }) => {
+export default function RewardsList({ setPoints, points }) {
     // tickets holds an empty array, set tickets is our function, use state lets us view array in current state
     const [rewards, setRewards] = useState([]);
+
     const navigate = useNavigate()
 
     const localcookiJarUser = localStorage.getItem("cookijar_user");
@@ -19,12 +20,12 @@ export const RewardsList = ({ setPoints, points }) => {
     };
 
     const redeemReward = (id, pointsNeeded) => {
-        if (points > pointsNeeded) {
+        if (points >= pointsNeeded) {
             fetch(`http://localhost:8088/rewards/${id}`, {
                 method: "DELETE",
             }).then((res) => res.json())
-                .then(() => { 
-                    getMyRewards() 
+                .then(() => {
+                    getMyRewards()
                 }).then(() => {
                     setPoints(points - pointsNeeded)
                 })
@@ -37,17 +38,16 @@ export const RewardsList = ({ setPoints, points }) => {
         getMyRewards()
     }, [])
 
-
     return (
         <>
             <h2 style={{ color: "#ffffff" }}>Rewards</h2>
 
             {rewards.map(reward => (
                 <Card key={reward.id}>
-                    <Card.Header> <h4> {reward.description} </h4>
+                    <Card.Header> <h4> {reward.rewardsDescription} </h4>
                     </Card.Header>
                     <Card.Body>
-                        {console.log('hello')}
+
                         Points Needed: {reward.points}
                     </Card.Body>
                     <Button onClick={() => { redeemReward(reward.id, reward.points) }}>
@@ -63,5 +63,3 @@ export const RewardsList = ({ setPoints, points }) => {
 // if task.completed = true user.points = x + task.points
 
 // if user.points >= reward.points - delete reward & deduct points from user
-
-
