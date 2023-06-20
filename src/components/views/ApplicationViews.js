@@ -5,8 +5,7 @@ import EditTask from "../tasks/EditTask"
 import { useEffect, useState } from "react"
 import Logo from './logo.svg'
 import { Button, ButtonGroup } from "react-bootstrap"
-import RewardsList from "../rewards/Rewards"
-import { RewardsForm } from "../rewards/RewardsForm.js"
+import RewardsList from "../rewards/Rewards.js"
 
 
 export default function ApplicationViews() {
@@ -48,11 +47,7 @@ export default function ApplicationViews() {
 
                             <Button variant="primary" onClick={() => { navigate("/tasks/create") }}>Add Task</Button>
 
-
-                            <Button variant="primary" onClick={() => { navigate("/rewards/create") }}>Add Reward</Button>
-
                             <Button variant="success" onClick={() => { navigate("/rewards") }}>Cash-In</Button>
-
                         </ButtonGroup>
 
                         <Outlet />
@@ -61,7 +56,7 @@ export default function ApplicationViews() {
 
                 <Route path="/tasks" element={<TaskList sumPoints={sumPoints} />} />
                 <Route path="/tasks/create" element={< CreateTask />} />
-                <Route path="/rewards/create" element={< RewardsForm />} />
+
                 <Route path="/edit/:id" element={< EditTask />} />
                 <Route path="/rewards" element={< RewardsList setPoints={setPoints} points={points} />} />
 

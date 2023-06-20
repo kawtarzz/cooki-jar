@@ -137,7 +137,36 @@
       "id": 8
     }
   ],
-  "rewards": [],
+  "rewards": [
+    {
+      "id": 1,
+      "userId": 1,
+      "rewardsDescription": "get an ice cream",
+      "points": 5,
+      "redeemed": false
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "rewardsDescription": "take a break",
+      "points": 10,
+      "redeemed": false
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "rewardsDescription": "get a manicure",
+      "points": 50,
+      "redeemed": false
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "rewardsDescription": "watch a movie",
+      "points": 0,
+      "redeemed": false
+    }
+  ],
   "types": [
     {
       "id": 1,

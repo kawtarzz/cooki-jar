@@ -1,59 +1,51 @@
-import { click } from "@testing-library/user-event/dist/click"
-import { useState } from "react"
-import { json, useNavigate } from "react-router-dom"
-import RewardsList from "./Rewards.js"
+// import { click } from "@testing-library/user-event/dist/click"
+// import { useState } from "react"
+// import { json, useNavigate } from "react-router-dom"
+// import RewardsList from "./Rewards.js"
+// import { FormControl } from "react-bootstrap"
+// import { Card } from "react-bootstrap"
+// import CardHeader from "react-bootstrap/esm/CardHeader.js"
+// import { useEffect } from "react"
 
-export const RewardsForm = () => {
-    const navigate = useNavigate();
-    const localcookiJarUser = localStorage.getItem("cookijar_user");
-    const cookijarUserObject = JSON.parse(localcookiJarUser)
-    /*
-        TODO: Add the correct default properties to the
-        initial state object
-    */
-    const [reward, update] = useState({
-        rewardsDescription: "",
-        pointsNeeded: "",
-    })
-    /*
-        TODO: Use the useNavigation() hook so you can redirect
-        the user to the reward list
-    */
+// export const RewardsForm = ({ reward, setReward, submitReward }) => {
+//     const [rewards, setRewards] = useState();
+//     const localcookiJarUser = localStorage.getItem("cookijar_user")
+//     const cookijarUserObject = JSON.parse(localcookiJarUser)
 
-    const handleSaveButtonClick = (event) => {
-        event.preventDefault()
+//     useEffect(() => {
+//         fetch(`http://localhost:8088/rewards?userId=${cookijarUserObject.id}&redeemed=false`)
+//             .then((res) => res.json())
+//             .then((res) => JSON.stringify(setRewards))
+//     }, [])
 
-        const rewardToSendToAPI = {
-            userId: cookijarUserObject.id,
-            rewardsDescription: reward.rewardsDescription,
-            points: reward.points,
-            redeemed: false
-        }
-        // TODO: Perform the fetch() to POST the object to the API
-        return fetch(`http://localhost:8088/rewards`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(rewardToSendToAPI)
-        })
-            .then(response => response.json())
-            .then(() => {
-                navigate("/rewards")
-            })
-    }
 
-    return (
+//     return (<>
+//         <Card>
+//             <Card.Header className="reward__header">
+//                 Add New Reward
+//             </Card.Header>
+//             <Card.Body>
+//                 <form>
+//                     <fieldset>
+//                         <div className="reward__list">
+//                             <label htmlFor="rewardDescription">
+//                                 Reward Description:
+//                             </label>
+//                             <input required autoFocus type="text"
+//                                 className="form-control"
+//                                 placeholder="short reward description"
+//                                 value={reward.rewardsDescription}
+//                                 onChange={(event) => {
+//                                     setRewards({ ...reward, rewardsDescription: event.target.value })
+//                                 }} />
+//                         </div>
 
-        <> <h2> Add New Reward</h2><div className="reward__header">
-            {console.log("hello")}
-            <RewardsForm
-                reward={reward}
+//                     </fieldset>
+//                 </form>
 
-            />
-        </div>
+//             </Card.Body>
+//         </Card>
+//     </>
 
-        </>
-
-    )
-}
+//     )
+// }

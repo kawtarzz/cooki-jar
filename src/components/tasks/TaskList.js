@@ -81,7 +81,10 @@ export default function TaskList({ sumPoints }) {
 
                         <ListGroupItem key={task.id}>
                             <h6>
-                                Task Type:
+                                <b>
+
+                                    Task Type:
+                                </b>
                             </h6>
                             {task.typeId}{" "}
                         </ListGroupItem>

@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-export default function RewardsList({ setPoints, points }) {
+export default function RewardsList() {
     // tickets holds an empty array, set tickets is our function, use state lets us view array in current state
     const [rewards, setRewards] = useState([]);
+    const [points, setPoints] = useState([]);
 
     const navigate = useNavigate()
 
@@ -19,7 +20,7 @@ export default function RewardsList({ setPoints, points }) {
             .then(setRewards)
     };
 
-    const redeemReward = (id, pointsNeeded) => {
+    const redeemReward = (id, points, pointsNeeded) => {
         if (points >= pointsNeeded) {
             fetch(`http://localhost:8088/rewards/${id}`, {
                 method: "DELETE",
@@ -38,26 +39,23 @@ export default function RewardsList({ setPoints, points }) {
         getMyRewards()
     }, [])
 
-    return (
-        <>
-            <h2 style={{ color: "#ffffff" }}>Rewards</h2>
+    return <><Card>
 
-            {rewards.map(reward => (
-                <Card key={reward.id}>
-                    <Card.Header> <h4> {reward.rewardsDescription} </h4>
-                    </Card.Header>
-                    <Card.Body>
+        {rewards.map(reward => {
+            return <>
+                <ul id={reward.id}>
+                    <li>
+                        Reward:
+                        {reward.rewardsDescription}
+                        <b>Points Needed:</b> {reward.points}</li>
 
-                        Points Needed: {reward.points}
-                    </Card.Body>
                     <Button onClick={() => { redeemReward(reward.id, reward.points) }}>
                         Redeem Reward</Button>
-                </Card>
-            )
-            )
-            }
-
-        </>)
+                </ul>
+            </>
+        })}
+    </Card>
+    </>
 }
 
 // if task.completed = true user.points = x + task.points

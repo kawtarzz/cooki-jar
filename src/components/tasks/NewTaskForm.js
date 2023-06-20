@@ -3,6 +3,7 @@ import './tasks.css'
 import Card from 'react-bootstrap/Card'
 
 export default function TaskForm({ task, setTask, onSubmit, type, setType }) {
+
   return (<>
     <Card>
       <Card.Header className="task__header">
