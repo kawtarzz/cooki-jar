@@ -4,8 +4,9 @@ import CreateTask from "../tasks/CreateTask"
 import EditTask from "../tasks/EditTask"
 import { useEffect, useState } from "react"
 import Logo from './logo.svg'
-import { Button } from "react-bootstrap"
+import { Button, ButtonGroup } from "react-bootstrap"
 import { RewardsList } from "../rewards/Rewards"
+import { Card } from "react-bootstrap"
 
 
 export default function ApplicationViews() {
@@ -35,15 +36,17 @@ export default function ApplicationViews() {
             <Routes>
                 <Route path="/" element={
                     <>
-                        <img src={Logo} alt="App-logo" width="350" height="350" className="App-logo" />
-                        <h2 style={{ color: "yellow" }}>
+                        <img src={Logo} alt="App-logo" width="550" height="550" />
+                        <Card.Title as="h1">
                             {`Welcome back ${cookijarUserObject.name} You have ${parseInt(points)} points!`}
-                        </h2>
-                        <Button variant="primary" onClick={() => { navigate("/create") }}>Add Task</Button>
-                        <Button variant="primary" onClick={() => { navigate("/tasks") }}>My Tasks</Button>
-                        <Button variant="success" onClick={() => { navigate("/rewards") }}>Cash-In</Button>
-                        <Outlet />
+                        </Card.Title>
+                        <ButtonGroup>
 
+                            <Button variant="primary" onClick={() => { navigate("/create") }}>Add Task</Button>
+                            <Button variant="primary" onClick={() => { navigate("/tasks") }}>My Tasks</Button>
+                            <Button variant="success" onClick={() => { navigate("/rewards") }}>Cash-In</Button>
+                            <Outlet />
+                        </ButtonGroup>
 
                     </>}>
 

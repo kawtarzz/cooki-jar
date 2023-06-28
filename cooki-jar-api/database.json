@@ -212,7 +212,7 @@
       "points": 5,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 17
     },
     {
@@ -221,7 +221,7 @@
       "points": 15,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 18
     },
     {
@@ -230,7 +230,7 @@
       "points": 15,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 19
     },
     {
@@ -239,7 +239,7 @@
       "points": 15,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 22
     },
     {
@@ -257,7 +257,7 @@
       "points": 5,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 25
     },
     {
@@ -266,7 +266,7 @@
       "points": 15,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 26
     },
     {
@@ -275,7 +275,7 @@
       "points": 20,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 27
     },
     {
@@ -284,7 +284,7 @@
       "points": 10,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 28
     },
     {
@@ -293,7 +293,7 @@
       "points": 5,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 29
     },
     {
@@ -302,7 +302,7 @@
       "points": 10,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 30
     },
     {
@@ -311,7 +311,7 @@
       "points": 10,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 31
     },
     {
@@ -320,7 +320,7 @@
       "points": 10,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 32
     },
     {
@@ -329,7 +329,7 @@
       "points": 10,
       "startDate": "",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 33
     },
     {
@@ -338,7 +338,7 @@
       "points": 10,
       "startDate": "2023-05-17",
       "completedDate": "5/14/2023",
-      "completed": true,
+      "completed": false,
       "id": 34
     },
     {
@@ -347,7 +347,7 @@
       "points": 10,
       "startDate": "2023-05-24",
       "completedDate": "5/15/2023",
-      "completed": true,
+      "completed": false,
       "id": 35
     },
     {
@@ -374,7 +374,7 @@
       "points": 10,
       "startDate": "2023-05-31",
       "completedDate": "6/28/2023",
-      "completed": true,
+      "completed": false,
       "id": 39
     },
     {
@@ -383,7 +383,7 @@
       "points": 5,
       "startDate": "2023-05-15",
       "completedDate": "6/28/2023",
-      "completed": true,
+      "completed": false,
       "id": 40
     },
     {

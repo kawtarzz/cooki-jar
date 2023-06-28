@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Card, CardGroup } from "react-bootstrap"
+import { Button, ButtonGroup, Card, CardGroup, ListGroup, ListGroupItem } from "react-bootstrap"
 import { Container } from "react-bootstrap";
 
 
@@ -47,7 +47,6 @@ export default function TaskList({ sumPoints }) {
     }
 
     const deleteTask = (id) => {
-        console.log('deleteTask...');
         fetch(`http://localhost:8088/tasks/${id}`, {
             method: "DELETE",
         }).then((res) => res.json())
@@ -59,59 +58,56 @@ export default function TaskList({ sumPoints }) {
     }, [])
 
     return (
-        <> <CardGroup><center>
+        <>
+            <h1>{cookijarUserObject.name}'s To-Do List</h1>
+            <br />
 
-            <Card.Title as="h1">
-                {cookijarUserObject.name}'s To-Do List
-            </Card.Title><br></br>
-        </center>
-            {tasks.map((task) => (
-                <Card key={task.id}>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                        <Card.Title>
-                            {task.taskDescription}
-                        </Card.Title>
-                        <Card.Text>
-                            <b>Point Value:</b>
-                            {" "}{task.points}
-                            <br></br>
-                            <b>
-                                Start:
-                            </b>
-                            {" "}{task.startDate}
-                            <br></br>
-                            <b>
-                                Completed?:
-                            </b>
-                            {" false"}{task.completed}
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <ButtonGroup>
+            <div className="cardContainer">
+                {tasks.length > 0 ? (
+                    tasks.map((task) => (
+                        <div key={task.id} className="flexDiv">
+                            <Card>
+                                <ListGroup as="ol">
+                                    <ListGroupItem as="li" active>
+                                        <Card.Title as="h2">{task.taskDescription}</Card.Title>
+                                    </ListGroupItem>
+                                    <Card.Text>
+                                        <ListGroupItem as="li">
+                                            <b>Point Value:</b>
+                                            {" "}{task.points}
+                                            <br></br>
+                                            <b>Start:</b>
+                                            {" "}{task.startDate}
+                                            <br></br>
+                                            <b>Completed?:</b>
+                                            {" false"}{task.completed}
+                                        </ListGroupItem>
+                                        <ButtonGroup>
+                                            <Button onClick={() => {
+                                                navigate(`/edit/${task.id}`);
+                                            }}>
+                                                Edit Task
+                                            </Button>
 
-                            <Button onClick={() => {
-                                navigate(`/edit/${task.id}`);
-                            }}>
-                                Edit Task
-                            </Button>
+                                            <Button variant="success" onClick={() => { setCompletedTask(task); }}>
+                                                Complete
+                                            </Button>
+                                            <br></br>
 
-                            <Button variant="success" onClick={() => { setCompletedTask(task); }}>
-                                Complete
-                            </Button><br></br>
+                                            <Button variant="warning" onClick={() => { deleteTask(task.id); }}>
+                                                Delete
+                                            </Button>
 
-                            <Button variant="danger" size="sm" onClick={() => { deleteTask(task.id); }}>
-                                Delete
-                            </Button>
-                        </ButtonGroup>
-
-                    </Card.Footer>
-
-
-                </Card>
-            ))}
-        </CardGroup >
+                                        </ButtonGroup>
+                                    </Card.Text>
+                                </ListGroup>
+                            </Card>
+                        </div>
+                    ))
+                ) : (
+                    <div>No tasks found.</div>
+                )}
+            </div>
         </>
-    )
+    );
 }
-
