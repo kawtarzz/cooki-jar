@@ -352,15 +352,6 @@
     },
     {
       "userId": 1,
-      "taskDescription": "ok i guess i fixed it ugh",
-      "points": 15,
-      "startDate": "2023-05-31",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 36
-    },
-    {
-      "userId": 1,
       "taskDescription": "test",
       "points": 5,
       "startDate": "2023-05-31",
@@ -381,18 +372,18 @@
       "userId": 1,
       "taskDescription": "buy plane tickets",
       "points": 10,
-      "completedDate": "",
       "startDate": "2023-05-31",
-      "completed": false,
+      "completedDate": "6/28/2023",
+      "completed": true,
       "id": 39
     },
     {
       "userId": 1,
       "taskDescription": "poop jerry",
       "points": 5,
-      "completedDate": "",
       "startDate": "2023-05-15",
-      "completed": false,
+      "completedDate": "6/28/2023",
+      "completed": true,
       "id": 40
     },
     {
@@ -403,19 +394,18 @@
       "startDate": "2023-05-17",
       "completed": false,
       "id": 41
+    },
+    {
+      "userId": 1,
+      "taskDescription": "clean office",
+      "points": 10,
+      "completedDate": "",
+      "startDate": "2023-06-27",
+      "completed": false,
+      "id": 42
     }
   ],
   "rewards": [
-    {
-      "id": 5,
-      "description": "get an ice cream cone",
-      "points": 5
-    },
-    {
-      "id": 6,
-      "description": "get an ice cream cone",
-      "points": 5
-    },
     {
       "id": 7,
       "description": "get an ice cream cone",

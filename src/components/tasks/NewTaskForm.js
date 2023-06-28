@@ -9,7 +9,7 @@ export default function TaskForm({ task, setTask, onSubmit }) {
 
           <form>
 
-            <Card.Header style={{ backgroundColor: "#ffffff" }}>
+            <Card.Header >
               <h3>Add New Task</h3>
             </Card.Header>
 

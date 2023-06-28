@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap"
+import { Button, ButtonGroup, Card, ListGroup } from "react-bootstrap"
+import { Container } from "react-bootstrap";
 
 
 export default function TaskList({ sumPoints }) {
@@ -58,37 +59,46 @@ export default function TaskList({ sumPoints }) {
 
     return (
         <>
-            <center>
-                {tasks.map((task) => (
-                    <div className="notecard" key={task.id}>
-                        <header className="card header">
-                            <span class="card-title"><h4> <b>Task:</b> {task.id}</h4><h5>{task.taskDescription}</h5>
-                            </span></header>
-                        <br></br>
-                        <p className="card-text">
+
+            <h2>{cookijarUserObject.name}'s <br></br>To-Do List</h2>
+            {tasks.map((task) => (
+                <Container key={task.id}>
+                    <ListGroup className="list-group-flush">
+                        <Card.Header as="h3">
+                            <b></b> {" "}{task.taskDescription}
+                        </Card.Header>
+                        <ListGroup.Item>
+                            <u>
+                                <b>Point Value:</b>
+                            </u>
+                            {" "}{task.points}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <u>
+                                <b>Start:</b>
+                            </u>
+                            {" "}{task.startDate}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <u>
+                                <b>Completed?:</b>
+                            </u>
+                            {" false"}{task.completed}
+                        </ListGroup.Item>
+                    </ListGroup>
+                    <ButtonGroup>
+                        <Button onClick={() => {
+                            navigate(`/edit/${task.id}`);
+                        }}>Edit Task</Button>
+
+                        <Button variant="primary" onClick={() => { deleteTask(task.id); }}>Delete</Button>
+
+                        <Button variant="success" onClick={() => { setCompletedTask(task); }}>Complete</Button>
+                    </ButtonGroup>
 
 
-                            <br></br>
-                            <h6><b>Point Value:</b> {task.points}{""}</h6>
-                            <h6><b>Start:</b> {task.startDate} {""}</h6>
-
-                            <h6><b>Completed?:</b> {task.completed}{" "}</h6>
-
-                            <br></br>
-
-                            <Button onClick={() => {
-                                navigate(`/edit/${task.id}`);
-                            }}>Edit Task</Button>
-                            <Button variant="success" onClick={() => { setCompletedTask(task); }}>Completed</Button>
-                            <Button variant="danger" onClick={() => { deleteTask(task.id); }}>Delete</Button>
-
-                        </p>
-
-                    </div>
-
-                ))}
-
-            </center>
+                </Container>
+            ))}
         </>
     )
 }
