@@ -35,7 +35,7 @@ export default function ApplicationViews() {
             <Routes>
                 <Route path="/" element={
                     <>
-                        <img src={Logo} alt="App-logo" width="300" height="350" className="App-logo" />
+                        <img src={Logo} alt="App-logo" width="350" height="350" className="App-logo" />
                         <h2 style={{ color: "yellow" }}>
                             {`Welcome back ${cookijarUserObject.name} You have ${parseInt(points)} points!`}
                         </h2>

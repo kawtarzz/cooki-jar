@@ -388,10 +388,10 @@
     },
     {
       "userId": 1,
-      "taskDescription": "tea and cookies",
-      "points": 15,
+      "taskDescription": "go to gym ",
+      "points": 10,
       "completedDate": "",
-      "startDate": "2023-05-17",
+      "startDate": "2023-05-24",
       "completed": false,
       "id": 41
     },
@@ -403,14 +403,18 @@
       "startDate": "2023-06-27",
       "completed": false,
       "id": 42
+    },
+    {
+      "userId": 1,
+      "taskDescription": "clean office 5",
+      "points": 15,
+      "completedDate": "",
+      "startDate": "2023-06-28",
+      "completed": false,
+      "id": 43
     }
   ],
   "rewards": [
-    {
-      "id": 7,
-      "description": "get an ice cream cone",
-      "points": 5
-    },
     {
       "id": 8,
       "description": "get an ice cream cone",

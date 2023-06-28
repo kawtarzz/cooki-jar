@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Card, ListGroup } from "react-bootstrap"
+import { Button, ButtonGroup, Card, CardGroup } from "react-bootstrap"
 import { Container } from "react-bootstrap";
+
 
 
 export default function TaskList({ sumPoints }) {
@@ -58,47 +59,58 @@ export default function TaskList({ sumPoints }) {
     }, [])
 
     return (
-        <>
+        <> <CardGroup><center>
 
-            <h2>{cookijarUserObject.name}'s <br></br>To-Do List</h2>
+            <Card.Title as="h1">
+                {cookijarUserObject.name}'s To-Do List
+            </Card.Title><br></br>
+        </center>
             {tasks.map((task) => (
-                <Container key={task.id}>
-                    <ListGroup className="list-group-flush">
-                        <Card.Header as="h3">
-                            <b></b> {" "}{task.taskDescription}
-                        </Card.Header>
-                        <ListGroup.Item>
-                            <u>
-                                <b>Point Value:</b>
-                            </u>
+                <Card key={task.id}>
+                    <Card.Img variant="top" src="holder.js/100px160" />
+                    <Card.Body>
+                        <Card.Title>
+                            {task.taskDescription}
+                        </Card.Title>
+                        <Card.Text>
+                            <b>Point Value:</b>
                             {" "}{task.points}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                            <u>
-                                <b>Start:</b>
-                            </u>
+                            <br></br>
+                            <b>
+                                Start:
+                            </b>
                             {" "}{task.startDate}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                            <u>
-                                <b>Completed?:</b>
-                            </u>
+                            <br></br>
+                            <b>
+                                Completed?:
+                            </b>
                             {" false"}{task.completed}
-                        </ListGroup.Item>
-                    </ListGroup>
-                    <ButtonGroup>
-                        <Button onClick={() => {
-                            navigate(`/edit/${task.id}`);
-                        }}>Edit Task</Button>
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer>
+                        <ButtonGroup>
 
-                        <Button variant="primary" onClick={() => { deleteTask(task.id); }}>Delete</Button>
+                            <Button onClick={() => {
+                                navigate(`/edit/${task.id}`);
+                            }}>
+                                Edit Task
+                            </Button>
 
-                        <Button variant="success" onClick={() => { setCompletedTask(task); }}>Complete</Button>
-                    </ButtonGroup>
+                            <Button variant="success" onClick={() => { setCompletedTask(task); }}>
+                                Complete
+                            </Button><br></br>
+
+                            <Button variant="danger" size="sm" onClick={() => { deleteTask(task.id); }}>
+                                Delete
+                            </Button>
+                        </ButtonGroup>
+
+                    </Card.Footer>
 
 
-                </Container>
+                </Card>
             ))}
+        </CardGroup >
         </>
     )
 }

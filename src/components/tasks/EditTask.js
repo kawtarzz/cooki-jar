@@ -27,8 +27,8 @@ export default function EditTask() {
             },
             body: JSON.stringify(task),
         }).then(() => {
-        navigate("/");
-    })
+            navigate("/tasks");
+        })
     };
     if (!task) {
         return null;
