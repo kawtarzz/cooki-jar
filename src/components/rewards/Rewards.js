@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-export const RewardsList = ({ setPoints, points }) => {
+export default function RewardsList() {
     // tickets holds an empty array, set tickets is our function, use state lets us view array in current state
     const [rewards, setRewards] = useState([]);
+    const [points, setPoints] = useState([]);
+
     const navigate = useNavigate()
 
     const localcookiJarUser = localStorage.getItem("cookijar_user");
@@ -18,13 +20,13 @@ export const RewardsList = ({ setPoints, points }) => {
             .then(setRewards)
     };
 
-    const redeemReward = (id, pointsNeeded) => {
-        if (points > pointsNeeded) {
+    const redeemReward = (id, points, pointsNeeded) => {
+        if (points >= pointsNeeded) {
             fetch(`http://localhost:8088/rewards/${id}`, {
                 method: "DELETE",
             }).then((res) => res.json())
-                .then(() => { 
-                    getMyRewards() 
+                .then(() => {
+                    getMyRewards()
                 }).then(() => {
                     setPoints(points - pointsNeeded)
                 })
@@ -37,31 +39,25 @@ export const RewardsList = ({ setPoints, points }) => {
         getMyRewards()
     }, [])
 
+    return <><Card>
 
-    return (
-        <>
-            <h2 style={{ color: "#ffffff" }}>Rewards</h2>
+        {rewards.map(reward => {
+            return <>
+                <ul id={reward.id}>
+                    <li>
+                        Reward:
+                        {reward.rewardsDescription}
+                        <b>Points Needed:</b> {reward.points}</li>
 
-            {rewards.map(reward => (
-                <Card key={reward.id}>
-                    <Card.Header> <h4> {reward.description} </h4>
-                    </Card.Header>
-                    <Card.Body>
-                        {console.log('hello')}
-                        Points Needed: {reward.points}
-                    </Card.Body>
                     <Button onClick={() => { redeemReward(reward.id, reward.points) }}>
                         Redeem Reward</Button>
-                </Card>
-            )
-            )
-            }
-
-        </>)
+                </ul>
+            </>
+        })}
+    </Card>
+    </>
 }
 
 // if task.completed = true user.points = x + task.points
 
 // if user.points >= reward.points - delete reward & deduct points from user
-
-
