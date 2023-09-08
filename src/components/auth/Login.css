@@ -1,8 +1,10 @@
-.h1, h1 {
+.h1,
+h1 {
     font-size: 2rem;
     text-align: center;
-    color:#1404bd
+    color: #1404bd
 }
+
 .h2 {
     font-size: 1rem;
     text-align: center;
@@ -21,10 +23,11 @@ fieldset {
     display: inline-block;
     margin: 0 auto;
     text-align: left;
-    color: rgb(245, 141, 30);
+    background-color: #7eb4ee;
+    padding: 1rem;
 }
 
-.form--login > fieldset > input[type="email"] {
+.form--login>fieldset>input[type="email"] {
     width: 25em;
 }
 
@@ -41,13 +44,10 @@ fieldset {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: rgb(18, 2, 43);
-    background-color: #b6d5ff;
-    background-clip: padding-box;
-    border: 1px solid #366492;
-    border-radius: .25rem;
-    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: rgb(5, 1, 25);
+    background-color: #f3f3f3;
+    -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .container--login {
@@ -64,4 +64,3 @@ fieldset {
     position: relative;
     bottom: -2rem;
 }
-

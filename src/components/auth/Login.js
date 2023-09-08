@@ -39,12 +39,12 @@ export const Login = () => {
                     <Card.Header>
                         <center>
                             <img src={Logo} alt="Login-logo"
-                            width="300"
-                            height="300"
-                            
-                            className="Login-Logo" />
-                        <h3>Please sign in</h3>
-                            </center>
+                                width="400"
+                                height="400"
+
+                                className="Login-Logo" />
+                            <h3>Please sign in</h3>
+                        </center>
                     </Card.Header>
                     <Card.Body>
 
