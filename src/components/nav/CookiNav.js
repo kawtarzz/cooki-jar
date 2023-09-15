@@ -5,9 +5,9 @@ import { Container } from "react-bootstrap"
 import logo from "./logo.svg"
 import { Nav } from "react-bootstrap"
 
-const navigate = useNavigate()
 
 export default function CookiNav() {
+  const navigate = useNavigate()
   return (
     <> <Nav className="bg-body-tertiary">
       <Container>
@@ -15,9 +15,9 @@ export default function CookiNav() {
           <img
             alt="logo"
             src={logo}
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
+            width="200"
+            height="200"
+
           />{' '}
 
         </Nav.Link>

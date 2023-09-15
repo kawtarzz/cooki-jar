@@ -17,9 +17,10 @@ export const Login = () => {
                     localStorage.setItem("cookijar_user", JSON.stringify({
                         id: user.id,
                         name: user.name,
-                        email: user.email
+                        email: user.email,
+                        points: user.points
                     }))
-                    navigate("/")
+                    navigate("/home")
                     window.alert('Welcome back ' + user.name + '!')
                 }
                 else {
