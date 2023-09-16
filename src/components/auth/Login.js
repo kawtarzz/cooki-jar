@@ -62,46 +62,7 @@ export const Login = () => {
                 <Link to="/register">Not a member yet?</Link>
             </section>
         </main>
-    )
-        < main className = "container--login" >
-            <Card className="form--login">
-                <form className="form--login" onSubmit={handleLogin}>
-                    <Card.Header>
-                        <center>
-                            <img src={Logo} alt="Login-logo"
-                                width="400"
-                                height="400"
 
-                                className="Login-Logo" />
-                            <h3>Please sign in</h3>
-                        </center>
-                    </Card.Header>
-                    <Card.Body>
-
-                        <fieldset>
-                            <label htmlFor="inputEmail"><h3>
-
-                            </h3>
-                                Email address</label>
-                            <input type="email"
-                                value={email}
-                                onChange={evt => set(evt.target.value)}
-                                className="form-control"
-                                placeholder="Email address"
-                                required autoFocus />
-                        </fieldset>
-                    </Card.Body>
-                    <fieldset>
-                        <button type="submit">
-                            Sign in
-                        </button>
-                    </fieldset>
-                </form>
-                <section className="link--register">
-                    <Link to="/register">Not a member yet?</Link>
-                </section>
-            </Card>
-        </main >
     )
 }
 

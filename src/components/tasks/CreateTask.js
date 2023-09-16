@@ -19,9 +19,6 @@ export default function CreateTask() {
         startDate: "",
         completedDate: "",
         completed: false
-
-
-
     });
 
     const [type, setType] = useState({
@@ -29,10 +26,7 @@ export default function CreateTask() {
         type: ""
     })
 
-    const [type, setType] = useState({
-        id: "",
-        type: ""
-    })
+
 
     const onFormSubmit = (evt) => {
         evt.preventDefault();
@@ -59,22 +53,21 @@ export default function CreateTask() {
     };
 
     return (
-        <> <center>
+        <>
+            <Card>
+                <Card.Header as="h2">Add a  new Task</Card.Header>
+                <Card.Body>
 
-            <header>
-                <h2>Add a  new Task</h2>
-            </header><br></br>
+                    <TaskForm
+                        task={task}
+                        setTask={setTask}
+                        type={type}
+                        setType={setType}
 
-            <TaskForm
-                task={task}
-                setTask={setTask}
-                type={type}
-                setType={setType}
-
-                onSubmit={onFormSubmit}
-            />
-
-        </center>
+                        onSubmit={onFormSubmit}
+                    />
+                </Card.Body>
+            </Card>
         </>
     );
 }
