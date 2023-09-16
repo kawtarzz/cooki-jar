@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Molly",
       "email": "molly@email.com",
-      "points": 0
+      "name": "Molly",
+      "points": 0,
+      "id": 1
     },
     {
-      "email": "sam@email.com",
-      "name": "Sam",
+      "email": "jerry@mydog.com",
+      "name": "Jerry",
       "points": 0,
       "id": 2
     },
@@ -53,382 +53,136 @@
       "name": "Mom",
       "points": 0,
       "id": 9
-    },
-    {
-      "email": "Mom@email.com",
-      "name": "Mom",
-      "points": 0,
-      "id": 10
     }
   ],
   "tasks": [
     {
-      "userId": 6,
-      "taskDescription": "eat some bugs",
-      "points": 20,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
+      "userId": 1,
+      "taskDescription": "Clean the gutters",
+      "typeId": 3,
+      "points": 10,
+      "startDate": "5/16/2023",
+      "completedDate": "6/19/2023",
+      "completed": true,
       "id": 1
     },
     {
-      "userId": 6,
-      "taskDescription": "do a poop",
-      "points": 5,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
+      "userId": 1,
+      "taskDescription": "Practice presentation- record demo video & write talking points",
+      "typeId": 2,
+      "points": 10,
+      "startDate": "2023-05-19",
+      "completedDate": "6/19/2023",
+      "completed": true,
       "id": 2
     },
     {
-      "userId": 8,
-      "taskDescription": "shrimp",
-      "points": 10,
+      "userId": 1,
+      "taskDescription": "Take dog to the vet",
+      "typeId": 1,
+      "points": 5,
       "startDate": "",
-      "completedDate": "",
-      "completed": false,
+      "completedDate": "6/19/2023",
+      "completed": true,
       "id": 3
     },
     {
-      "userId": 8,
-      "taskDescription": "root beer",
+      "userId": 1,
+      "taskDescription": "Mow the lawn",
+      "typeId": 4,
       "points": 10,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
+      "startDate": "2023-05-19",
+      "completedDate": "6/19/2023",
+      "completed": true,
       "id": 4
     },
     {
-      "userId": 8,
-      "taskDescription": "butt",
+      "userId": 1,
+      "taskDescription": "homework",
+      "typeId": 2,
       "points": 10,
-      "startDate": "",
+      "startDate": "2023-05-19",
       "completedDate": "",
       "completed": false,
       "id": 5
     },
     {
-      "userId": 8,
-      "taskDescription": "yrdh",
-      "points": 10,
-      "startDate": "",
+      "userId": 1,
+      "taskDescription": "work brunch",
+      "typeId": 3,
+      "points": 15,
+      "startDate": "2023-05-25",
       "completedDate": "",
       "completed": false,
       "id": 6
     },
     {
-      "userId": 8,
-      "taskDescription": "hello",
-      "points": 10,
-      "startDate": "",
+      "userId": 1,
+      "taskDescription": "",
+      "typeId": 1,
+      "points": 5,
+      "startDate": "2023-05-24",
       "completedDate": "",
       "completed": false,
       "id": 7
     },
     {
-      "userId": 5,
-      "taskDescription": "walk the dog",
-      "points": 5,
-      "startDate": "",
+      "userId": 1,
+      "taskDescription": "",
+      "typeId": 3,
+      "points": 10,
+      "startDate": "2023-06-01",
       "completedDate": "",
       "completed": false,
       "id": 8
-    },
-    {
-      "userId": 5,
-      "taskDescription": "hello",
-      "points": 20,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 9
-    },
-    {
-      "userId": 5,
-      "taskDescription": "1",
-      "points": 5,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 10
-    },
-    {
-      "userId": 5,
-      "taskDescription": "2",
-      "points": 15,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 11
-    },
-    {
-      "userId": 5,
-      "taskDescription": "1",
-      "points": 10,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 12
-    },
-    {
-      "userId": 5,
-      "taskDescription": "4",
-      "points": 20,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 13
-    },
-    {
-      "userId": 5,
-      "taskDescription": "1",
-      "points": 10,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 14
-    },
-    {
-      "userId": 5,
-      "taskDescription": "1",
-      "points": 10,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 15
-    },
-    {
-      "userId": 5,
-      "taskDescription": "4",
-      "points": 20,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 16
-    },
-    {
-      "userId": 1,
-      "taskDescription": "homework",
-      "points": 5,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 17
-    },
-    {
-      "userId": 1,
-      "taskDescription": "mow the lawn",
-      "points": 15,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 18
-    },
-    {
-      "userId": 1,
-      "taskDescription": "walk the dog",
-      "points": 15,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 19
-    },
-    {
-      "userId": 1,
-      "taskDescription": "edit resume",
-      "points": 15,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 22
-    },
-    {
-      "userId": 8,
-      "taskDescription": "test",
-      "points": 5,
-      "startDate": "",
-      "completedDate": "",
-      "completed": false,
-      "id": 24
-    },
-    {
-      "userId": 1,
-      "taskDescription": "reach mvp",
-      "points": 5,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 25
-    },
-    {
-      "userId": 1,
-      "taskDescription": "",
-      "points": 15,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 26
-    },
-    {
-      "userId": 1,
-      "taskDescription": "",
-      "points": 20,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 27
-    },
-    {
-      "userId": 1,
-      "taskDescription": "2",
-      "points": 10,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 28
-    },
-    {
-      "userId": 1,
-      "taskDescription": "test 2",
-      "points": 5,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 29
-    },
-    {
-      "userId": 1,
-      "taskDescription": "test 4",
-      "points": 10,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 30
-    },
-    {
-      "userId": 1,
-      "taskDescription": "x",
-      "points": 10,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 31
-    },
-    {
-      "userId": 1,
-      "taskDescription": "x",
-      "points": 10,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 32
-    },
-    {
-      "userId": 1,
-      "taskDescription": "make doctors appointment",
-      "points": 10,
-      "startDate": "",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 33
-    },
-    {
-      "userId": 1,
-      "taskDescription": "apply for jobs",
-      "points": 10,
-      "startDate": "2023-05-17",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 34
-    },
-    {
-      "userId": 1,
-      "taskDescription": "does this work",
-      "points": 10,
-      "startDate": "2023-05-24",
-      "completedDate": "5/15/2023",
-      "completed": false,
-      "id": 35
-    },
-    {
-      "userId": 1,
-      "taskDescription": "test",
-      "points": 5,
-      "startDate": "2023-05-31",
-      "completedDate": "5/14/2023",
-      "completed": false,
-      "id": 37
-    },
-    {
-      "userId": 1,
-      "taskDescription": "fix errors in capstone project",
-      "points": 10,
-      "completedDate": "",
-      "startDate": "2023-05-15",
-      "completed": false,
-      "id": 38
-    },
-    {
-      "userId": 1,
-      "taskDescription": "buy plane tickets",
-      "points": 10,
-      "startDate": "2023-05-31",
-      "completedDate": "6/28/2023",
-      "completed": false,
-      "id": 39
-    },
-    {
-      "userId": 1,
-      "taskDescription": "poop jerry",
-      "points": 5,
-      "startDate": "2023-05-15",
-      "completedDate": "6/28/2023",
-      "completed": false,
-      "id": 40
-    },
-    {
-      "userId": 1,
-      "taskDescription": "go to gym ",
-      "points": 10,
-      "completedDate": "",
-      "startDate": "2023-05-24",
-      "completed": false,
-      "id": 41
-    },
-    {
-      "userId": 1,
-      "taskDescription": "clean office",
-      "points": 10,
-      "completedDate": "",
-      "startDate": "2023-06-27",
-      "completed": false,
-      "id": 42
-    },
-    {
-      "userId": 1,
-      "taskDescription": "clean office 5",
-      "points": 15,
-      "completedDate": "",
-      "startDate": "2023-06-28",
-      "completed": false,
-      "id": 43
     }
   ],
   "rewards": [
     {
-      "id": 8,
-      "description": "get an ice cream cone",
-      "points": 5
+      "id": 1,
+      "userId": 1,
+      "rewardsDescription": "get an ice cream",
+      "points": 5,
+      "redeemed": false
     },
     {
-      "id": 9,
-      "description": "get an ice cream cone",
-      "points": 5
+      "id": 2,
+      "userId": 1,
+      "rewardsDescription": "take a break",
+      "points": 10,
+      "redeemed": false
     },
     {
-      "id": 10,
-      "description": "get an ice cream cone",
-      "points": 5
+      "id": 3,
+      "userId": 1,
+      "rewardsDescription": "get a manicure",
+      "points": 50,
+      "redeemed": false
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "rewardsDescription": "watch a movie",
+      "points": 0,
+      "redeemed": false
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "errands"
+    },
+    {
+      "id": 2,
+      "type": "school"
+    },
+    {
+      "id": 3,
+      "type": "work"
+    },
+    {
+      "id": 4,
+      "type": "house chores"
     }
   ]
 }

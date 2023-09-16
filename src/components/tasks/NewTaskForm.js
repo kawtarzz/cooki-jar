@@ -11,23 +11,24 @@ export default function TaskForm({ task, setTask, onSubmit, type, setType }) {
       </Card.Header>
       <Card.Body className="task__list">
         <form>
-          <div className="task__list">
-            <label htmlFor="taskDescription">
-              Task Description:
-            </label>
-            <input
-              required autoFocus
-              type="text"
-              className="form-control"
-              placeholder="short task description"
-              value={task.taskDescription}
-              onChange={(e) => {
-                setTask({ ...task, taskDescription: e.target.value })
-              }} />
-          </div>
-          <Card.Header >
-            <h3>Add New Task</h3>
-          </Card.Header>
+          <fieldset>
+            <div className="task__list">
+              <label htmlFor="taskDescription">
+                Task Description:
+              </label>
+              <input
+                required autoFocus
+                type="text"
+                className="form-control"
+                placeholder="short task description"
+                value={task.taskDescription}
+                onChange={(e) => {
+                  setTask({ ...task, taskDescription: e.target.value })
+                }} />
+            </div>
+
+          </fieldset>
+
           <fieldset>
             <div className="task__list">
               <label htmlFor="type">

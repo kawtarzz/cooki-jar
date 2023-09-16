@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import TaskForm from "./NewTaskForm.js"
+import TaskForm from "./NewTaskForm.js"
 
 
 export default function CreateTask() {
@@ -12,13 +13,21 @@ export default function CreateTask() {
         userId: cookijarUserObject.id,
         taskDescription: "",
         typeId: "",
+        typeId: "",
         points: "",
+        startDate: "",
         startDate: "",
         completedDate: "",
         completed: false
 
 
+
     });
+
+    const [type, setType] = useState({
+        id: "",
+        type: ""
+    })
 
     const [type, setType] = useState({
         id: "",

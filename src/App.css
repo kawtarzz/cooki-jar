@@ -1,10 +1,5 @@
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: hsl(220, 100%, 97%);
-  font-family: 'Tahoma';
-  color: rgb(0, 0, 0);
+.App {
+  text-align: center;
 }
 
 h1 {
@@ -33,8 +28,13 @@ h5 {
   font-size: relative;
 }
 
-.button__complete:hover {
-  background-color: pink;
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand>img {
+  padding: 5px 1px;
 }
 
 
@@ -44,11 +44,6 @@ h5 {
   flex-wrap: wrap;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #03004F;
-}
-
-.App-link {
-  color: #fbd761;
 }
 
 @keyframes App-logo-spin {
@@ -72,6 +67,7 @@ footer {
 }
 
 .button__tasks {
+  background-color: #03004F;
   border: 1px solid rgb(0, 6, 26);
   color: #03004f;
   padding: 6px 24px;
