@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import TaskForm from "./NewTaskForm.js"
+import TaskForm from "./NewTaskForm.js"
 
 
 export default function CreateTask() {
@@ -12,17 +13,20 @@ export default function CreateTask() {
         userId: cookijarUserObject.id,
         taskDescription: "",
         typeId: "",
+        typeId: "",
         points: "",
+        startDate: "",
         startDate: "",
         completedDate: "",
         completed: false
-
     });
 
     const [type, setType] = useState({
         id: "",
         type: ""
     })
+
+
 
     const onFormSubmit = (evt) => {
         evt.preventDefault();
@@ -41,27 +45,29 @@ export default function CreateTask() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(newTask)
-        })
-            .then(res => res.json())
-            .then(() => {
-                navigate("/tasks");
-            })
+            body: JSON.stringify(task),
+        }).then(() => {
+            window.alert('You got this!')
+            navigate("/tasks");
+        });
     };
 
     return (
-        <> <div className="task__header">
+        <>
+            <Card>
+                <Card.Header as="h2">Add a  new Task</Card.Header>
+                <Card.Body>
 
-            <TaskForm
-                task={task}
-                setTask={setTask}
-                type={type}
-                setType={setType}
+                    <TaskForm
+                        task={task}
+                        setTask={setTask}
+                        type={type}
+                        setType={setType}
 
-                onSubmit={onFormSubmit}
-            />
-        </div>
-
+                        onSubmit={onFormSubmit}
+                    />
+                </Card.Body>
+            </Card>
         </>
     );
 }

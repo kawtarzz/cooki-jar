@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import "./Login.css"
 import { Card } from "react-bootstrap"
-import Logo from "./Logo.svg";
+import Logo from "../img/logo.svg"
 import Button from "react-bootstrap/Button"
 
 export const Login = () => {
@@ -21,9 +21,10 @@ export const Login = () => {
                     localStorage.setItem("cookijar_user", JSON.stringify({
                         id: user.id,
                         name: user.name,
-                        email: user.email
+                        email: user.email,
+                        points: user.points
                     }))
-                    navigate("/")
+                    navigate("/home")
                     window.alert('Welcome back ' + user.name + '!')
                 }
                 else {
@@ -34,44 +35,34 @@ export const Login = () => {
 
     return (
         <main className="container--login">
-            <Card className="form--login">
+            <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <Card.Header>
-                        <center>
-                            <img src={Logo} alt="Login-logo"
-                                width="400"
-                                height="400"
+                    <h1>cookiJar</h1>
+                    <h2>Please sign in</h2>
+                    <fieldset>
+                        <label htmlFor="inputEmail"><h3>
 
-                                className="Login-Logo" />
-                            <h3>Please sign in</h3>
-                        </center>
-                    </Card.Header>
-                    <Card.Body>
-
-                        <fieldset>
-                            <label htmlFor="inputEmail"><h3>
-
-                            </h3>
-                                Email address</label>
-                            <input type="email"
-                                value={email}
-                                onChange={evt => set(evt.target.value)}
-                                className="form-control"
-                                placeholder="Email address"
-                                required autoFocus />
-                        </fieldset>
-                    </Card.Body>
+                        </h3>
+                            Email address</label>
+                        <input type="email"
+                            value={email}
+                            onChange={evt => set(evt.target.value)}
+                            className="form-control"
+                            placeholder="Email address"
+                            required autoFocus />
+                    </fieldset>
                     <fieldset>
                         <button type="submit">
                             Sign in
                         </button>
                     </fieldset>
                 </form>
-                <section className="link--register">
-                    <Link to="/register">Not a member yet?</Link>
-                </section>
-            </Card>
+            </section>
+            <section className="link--register">
+                <Link to="/register">Not a member yet?</Link>
+            </section>
         </main>
+
     )
 }
 

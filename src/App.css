@@ -2,31 +2,58 @@
   text-align: center;
 }
 
-.App-logo {
-  height: auto;
-  pointer-events: all;
+h1 {
+  font-family: 'Cambria';
+  color: rgb(0, 0, 0);
+  font-size: relative;
+  justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2 {
+  font-family: 'Cambria';
+  color: rgb(0, 0, 0);
+  font-size: relative;
 }
+
+h3 {
+  font-family: 'Verdana';
+  color: rgb(0, 0, 0);
+  font-size: relative;
+}
+
+h4,
+h5 {
+  font-family: 'Verdana';
+  color: rgb(0, 0, 0);
+  font-size: relative;
+}
+
 .navbar-brand {
   display: flex;
   align-items: center;
 }
+
 .navbar-brand>img {
   padding: 5px 1px;
 }
 
-.App-header {
-  min-height: 0vh;
+
+
+.cardContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 body {
@@ -37,4 +64,14 @@ body {
 
 footer {
   margin-top: auto;
+}
+
+.button__tasks {
+  background-color: #03004F;
+  border: 1px solid rgb(0, 6, 26);
+  color: #03004f;
+  padding: 6px 24px;
+  margin: 3rem 1rem;
+  display: inline-block;
+  font-size: 18px;
 }
