@@ -2,13 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, ButtonGroup, Card, CardGroup, ListGroup, ListGroupItem } from "react-bootstrap"
 import { Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 
 
-export default function TaskList({ sumPoints }) {
+export default function TaskList({ task }) {
     const [tasks, setTasks] = useState([])
 
-    var dateObj = new Date();
+    var dateObj = new Date()
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
@@ -29,6 +31,7 @@ export default function TaskList({ sumPoints }) {
         const sendToApi = {
             userId: cookijarUserObject.id,
             taskDescription: task.taskDescription,
+            typeId: task.typeId,
             points: task.points,
             startDate: task.startDate,
             completedDate: newdate,
@@ -43,7 +46,6 @@ export default function TaskList({ sumPoints }) {
         })
         window.alert(`Great job ${cookijarUserObject.name}!`)
         getMyTasks()
-        sumPoints()
     }
 
     const deleteTask = (id) => {
@@ -57,57 +59,35 @@ export default function TaskList({ sumPoints }) {
         getMyTasks()
     }, [])
 
-    return (
-        <>
-            <h1>{cookijarUserObject.name}'s To-Do List</h1>
-            <br />
-
-            <div className="cardContainer">
-                {tasks.length > 0 ? (
-                    tasks.map((task) => (
-                        <div key={task.id} className="flexDiv">
+    return (<>
+        <Container fluid>
+            <Row className="justify-content-md-center">
+                {tasks.map(task => {
+                    return <>
+                        <Col>
                             <Card>
-                                <ListGroup as="ol">
-                                    <ListGroupItem as="li" active>
-                                        <Card.Title as="h2">{task.taskDescription}</Card.Title>
-                                    </ListGroupItem>
+                                <Card.Body>
+                                    <Card.Title>{task.taskDescription}</Card.Title>
                                     <Card.Text>
-                                        <ListGroupItem as="li">
-                                            <b>Point Value:</b>
-                                            {" "}{task.points}
-                                            <br></br>
-                                            <b>Start:</b>
-                                            {" "}{task.startDate}
-                                            <br></br>
-                                            <b>Completed?:</b>
-                                            {" false"}{task.completed}
-                                        </ListGroupItem>
-                                        <ButtonGroup>
-                                            <Button onClick={() => {
-                                                navigate(`/edit/${task.id}`);
-                                            }}>
-                                                Edit Task
-                                            </Button>
-
-                                            <Button variant="success" onClick={() => { setCompletedTask(task); }}>
-                                                Complete
-                                            </Button>
-                                            <br></br>
-
-                                            <Button variant="warning" onClick={() => { deleteTask(task.id); }}>
-                                                Delete
-                                            </Button>
-
-                                        </ButtonGroup>
+                                        Point Value:
+                                        {task.points}{""}
                                     </Card.Text>
-                                </ListGroup>
+                                    <br />
+                                    <ButtonGroup bsSize="x-s">
+                                        <Button variant="secondary" href={
+                                            `/tasks/edit/${task.id}`
+                                        }>Edit Task</Button>
+                                        <Button variant="success" onClick={() => { setCompletedTask(task); }}>Completed</Button>
+                                        <Button variant="danger" onClick={() => { deleteTask(task.id); }}>Delete</Button>
+                                    </ButtonGroup>
+                                </Card.Body>
                             </Card>
-                        </div>
-                    ))
-                ) : (
-                    <div>No tasks found.</div>
+                        </Col>
+                    </>
+                }
                 )}
-            </div>
-        </>
-    );
+            </Row>
+        </Container>
+    </>
+    )
 }

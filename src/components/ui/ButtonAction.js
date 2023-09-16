@@ -17,7 +17,7 @@ export const ButtonAction = () => {
         <ButtonGroup aria-label="Basic example">
           <Button
             variant="secondary"
-            href="/newtask"
+            href="/tasks/new"
             size="lg"
           >
             + New Task

@@ -1,96 +1,51 @@
-import { click } from "@testing-library/user-event/dist/click"
-import { useState } from "react"
-import { json, useNavigate } from "react-router-dom"
-import { createNewReward } from "./Rewards.js"
+// import { click } from "@testing-library/user-event/dist/click"
+// import { useState } from "react"
+// import { json, useNavigate } from "react-router-dom"
+// import RewardsList from "./Rewards.js"
+// import { FormControl } from "react-bootstrap"
+// import { Card } from "react-bootstrap"
+// import CardHeader from "react-bootstrap/esm/CardHeader.js"
+// import { useEffect } from "react"
 
-export const RewardForm = () => {
-    /*
-        TODO: Add the correct default properties to the
-        initial state object
-    */
-    const [reward, update] = useState({
-        rewardDescription: "",
-        setPoints: "",
-        expireOnDate: "Date"
-    })
-    /*
-        TODO: Use the useNavigation() hook so you can redirect
-        the user to the reward list
-    */
+// export const RewardsForm = ({ reward, setReward, submitReward }) => {
+//     const [rewards, setRewards] = useState();
+//     const localcookiJarUser = localStorage.getItem("cookijar_user")
+//     const cookijarUserObject = JSON.parse(localcookiJarUser)
 
-    const navigate = useNavigate()
+//     useEffect(() => {
+//         fetch(`http://localhost:8088/rewards?userId=${cookijarUserObject.id}&redeemed=false`)
+//             .then((res) => res.json())
+//             .then((res) => JSON.stringify(setRewards))
+//     }, [])
 
-    const localcookiJarUser = localStorage.getItem("cookijar_user")
-    const cookijarUserObject = JSON.parse(localcookiJarUser)
 
-    handleSaveButtonClick = (event) => {
-        event.preventDefault()
+//     return (<>
+//         <Card>
+//             <Card.Header className="reward__header">
+//                 Add New Reward
+//             </Card.Header>
+//             <Card.Body>
+//                 <form>
+//                     <fieldset>
+//                         <div className="reward__list">
+//                             <label htmlFor="rewardDescription">
+//                                 Reward Description:
+//                             </label>
+//                             <input required autoFocus type="text"
+//                                 className="form-control"
+//                                 placeholder="short reward description"
+//                                 value={reward.rewardsDescription}
+//                                 onChange={(event) => {
+//                                     setRewards({ ...reward, rewardsDescription: event.target.value })
+//                                 }} />
+//                         </div>
 
-        // TODO: Create the object to be saved to the API
+//                     </fieldset>
+//                 </form>
 
-        const rewardToSendToAPI = {
-            userId: cookijarUserObject.id,
-            rewardDescription: reward.description,
-            setPoints: reward.setPoints,
-            expireOnDate: reward.expireOnDate
-        }
-        // TODO: Perform the fetch() to POST the object to the API
-        return fetch(`http://localhost:8088/rewards`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(rewardToSendToAPI)
-        })
-            .then(response => response.json())
-            .then(() => {
-                navigate("/rewards")
-            })
-    }
+//             </Card.Body>
+//         </Card>
+//     </>
 
-    return (
-        <form className="rewardForm">
-            <h2 className="rewardForm__title">New reward</h2>
-           
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="rewardDescription">reward Description:</label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        placeholder="Brief description of reward"
-                        value={reward.description}
-                        onChange={
-                            (evt) => {
-                                const copy = { ...reward }
-                                copy.description = evt.target.value
-                                update(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-                  
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="expire">Expiration:</label>
-                    <input type="time" id="expire" name="expire" min="09:00" max="18:00" required
-                        value={reward.expireOnDate}
-                        onChange={
-                            (evt) => {
-                                const copy = { ...reward }
-                                copy.expireOnDate = evt.target.value
-                                update(copy)
-                                createNewReward(evt)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <button
-                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="submit">
-                Submit
-            </button>
-        </form>
-    )
-}
+//     )
+// }

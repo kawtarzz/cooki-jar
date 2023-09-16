@@ -1,28 +1,36 @@
-import { Authorized } from "./components/views/Authorized.js"
-import ApplicationViews from "./components/views/ApplicationViews.js"
-import { Login } from "./components/auth/Login.js"
-import { Register } from "./components/auth/Register.js"
-import { Route, Routes } from "react-router-dom"
-import './App.css'
-import Nav from "./components/Navbar.js"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Outlet } from "react-router-dom"
-import Container from 'react-bootstrap/Container';
-import Header from "./components/ui/Header.js"
+
+import { Outlet, Route, Routes } from "react-router-dom"
+import Home from "./components/Home"
+import { Login } from "./components/auth/Login"
+import { Register } from "./components/auth/Register"
+import TaskList from "./components/tasks/TaskList"
+import { useState, useEffect } from "react"
+import RewardsList from "./components/rewards/Rewards"
+import { Navbar } from "react-bootstrap"
+import Nav from './components/Navbar'
+import Header from "./components/ui/Header"
+import ApplicationViews from "./components/views/ApplicationViews"
+import { Authorized } from './components/views/Authorized'
+import { ButtonAction } from "./components/ui/ButtonAction"
 export const App = () => {
-  return <>
-    <Nav />
-    <Outlet />
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="*" element={
-        <Authorized>
-          <Header />
-          <ApplicationViews />
-        </Authorized>} />
-    </Routes>
-  </>
+
+
+  return (
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={
+          <Authorized><>
+            <Nav />
+            <Header />
+            <ApplicationViews />
+          </>
+          </Authorized>} />
+      </Routes>
+    </>
+  )
+
 }
 
 export default App;

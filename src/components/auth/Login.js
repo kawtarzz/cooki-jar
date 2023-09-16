@@ -28,6 +28,7 @@ export const Login = () => {
                 }
             })
     }
+
     return (
         <main className="container--login">
             <section>
@@ -35,9 +36,10 @@ export const Login = () => {
                     <h1>cookiJar</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputEmail">
-                            Email address
-                        </label>
+                        <label htmlFor="inputEmail"><h3>
+
+                        </h3>
+                            Email address</label>
                         <input type="email"
                             value={email}
                             onChange={evt => set(evt.target.value)}

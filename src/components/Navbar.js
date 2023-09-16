@@ -25,7 +25,7 @@ function nav() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link href="/tasks">To-do</Nav.Link>
-          <Nav.Link href="/create"> + New Task </Nav.Link>
+          <Nav.Link href="/tasks/new"> + New Task </Nav.Link>
           <NavDropdown title={`${cookijarUserObject.name}'s Jar`} id="basic-nav-dropdown">
             <NavDropdown.Item href="/createreward">
               + New Reward

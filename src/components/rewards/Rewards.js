@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-export const RewardsList = ({ setPoints, points }) => {
+const RewardsList = ({ setPoints, points }) => {
     const [rewards, setRewards] = useState([]);
 
     const getMyRewards = () => {
@@ -11,20 +11,24 @@ export const RewardsList = ({ setPoints, points }) => {
             .then(setRewards)
     };
 
-    const redeemReward = (id, pointsNeeded) => {
-        if (points > pointsNeeded) {
+    const redeemReward = (id, points, pointsNeeded) => {
+        if (points >= pointsNeeded) {
             fetch(`http://localhost:8088/rewards/${id}`, {
                 method: "DELETE",
             }).then((res) => res.json())
                 .then(() => {
                     getMyRewards()
-                }).then(() => {
-                    setPoints(points - pointsNeeded)
+                        .then(() => {
+                            getMyRewards()
+                        }).then(() => {
+                            setPoints(points - pointsNeeded)
+                        })
                 })
         } else {
-            alert('Not enough points!')
+            window.alert("You don't have enough points for this reward.")
         }
     }
+
     useEffect(() => {
         getMyRewards()
     }, [])
@@ -39,10 +43,14 @@ export const RewardsList = ({ setPoints, points }) => {
                     <Card.Body>
                         Points Needed: {reward.points}
                     </Card.Body>
-                    <Button onClick={() => { redeemReward(reward.id, reward.points) }}>
-                        Redeem Reward</Button>
-                </Card>
+                    <Card.Footer>
+                        <Button onClick={() => { redeemReward(reward.id, reward.points) }}>
+                            Redeem Reward</Button>
+                    </Card.Footer>
+                </Card >
             ))}
         </>
     )
 }
+
+export default RewardsList;

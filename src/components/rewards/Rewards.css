@@ -1,0 +1,9 @@
+.rewards {
+    display: flex;
+    flex-direction: column;
+}
+.reward {
+    text-align: center; color: bisque;
+    border: 1px dotted rgb(38, 38, 122);
+    padding: 0.7rem;
+}
