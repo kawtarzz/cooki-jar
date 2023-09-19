@@ -3,7 +3,7 @@
     {
       "email": "molly@email.com",
       "name": "Molly",
-      "points": 0,
+      "points": null,
       "id": 1
     },
     {
@@ -62,7 +62,7 @@
       "typeId": 3,
       "points": 10,
       "startDate": "5/16/2023",
-      "completedDate": "6/19/2023",
+      "completedDate": "9/18/2023",
       "completed": true,
       "id": 1
     },
@@ -72,7 +72,7 @@
       "typeId": 2,
       "points": 10,
       "startDate": "2023-05-19",
-      "completedDate": "6/19/2023",
+      "completedDate": "9/18/2023",
       "completed": true,
       "id": 2
     },
@@ -82,7 +82,7 @@
       "typeId": 1,
       "points": 5,
       "startDate": "",
-      "completedDate": "6/19/2023",
+      "completedDate": "9/18/2023",
       "completed": true,
       "id": 3
     },
@@ -92,8 +92,8 @@
       "typeId": 4,
       "points": 10,
       "startDate": "2023-05-19",
-      "completedDate": "6/19/2023",
-      "completed": true,
+      "completedDate": "9/18/2023",
+      "completed": false,
       "id": 4
     },
     {
@@ -102,7 +102,7 @@
       "typeId": 2,
       "points": 10,
       "startDate": "2023-05-19",
-      "completedDate": "",
+      "completedDate": "9/18/2023",
       "completed": false,
       "id": 5
     },
@@ -112,7 +112,7 @@
       "typeId": 3,
       "points": 15,
       "startDate": "2023-05-25",
-      "completedDate": "",
+      "completedDate": "9/18/2023",
       "completed": false,
       "id": 6
     },
@@ -122,7 +122,7 @@
       "typeId": 1,
       "points": 5,
       "startDate": "2023-05-24",
-      "completedDate": "",
+      "completedDate": "9/18/2023",
       "completed": false,
       "id": 7
     },
@@ -132,7 +132,7 @@
       "typeId": 3,
       "points": 10,
       "startDate": "2023-06-01",
-      "completedDate": "",
+      "completedDate": "9/18/2023",
       "completed": false,
       "id": 8
     }

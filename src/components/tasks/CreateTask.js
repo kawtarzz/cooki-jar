@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import TaskForm from "./NewTaskForm.js"
-import TaskForm from "./NewTaskForm.js"
-
+import { Card } from "react-bootstrap";
 
 export default function CreateTask() {
     const navigate = useNavigate();

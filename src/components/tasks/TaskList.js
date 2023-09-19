@@ -9,6 +9,7 @@ import { Col } from "react-bootstrap";
 
 export default function TaskList({ task }) {
     const [tasks, setTasks] = useState([])
+    const [myPoints, setMyPoints] = useState(0)
 
     var dateObj = new Date()
     var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -27,6 +28,13 @@ export default function TaskList({ task }) {
             .then(setTasks);
     }
 
+    const getMyPoints = () => {
+        fetch(`http://localhost:8088/users/${cookijarUserObject.id}`)
+            .then((res) => res.json())
+            .then(res => JSON.stringify(setMyPoints(res.points)))
+        console.log(parseInt(myPoints))
+    }
+
     const setCompletedTask = (task) => {
         const sendToApi = {
             userId: cookijarUserObject.id,
@@ -43,9 +51,22 @@ export default function TaskList({ task }) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(sendToApi)
+        }).then(() => {
+            fetch(`http://localhost:8088/users/${cookijarUserObject.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    points: cookijarUserObject.points + task.points
+                })
+            }).then(() => {
+                getMyPoints()
+                getMyTasks()
+
+                window.alert(`You earned ${task.points} points! Great job!`)
+            })
         })
-        window.alert(`Great job ${cookijarUserObject.name}!`)
-        getMyTasks()
     }
 
     const deleteTask = (id) => {
@@ -64,7 +85,7 @@ export default function TaskList({ task }) {
             <Row className="justify-content-md-center">
                 {tasks.map(task => {
                     return <>
-                        <Col>
+                        <Col key={task.id}>
                             <Card>
                                 <Card.Body>
                                     <Card.Title>{task.taskDescription}</Card.Title>

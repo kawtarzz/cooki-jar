@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-const RewardsList = ({ setPoints, points }) => {
+const RewardsList = () => {
     const [rewards, setRewards] = useState([]);
-    const navigate = useNavigate()
+    const [myPoints, setMyPoints] = useState(0);
+    const pointsNeeded = rewards.points;
 
     const localcookiJarUser = localStorage.getItem("cookijar_user");
     const cookijarUserObject = JSON.parse(localcookiJarUser);
@@ -15,29 +16,41 @@ const RewardsList = ({ setPoints, points }) => {
             .then(setRewards)
     };
 
-    const redeemReward = (id, points, pointsNeeded) => {
-        if (points >= pointsNeeded) {
-            fetch(`http://localhost:8088/rewards/${id}`, {
-                method: "DELETE",
-            }).then((res) => res.json())
-                .then(() => {
-                    getMyRewards()
-                }).then(() => {
-                    setPoints(points - pointsNeeded)
-                })
-                .then(() => {
-                    getMyRewards()
-                        .then(() => {
-                            getMyRewards()
-                        }).then(() => {
-                            setPoints(points - pointsNeeded)
-                        })
-                })
-        } else {
-            window.alert("You don't have enough points for this reward.")
-        }
+    const getMyPoints = () => {
+        fetch(`http://localhost:8088/users/${cookijarUserObject.id}`)
+            .then((res) => res.json())
+            .then(res => JSON.stringify(setMyPoints(res.points)))
     }
 
+    const redeemReward = (rewardId, myPoints, rewardPoints) => {
+        if (myPoints >= rewardPoints) {
+            fetch(`http://localhost:8088/rewards/${rewardId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    redeemed: true
+                })
+            }).then(() => {
+                fetch(`http://localhost:8088/users/${cookijarUserObject.id}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        points: cookijarUserObject.points - rewardPoints
+                    })
+                }).then(() => {
+                    getMyPoints()
+                    getMyRewards()
+                    window.alert("You redeemed a reward!")
+                })
+            })
+        } else {
+            window.alert("You don't have enough points for that reward!")
+        }
+    }
     useEffect(() => {
         getMyRewards()
     }, [])
@@ -45,21 +58,22 @@ const RewardsList = ({ setPoints, points }) => {
     return (
         <>
             <h2>Rewards</h2>
-            {rewards.map(reward => (
-                <Card key={reward.id}>
-                    <Card.Header> <h4> {reward.description} </h4>
-                    </Card.Header>
-                    <Card.Body>
-                        Points Needed: {reward.points}
-                    </Card.Body>
-                    <Card.Footer>
-                        <Button onClick={() => { redeemReward(reward.id, reward.points) }}>
-                            Redeem Reward</Button>
-                    </Card.Footer>
-                </Card >
-            ))}
-        </>
-    )
+            <Card className="rewards">
+                {rewards.map((reward) => {
+                    if (reward.userId === cookijarUserObject.id && reward.redeemed === false) {
+                        return (
+                            <Card.Body key={reward.id}>
+                                <Card.Title>{reward.rewardsDescription}</Card.Title>
+                                <Card.Text>{reward.points}</Card.Text>
+                                <Button variant="primary" onClick={() => redeemReward(reward.id, myPoints, reward.points)}>Redeem</Button>
+                            </Card.Body>
+                        )
+                    } else {
+                        return null
+                    }
+                })}
+            </Card>
+        </>)
 }
 
 

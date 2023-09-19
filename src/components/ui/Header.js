@@ -25,7 +25,7 @@ export const Header = () => {
 
   return <>
     <Card bg="light" style={{ width: '100%', position: "relative", paddingBlock: ".5rem", justifyContent: "center", alignContent: "space-around", textAlign: "center" }}>
-      <Card.Img variant="top" src={Logo} width="800rem" height="800rem" />
+      <Card.Img variant="top" src={Logo} width="700rem" height="700rem" />
       <Card variant="light" className="header">
         <Card.Title>
           <h1>Welcome, {cookijarUserObject.name}!</h1>
