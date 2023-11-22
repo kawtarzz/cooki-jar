@@ -3,138 +3,86 @@
     {
       "email": "molly@email.com",
       "name": "Molly",
-      "points": 0,
+      "userPoints": 125,
       "id": 1
     },
     {
       "email": "jerry@mydog.com",
       "name": "Jerry",
-      "points": 0,
+      "userPoints": 0,
       "id": 2
     },
     {
       "email": "",
       "name": "mir@email.com",
-      "points": 0,
+      "userPoints": 0,
       "id": 3
     },
     {
       "email": "jane@email.com",
       "name": "Jane",
-      "points": 0,
+      "userPoints": 0,
       "id": 4
     },
     {
       "email": "maria@dance.com",
       "name": "Maria",
-      "points": 0,
+      "userPoints": 0,
       "id": 5
     },
     {
       "email": "evan@coolguy.com",
       "name": "Evan",
-      "points": 0,
+      "userPoints": 0,
       "id": 6
     },
     {
       "email": "feedme123@yahoo.com",
       "name": "cookie monster",
-      "points": 0,
+      "userPoints": 0,
       "id": 7
     },
     {
       "email": "kawtaryazzouzi@gmail.com",
       "name": "Kawtar",
-      "points": 0,
+      "userPoints": 0,
       "id": 8
     },
     {
       "email": "Mom@email.com",
       "name": "Mom",
-      "points": 0,
+      "userPoints": 0,
       "id": 9
     }
   ],
   "tasks": [
     {
       "userId": 1,
-      "taskDescription": "Clean the gutters",
-      "typeId": 3,
+      "taskDescription": "do the dishes",
       "points": 10,
-      "startDate": "5/16/2023",
-      "completedDate": "6/19/2023",
       "completed": true,
       "id": 1
     },
     {
       "userId": 1,
-      "taskDescription": "Practice presentation- record demo video & write talking points",
-      "typeId": 2,
-      "points": 10,
-      "startDate": "2023-05-19",
-      "completedDate": "6/19/2023",
-      "completed": true,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "taskDescription": "Take dog to the vet",
-      "typeId": 1,
+      "taskDescription": "clean your room",
       "points": 5,
-      "startDate": "",
-      "completedDate": "6/19/2023",
       "completed": true,
       "id": 3
     },
     {
       "userId": 1,
-      "taskDescription": "Mow the lawn",
-      "typeId": 4,
+      "taskDescription": "do your homework",
       "points": 10,
-      "startDate": "2023-05-19",
-      "completedDate": "6/19/2023",
-      "completed": true,
+      "completed": false,
       "id": 4
     },
     {
       "userId": 1,
-      "taskDescription": "homework",
-      "typeId": 2,
+      "taskDescription": "take out the trash",
       "points": 10,
-      "startDate": "2023-05-19",
-      "completedDate": "",
       "completed": false,
       "id": 5
-    },
-    {
-      "userId": 1,
-      "taskDescription": "work brunch",
-      "typeId": 3,
-      "points": 15,
-      "startDate": "2023-05-25",
-      "completedDate": "",
-      "completed": false,
-      "id": 6
-    },
-    {
-      "userId": 1,
-      "taskDescription": "",
-      "typeId": 1,
-      "points": 5,
-      "startDate": "2023-05-24",
-      "completedDate": "",
-      "completed": false,
-      "id": 7
-    },
-    {
-      "userId": 1,
-      "taskDescription": "",
-      "typeId": 3,
-      "points": 10,
-      "startDate": "2023-06-01",
-      "completedDate": "",
-      "completed": false,
-      "id": 8
     }
   ],
   "rewards": [

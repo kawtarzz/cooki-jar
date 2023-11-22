@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button'
 
 const RewardsList = ({ setPoints, points }) => {
     const [rewards, setRewards] = useState([]);
-    const navigate = useNavigate()
 
     const localcookiJarUser = localStorage.getItem("cookijar_user");
     const cookijarUserObject = JSON.parse(localcookiJarUser);

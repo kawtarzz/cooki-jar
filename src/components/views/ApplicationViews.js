@@ -1,19 +1,44 @@
-import { Outlet, Route, Routes } from "react-router-dom"
-import TaskList from "../tasks/TaskList"
-import RewardsList from "../rewards/Rewards"
-import { ButtonAction } from "../ui/ButtonAction"
-import { Container } from "react-bootstrap"
+import NavigationBar from "../Navbar";
+import Header from "../ui/Header";
+import { Container } from 'react-bootstrap';
+import { Routes, Route } from 'react-router-dom';
+import TaskList from "../tasks/TaskList";
+import Rewards from '../rewards/Rewards';
+import { Outlet } from 'react-router-dom';
+import CreateTask from "../tasks/CreateTask"
+import EditTask from "../tasks/EditTask";
 
 export default function ApplicationViews() {
-    return <>
-        <ButtonAction />
-        <Outlet />
-        <Container fluid="md">
-            <Routes>
-                <Route path="/tasks" element={<TaskList />} />
-                <Route path="/rewards" element={<RewardsList />} />
+    const localcookiJarUser = localStorage.getItem("cookijar_user");
+    const user = JSON.parse(localcookiJarUser);
 
-            </Routes >
-        </Container>
-    </>
+    return (
+        <>
+            <div className="App">
+                <NavigationBar user={user} />
+                <Container fluid className="p-0">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <Header
+                                    user={user}
+                                />
+                            }
+                        >
+                            <Route index element={<Outlet />} />
+                        </Route>
+                        <Route path="/tasks" element={<TaskList />} >
+                            <Route index element={<TaskList />} />
+                            <Route path="/tasks/new" element={<CreateTask />} />
+                        </Route>
+
+                        <Route path="/rewards" element={<Rewards />} />
+                    </Routes>
+                </Container>
+            </div>
+        </>
+    );
 }
+
+// <Route path="/tasks/:id/edit" element={<EditTask />} />

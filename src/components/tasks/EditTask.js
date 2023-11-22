@@ -6,23 +6,12 @@ export default function EditTask() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [task, setTask] = useState()
-    const [type, setType] = useState()
 
     const getTasks = (id) => {
         fetch(`http://localhost:8088/tasks/${id}`)
             .then((res) => res.json())
             .then(setTask);
     };
-
-    const getTypes = () => {
-        fetch(`http://localhost:8088/types/)`)
-        .then((res)=> res.json())
-        .then(setType)
-    };
-
-    useEffect(() => {
-        getTypes(type)
-    },[type])
 
     useEffect(() => {
         getTasks(id);
@@ -49,9 +38,8 @@ export default function EditTask() {
             <TaskForm
                 task={task}
                 setTask={setTask}
-                type={type}
-                setType={setType}
                 onSubmit={onFormSubmit}
+                key={task.id}
             />
         </>
     );
