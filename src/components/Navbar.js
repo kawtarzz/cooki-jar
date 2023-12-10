@@ -1,18 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Icon from './img/logo-icon.svg'
 
-function nav() {
-  const localcookiJarUser = localStorage.getItem("cookijar_user");
-  const cookijarUserObject = JSON.parse(localcookiJarUser)
+function NavigationBar({ user }) {
 
   return (
     <Navbar bg="primary" className="m-auto" data-bs-theme="dark" expand="lg">
-      <Navbar.Brand href="/home">
+      <Navbar.Brand href="/">
         <img
           alt=""
           src={Icon}
@@ -26,7 +23,7 @@ function nav() {
         <Nav className="me-auto">
           <Nav.Link href="/tasks">To-do</Nav.Link>
           <Nav.Link href="/tasks/new"> + New Task </Nav.Link>
-          <NavDropdown title={`${cookijarUserObject.name}'s Jar`} id="basic-nav-dropdown">
+          <NavDropdown title={`${user.name}'s Jar`} id="basic-nav-dropdown">
             <NavDropdown.Item href="/createreward">
               + New Reward
             </NavDropdown.Item>
@@ -37,7 +34,7 @@ function nav() {
               Rewards List
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href={`/users/${cookijarUserObject.id}`}>
+            <NavDropdown.Item href={`/users/${user.id}`}>
               My Account
             </NavDropdown.Item>
           </NavDropdown>
@@ -52,4 +49,4 @@ function nav() {
   );
 }
 
-export default nav;
+export default NavigationBar;

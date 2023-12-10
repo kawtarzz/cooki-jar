@@ -5,13 +5,13 @@ import { App } from "./App"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-const container = document.getElementById("root")
-const root = createRoot(container)
+const root = createRoot(document.getElementById("root"))
+
 root.render(
-
-
   <BrowserRouter>
+
     <App />
+
   </BrowserRouter>
 );
 

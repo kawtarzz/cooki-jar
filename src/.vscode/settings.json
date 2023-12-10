@@ -1,0 +1,5 @@
+{
+ "editor.formatOnType": true,
+ "notebook.lineNumbers": "on",
+ "notebook.output.wordWrap": true
+}

@@ -1,72 +1,45 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import TaskForm from "./NewTaskForm.js"
-import { Card } from "react-bootstrap";
+import "./tasks.css";
+import TaskForm from './NewTaskForm'
 
-export default function CreateTask() {
+export default function CreateTask({ user }) {
     const navigate = useNavigate();
-    const localcookiJarUser = localStorage.getItem("cookijar_user");
-    const cookijarUserObject = JSON.parse(localcookiJarUser)
 
     const [task, setTask] = useState({
-        userId: cookijarUserObject.id,
+        userId: user.id,
         taskDescription: "",
-        typeId: "",
-        typeId: "",
         points: "",
-        startDate: "",
-        startDate: "",
-        completedDate: "",
         completed: false
     });
-
-    const [type, setType] = useState({
-        id: "",
-        type: ""
-    })
-
-
 
     const onFormSubmit = (evt) => {
         evt.preventDefault();
 
         const newTask = {
-            userId: cookijarUserObject.id,
+            userId: user.id,
             taskDescription: task.taskDescription,
-            typeId: parseInt(type.id),
             points: parseInt(task.points),
-            startDate: task.startDate,
-            completedDate: "",
             completed: false
         }
-        return fetch(`http://localhost:8088/tasks?userId=${cookijarUserObject.id}`, {
+        return fetch(`http://localhost:8088/tasks?userId=${user.id}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(task),
+            body: JSON.stringify(newTask),
         }).then(() => {
             window.alert('You got this!')
             navigate("/tasks");
         });
     };
-
     return (
         <>
-            <Card>
-                <Card.Header as="h2">Add a  new Task</Card.Header>
-                <Card.Body>
-
-                    <TaskForm
-                        task={task}
-                        setTask={setTask}
-                        type={type}
-                        setType={setType}
-
-                        onSubmit={onFormSubmit}
-                    />
-                </Card.Body>
-            </Card>
+            <TaskForm
+                onSubmit={onFormSubmit}
+                task={task}
+                setTask={setTask}
+            />
         </>
     );
 }

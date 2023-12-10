@@ -1,44 +1,83 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card'
-import { useNavigate } from "react-router-dom"
-import { useState, useEffect } from "react"
-import { ButtonAction } from './ButtonAction';
-import Logo from '../img/logo.svg'
+import ListGroup from 'react-bootstrap/ListGroup';
+import { Outlet, useNavigate } from 'react-router-dom';
+import TaskList from '../tasks/TaskList';
+import Button from 'react-bootstrap/Button';
+import CreateTask from '../tasks/CreateTask';
 
-export const Header = () => {
-  const [points, setPoints] = useState(0);
-  const localcookiJarUser = localStorage.getItem("cookijar_user")
-  const cookijarUserObject = JSON.parse(localcookiJarUser)
+export default function Header({ user }) {
+  const [userPoints, setUserPoints] = useState(0);
+  const [showTaskList, setShowTaskList] = useState(true);
+  const [showTaskForm, setShowTaskForm] = useState(false);
 
 
   const getMyPoints = () => {
-    fetch(`http://localhost:8088/tasks?userId=${cookijarUserObject.id}&completed=true`)
+    fetch(`http://localhost:8088/users/${user.id}`)
       .then((res) => res.json())
-      .then(res => JSON.stringify(setPoints(res.map(res => res.points).reduce((acc, curr) => acc + curr))))
-  }
+      .then((data) => {
+        setUserPoints(data.userPoints);
+      });
+  };
+
+  const awardPoints = (task) => {
+    const sendToApi = {
+      userPoints: parseInt(userPoints) + parseInt(task.points),
+    };
+    fetch(`http://localhost:8088/users/${user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(sendToApi),
+    }).then(() => {
+      getMyPoints();
+    });
+  };
 
   useEffect(() => {
-    getMyPoints()
-  }, [])
+    getMyPoints();
+  }, []);
 
-  return <>
-    <Card bg="light" style={{ width: '100%', position: "relative", paddingBlock: ".5rem", justifyContent: "center", alignContent: "space-around", textAlign: "center" }}>
-      <Card.Img variant="top" src={Logo} width="700rem" height="700rem" />
-      <Card variant="light" className="header">
-        <Card.Title>
-          <h1>Welcome, {cookijarUserObject.name}!</h1>
-        </Card.Title>
-        <Card.Subtitle>
-          <h3>
-            You have {parseInt(points)} points!
-          </h3>
-        </Card.Subtitle>
-      </Card>
+  const handleTaskListClick = () => {
+    setShowTaskList(!showTaskList);
+  };
 
-    </Card>
+  const handleNewTaskClick = () => {
+    setShowTaskForm(!showTaskForm);
+  };
 
-  </>
+  return (
+    <>
+      <Container className="header">
+        <ListGroup>
+          <ListGroup.Item>
+            <h1>{user.name}'s To-Do List</h1>
+            <h3>You have {parseInt(userPoints)} points!</h3>
+          </ListGroup.Item>
+        </ListGroup>
+        <Outlet />
+        <>
+          <Button
+            onClick={handleNewTaskClick}>
+            + New Task
+          </Button>
+          {showTaskForm && (
+            <CreateTask
+              user={user}
+            />
+          )}
+          <Button onClick={handleTaskListClick}>Tasks</Button>
+          {showTaskList && (
+            <TaskList
+              user={user}
+              awardPoints={awardPoints}
+              getMyPoints={getMyPoints}
+            />
+          )}
+        </>
+      </Container>
+    </>
+  )
 }
-export default Header;
