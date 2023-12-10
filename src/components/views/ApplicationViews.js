@@ -32,7 +32,7 @@ export default function ApplicationViews() {
                         <Route path="/rewards" element={<Rewards />} />
                     </Routes>
                 </Container>
-            </div>
+            </div >
         </>
     );
 }
