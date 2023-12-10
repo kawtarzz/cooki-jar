@@ -6,7 +6,8 @@ import TaskList from "../tasks/TaskList";
 import Rewards from '../rewards/Rewards';
 import { Outlet } from 'react-router-dom';
 import CreateTask from "../tasks/CreateTask"
-import EditTask from "../tasks/EditTask";
+import EditTask from "../tasks/EditTask"
+
 
 export default function ApplicationViews() {
     const localcookiJarUser = localStorage.getItem("cookijar_user");
@@ -20,18 +21,13 @@ export default function ApplicationViews() {
                     <Routes>
                         <Route
                             path="/"
-                            element={
-                                <Header
-                                    user={user}
-                                />
-                            }
+                            element={<Header user={user} />}
                         >
                             <Route index element={<Outlet />} />
                         </Route>
-                        <Route path="/tasks" element={<TaskList />} >
-                            <Route index element={<TaskList />} />
-                            <Route path="/tasks/new" element={<CreateTask />} />
-                        </Route>
+                        <Route path="/tasks/new" element={<CreateTask />} />
+                        <Route path="/tasks" element={<TaskList />} />
+                        <Route path="/tasks/:id" element={<EditTask />} />
 
                         <Route path="/rewards" element={<Rewards />} />
                     </Routes>
@@ -41,4 +37,3 @@ export default function ApplicationViews() {
     );
 }
 
-// <Route path="/tasks/:id/edit" element={<EditTask />} />

@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import TaskForm from "./NewTaskForm.js"
+import "./tasks.css";
+import TaskForm from './NewTaskForm'
 
-export default function CreateTask() {
+export default function CreateTask({ user }) {
     const navigate = useNavigate();
-    const localcookiJarUser = localStorage.getItem("cookijar_user");
-    const user = JSON.parse(localcookiJarUser)
 
     const [task, setTask] = useState({
         userId: user.id,
@@ -37,10 +36,9 @@ export default function CreateTask() {
     return (
         <>
             <TaskForm
+                onSubmit={onFormSubmit}
                 task={task}
                 setTask={setTask}
-                onSubmit={onFormSubmit}
-                key={task.id}
             />
         </>
     );

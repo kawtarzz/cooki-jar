@@ -26,7 +26,7 @@ export default function EditTask() {
             },
             body: JSON.stringify(task),
         }).then(() => {
-            navigate("/tasks");
+            navigate("/");
         })
     };
     if (!task) {
@@ -34,12 +34,11 @@ export default function EditTask() {
     }
     return (
         <>
-            <h1>Edit {task.id}</h1>
+            <h3>Edit {task.id}</h3>
             <TaskForm
                 task={task}
                 setTask={setTask}
                 onSubmit={onFormSubmit}
-                key={task.id}
             />
         </>
     );

@@ -5,11 +5,13 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Outlet, useNavigate } from 'react-router-dom';
 import TaskList from '../tasks/TaskList';
 import Button from 'react-bootstrap/Button';
+import CreateTask from '../tasks/CreateTask';
 
-export const Header = ({ user }) => {
+export default function Header({ user }) {
   const [userPoints, setUserPoints] = useState(0);
-  const [showTaskList, setShowTaskList] = useState(false);
-  const navigate = useNavigate();
+  const [showTaskList, setShowTaskList] = useState(true);
+  const [showTaskForm, setShowTaskForm] = useState(false);
+
 
   const getMyPoints = () => {
     fetch(`http://localhost:8088/users/${user.id}`)
@@ -42,6 +44,10 @@ export const Header = ({ user }) => {
     setShowTaskList(!showTaskList);
   };
 
+  const handleNewTaskClick = () => {
+    setShowTaskForm(!showTaskForm);
+  };
+
   return (
     <>
       <Container className="header">
@@ -52,24 +58,26 @@ export const Header = ({ user }) => {
           </ListGroup.Item>
         </ListGroup>
         <Outlet />
-        <Button
-          variant="secondary"
-          href="/tasks/new"
-        >
-          + New Task
-        </Button>
-        <Button onClick={handleTaskListClick}>Tasks</Button>
-        {showTaskList && (
-          <TaskList
-            user={user}
-            awardPoints={awardPoints}
-            getMyPoints={getMyPoints}
-          />
-        )}
-
+        <>
+          <Button
+            onClick={handleNewTaskClick}>
+            + New Task
+          </Button>
+          {showTaskForm && (
+            <CreateTask
+              user={user}
+            />
+          )}
+          <Button onClick={handleTaskListClick}>Tasks</Button>
+          {showTaskList && (
+            <TaskList
+              user={user}
+              awardPoints={awardPoints}
+              getMyPoints={getMyPoints}
+            />
+          )}
+        </>
       </Container>
     </>
-  );
-};
-
-export default Header;
+  )
+}

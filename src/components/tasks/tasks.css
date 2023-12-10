@@ -13,11 +13,8 @@
 .task__list {
   text-align: justify;
   display: flex;
-  flex-direction: column;
-  flex-wrap:wrap;
-  align-items: center;
-  padding: 1.5%;
-  margin: 1rem 0.5rem;
+  flex-direction: row;
+  max-width: 30rem;
   justify-content: center;
 }
 

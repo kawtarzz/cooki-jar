@@ -3,7 +3,6 @@ import ApplicationViews from './components/views/ApplicationViews'
 import { Authorized } from './components/views/Authorized'
 import { Login } from './components/auth/Login'
 import { Register } from './components/auth/Register'
-import TaskList from './components/tasks/TaskList'
 
 export const App = () => {
 
