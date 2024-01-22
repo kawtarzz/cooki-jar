@@ -3,7 +3,7 @@
     {
       "email": "molly@email.com",
       "name": "Molly",
-      "userPoints": 135,
+      "userPoints": 115,
       "id": 1
     },
     {
@@ -67,7 +67,7 @@
       "userId": 1,
       "taskDescription": "clean your room",
       "points": 5,
-      "completed": true,
+      "completed": false,
       "id": 3
     },
     {
@@ -83,6 +83,20 @@
       "points": 10,
       "completed": false,
       "id": 5
+    },
+    {
+      "userId": 1,
+      "taskDescription": "paint the bathroom!",
+      "points": 30,
+      "completed": false,
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "taskDescription": "f",
+      "points": null,
+      "completed": false,
+      "id": 7
     }
   ],
   "rewards": [
@@ -91,14 +105,14 @@
       "userId": 1,
       "rewardsDescription": "get an ice cream",
       "points": 5,
-      "redeemed": false
+      "redeemed": true
     },
     {
       "id": 2,
       "userId": 1,
       "rewardsDescription": "take a break",
       "points": 10,
-      "redeemed": false
+      "redeemed": true
     },
     {
       "id": 3,
@@ -111,8 +125,132 @@
       "id": 4,
       "userId": 1,
       "rewardsDescription": "watch a movie",
-      "points": 0,
+      "points": 20,
       "redeemed": false
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "rewardsDescription": "go to the park",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "rewardsDescription": "go to the beach",
+      "points": 10,
+      "redeemed": false
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "rewardsDescription": "go to the zoo",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "rewardsDescription": "go to the aquarium",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "rewardsDescription": "go to the museum",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "rewardsDescription": "go to the movies",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "rewardsDescription": "go to the mall",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "rewardsDescription": "go to the arcade",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "rewardsDescription": "go to the pool",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "rewardsDescription": "go to the park",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "rewardsDescription": "go to the park",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "rewardsDescription": "go to the park",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "rewardsDescription": "go to the park",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "rewardsDescription": "go to the park",
+      "points": 40,
+      "redeemed": false
+    },
+    {
+      "userId": 1,
+      "points": 10,
+      "redeemed": false,
+      "id": 19
+    },
+    {
+      "userId": 1,
+      "points": 10,
+      "redeemed": false,
+      "id": 20
+    },
+    {
+      "userId": 1,
+      "rewardsDescription": "test reward 1",
+      "points": 10,
+      "redeemed": true,
+      "id": 21
+    },
+    {
+      "userId": 1,
+      "rewardsDescription": "test reward 2",
+      "points": 20,
+      "redeemed": true,
+      "id": 22
     }
   ],
   "types": [

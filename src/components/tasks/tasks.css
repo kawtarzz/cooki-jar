@@ -1,9 +1,9 @@
-.list__header {
+/* .list__header {
   display: flex;
   flex-wrap: wrap;
   background: #fffcb0;
   text-align: center;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: bold;
   align-items: center;
   padding: 1rem 1rem;
@@ -23,7 +23,8 @@
   flex-wrap: wrap;
   background: #a6bfff(253, 242, 145);
   text-align: center;
-  font-family: 'Roboto' Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: "Roboto" Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
   font-style: bold;
   align-items: center;
   justify-content: center;
@@ -42,5 +43,4 @@
 .list__row {
   display: flex;
   flex-wrap: wrap;
-
-}
+} */

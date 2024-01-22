@@ -1,28 +1,25 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e8f1ff;
-  font-family: 'Roboto';
-  color: rgb(15, 5, 70);
+  background-color: #74a9ff;
+  font-family: "Roboto";
+  color: rgb(13, 6, 48);
 }
 
 .task__list {
-  background-color: #ecf9ff;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .task {
-  background-color: #ecf9ff;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .centered-bg {
   background-position: center center;
   background-repeat: no-repeat;
@@ -30,8 +27,8 @@ body {
 }
 
 code {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
 
@@ -42,86 +39,22 @@ HTML CSS Result Skip Results Iframe body {
   flex-wrap: wrap;
 }
 
-/* generic styling for the quote */
-#text::before {
-  content: "\"";
-}
-
-#text::after {
-  content: "\"";
-}
-
-#title::after {
-  content: " said:";
-  font-size: 20px;
-}
-
 a {
-  color: rgb(4, 0, 255);
+  color: rgb(188, 33, 162);
 }
 
 a:hover {
   color: rgb(255, 204, 0);
 }
 
-.card header {
-  background: linear-gradient(white, white 33px, pink 35px, pink 36px);
-  height: 36px;
+.section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
-.card-title {
-  position: relative;
-  left: 10px;
-  top: 10px;
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.card-text {
-  position: relative;
-  top: 20px;
-  font-size: 22px;
-  margin: 0 20px;
-  line-height: 20px;
-}
-
-.margin {
-  width: 49px;
-  height: 100%;
-}
-
-.l-margin {
-  float: left;
-  border-right: 2px solid pink;
-}
-
-.r-margin {
-  float: right;
-  border-left: 1px solid pink;
-}
-
-/* Styling for hole punches */
-.l-margin {
-  position: relative;
-}
-
-.hole {
-  height: 20px;
-  width: 20px;
-  background-color: #555;
-  border-radius: 50%;
-  position: absolute;
-  left: 15px;
-}
-
-.first-hole {
-  top: 30px;
-}
-
-.second-hole {
-  top: 50%;
-}
-
-.third-hole {
-  bottom: 30px;
+.container {
+  padding: 0 1rem;
+  margin: 0 auto;
 }

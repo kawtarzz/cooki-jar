@@ -2,76 +2,21 @@
   text-align: center;
 }
 
-h1 {
-  font-family: 'Cambria';
-  color: rgb(0, 0, 0);
-  font-size: relative;
-  justify-content: center;
-}
-
-h2 {
-  font-family: 'Cambria';
-  color: rgb(0, 0, 0);
-  font-size: relative;
-}
-
-h3 {
-  font-family: 'Verdana';
-  color: rgb(0, 0, 0);
-  font-size: relative;
-}
-
-h4,
-h5 {
-  font-family: 'Verdana';
-  color: rgb(0, 0, 0);
-  font-size: relative;
-}
-
 .navbar-brand {
   display: flex;
   align-items: center;
 }
 
-.navbar-brand>img {
+.navbar-brand > img {
   padding: 5px 1px;
 }
 
-
-
-.cardContainer {
+.home {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
+  background-color: #e1e158;
   font-size: calc(10px + 2vmin);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-body {
-  min-height: 80vh;
-  display: grid;
-  grid-template-rows: 1fr auto;
-}
-
-footer {
-  margin-top: auto;
-}
-
-.button__tasks {
-  background-color: #03004F;
-  border: 1px solid rgb(0, 6, 26);
-  color: #03004f;
-  padding: 6px 24px;
-  margin: 3rem 1rem;
-  display: inline-block;
-  font-size: 18px;
+  color: rgb(6, 4, 33);
 }

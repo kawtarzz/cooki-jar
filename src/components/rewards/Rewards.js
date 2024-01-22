@@ -1,80 +1,89 @@
-import { useEffect, useState } from "react"
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import { useEffect, useState } from "react";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import { Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
-const RewardsList = () => {
-    const [rewards, setRewards] = useState([]);
-    const [myPoints, setMyPoints] = useState(0);
-    const pointsNeeded = rewards.points;
+const RewardsList = ({ user }) => {
+  const [rewards, setRewards] = useState([]);
+  const myPoints = user.userPoints;
 
-    const localcookiJarUser = localStorage.getItem("cookijar_user");
-    const cookijarUserObject = JSON.parse(localcookiJarUser);
+  const getMyRewards = () => {
+    fetch(`http://localhost:8088/rewards`)
+      .then((response) => response.json())
+      .then(setRewards);
+  };
 
-    const getMyRewards = () => {
-        fetch(`http://localhost:8088/rewards`)
-            .then((response) => response.json())
-            .then(setRewards)
-    };
-
-    const getMyPoints = () => {
-        fetch(`http://localhost:8088/users/${cookijarUserObject.id}`)
-            .then((res) => res.json())
-            .then(res => JSON.stringify(setMyPoints(res.points)))
+  const redeemReward = (rewardId, pointsNeeded) => {
+    console.log(rewardId, pointsNeeded, myPoints);
+    if (myPoints >= pointsNeeded) {
+      fetch(`http://localhost:8088/rewards/${rewardId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          redeemed: true,
+        }),
+      })
+        .then(() => {
+          fetch(`http://localhost:8088/users/${user.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userPoints: myPoints - pointsNeeded,
+            }),
+          });
+        })
+        .then(() => {
+          getMyRewards();
+        });
+      window.alert("You have redeemed this reward!");
+    } else {
+      alert("You don't have enough points to redeem this reward.");
     }
+  };
+  useEffect(() => {
+    getMyRewards();
+  }, []);
 
-    const redeemReward = (rewardId, myPoints, rewardPoints) => {
-        if (myPoints >= rewardPoints) {
-            fetch(`http://localhost:8088/rewards/${rewardId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    redeemed: true
-                })
-            }).then(() => {
-                fetch(`http://localhost:8088/users/${cookijarUserObject.id}`, {
-                    method: "PATCH",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        points: cookijarUserObject.points - rewardPoints
-                    })
-                }).then(() => {
-                    getMyPoints()
-                    getMyRewards()
-                    window.alert("You redeemed a reward!")
-                })
-            })
-        } else {
-            window.alert("You don't have enough points for that reward!")
-        }
-    }
-    useEffect(() => {
-        getMyRewards()
-    }, [])
+  return (
+    <>
+      <Container fluid>
+        <Row className="justify-content-md-center">
+          <h2>Rewards</h2>
+          {rewards.map((reward) => {
+            if (reward.userId === user.id && reward.redeemed === false) {
+              return (
+                <Col key={reward.id}>
+                  <Card>
+                    <Card.Title>
+                      <h5>{reward.rewardsDescription}</h5>
+                    </Card.Title>
 
-    return (
-        <>
-            <h2>Rewards</h2>
-            <Card className="rewards">
-                {rewards.map((reward) => {
-                    if (reward.userId === cookijarUserObject.id && reward.redeemed === false) {
-                        return (
-                            <Card.Body key={reward.id}>
-                                <Card.Title>{reward.rewardsDescription}</Card.Title>
-                                <Card.Text>{reward.points}</Card.Text>
-                                <Button variant="primary" onClick={() => redeemReward(reward.id, myPoints, reward.points)}>Redeem</Button>
-                            </Card.Body>
-                        )
-                    } else {
-                        return null
-                    }
-                })}
-            </Card>
-        </>)
-}
-
+                    <Card.Text>
+                      <p>{reward.points}</p>
+                    </Card.Text>
+                    <Button
+                      variant="primary"
+                      onClick={() => redeemReward(reward.id, reward.points)}
+                    >
+                      Redeem
+                    </Button>
+                  </Card>
+                </Col>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </Row>
+      </Container>
+    </>
+  );
+};
 
 export default RewardsList;
