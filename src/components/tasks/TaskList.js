@@ -3,10 +3,8 @@ import { Button, ButtonGroup, Card } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 
-export default function TaskList({ getMyPoints, awardPoints }) {
+export default function TaskList({ user, awardPoints }) {
   const [tasks, setTasks] = useState([]);
-  const localcookiJarUser = localStorage.getItem("cookijar_user");
-  const user = JSON.parse(localcookiJarUser);
 
   const getMyTasks = () => {
     fetch(`http://localhost:8088/tasks?userId=${user.id}&completed=false`)
@@ -51,49 +49,41 @@ export default function TaskList({ getMyPoints, awardPoints }) {
   }, []);
 
   return (
-    <Container fluid>
-      <Row className="justify-content-md-center">
-        {tasks.map((task) => {
-          return (
-            <>
+    <>
+      <Container fluid>
+        <Row className="justify-content-md-center">
+          <h2>Tasks</h2>
+
+          {tasks.map((task) => {
+            return (
               <Col key={task.id}>
                 <Card>
-                  <Card.Body>
-                    <Card.Title>{task.taskDescription}</Card.Title>
-                    <Card.Text>
-                      Point Value:
-                      {task.points}
-                      {""}
-                    </Card.Text>
-                    <br />
-                    <ButtonGroup bsSize="x-s">
-                      <Button variant="secondary" href={`/tasks/${task.id}`}>
-                        Edit Task
-                      </Button>
-                      <Button
-                        variant="success"
-                        onClick={() => {
-                          setCompletedTask(task);
-                        }}
-                      >
-                        Completed
-                      </Button>
-                      <Button
-                        variant="danger"
-                        onClick={() => {
-                          deleteTask(task.id);
-                        }}
-                      >
-                        Delete
-                      </Button>
-                    </ButtonGroup>
-                  </Card.Body>
+                  {task.taskDescription}
+                  Point Value:
+                  {task.points}
+                  {""}
+                  <Button
+                    onClick={() => {
+                      setCompletedTask(task);
+                    }}
+                  >
+                    {" "}
+                    Completed{" "}
+                  </Button>
+                  <Button
+                    variant="danger"
+                    onClick={() => {
+                      deleteTask(task.id);
+                    }}
+                  >
+                    Delete{" "}
+                  </Button>
                 </Card>
               </Col>
-            </>
-          );
-        })}
-      </Row>
-    </Container>
+            );
+          })}
+        </Row>
+      </Container>
+    </>
   );
 }
