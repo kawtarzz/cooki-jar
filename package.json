@@ -1,7 +1,7 @@
 {
   "name": "cooki-jar",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
+  "private": false,
   "dependencies": {
     "@popperjs/core": "^2.11.7",
     "@testing-library/jest-dom": "^5.16.5",
@@ -24,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "vercel-build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +43,14 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "vercel": {
+    "builds": [
+      {
+        "src": "vercel-build",
+        "use": "@vercel/static-build"
+      }
     ]
   }
 }
