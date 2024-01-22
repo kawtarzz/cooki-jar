@@ -1,51 +1,61 @@
-// import { click } from "@testing-library/user-event/dist/click"
-// import { useState } from "react"
-// import { json, useNavigate } from "react-router-dom"
-// import RewardsList from "./Rewards.js"
-// import { FormControl } from "react-bootstrap"
-// import { Card } from "react-bootstrap"
-// import CardHeader from "react-bootstrap/esm/CardHeader.js"
-// import { useEffect } from "react"
+import { Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
-// export const RewardsForm = ({ reward, setReward, submitReward }) => {
-//     const [rewards, setRewards] = useState();
-//     const localcookiJarUser = localStorage.getItem("cookijar_user")
-//     const cookijarUserObject = JSON.parse(localcookiJarUser)
-
-//     useEffect(() => {
-//         fetch(`http://localhost:8088/rewards?userId=${cookijarUserObject.id}&redeemed=false`)
-//             .then((res) => res.json())
-//             .then((res) => JSON.stringify(setRewards))
-//     }, [])
-
-
-//     return (<>
-//         <Card>
-//             <Card.Header className="reward__header">
-//                 Add New Reward
-//             </Card.Header>
-//             <Card.Body>
-//                 <form>
-//                     <fieldset>
-//                         <div className="reward__list">
-//                             <label htmlFor="rewardDescription">
-//                                 Reward Description:
-//                             </label>
-//                             <input required autoFocus type="text"
-//                                 className="form-control"
-//                                 placeholder="short reward description"
-//                                 value={reward.rewardsDescription}
-//                                 onChange={(event) => {
-//                                     setRewards({ ...reward, rewardsDescription: event.target.value })
-//                                 }} />
-//                         </div>
-
-//                     </fieldset>
-//                 </form>
-
-//             </Card.Body>
-//         </Card>
-//     </>
-
-//     )
-// }
+export const RewardsForm = ({ reward, setReward, submitReward }) => {
+  return (
+    <>
+      <Card className="reward-form">
+        <Card.Header className="reward__header">
+          <h2>Add New reward</h2>
+        </Card.Header>
+        <Card.Body className="reward__list">
+          <form>
+            <fieldset>
+              <div className="reward__list">
+                <label htmlFor="rewardDescription">Reward Description:</label>
+                <input
+                  required
+                  autoFocus
+                  type="text"
+                  className="form-control"
+                  placeholder="short reward description"
+                  value={reward.rewardsDescription}
+                  onChange={(e) => {
+                    setReward({
+                      ...reward,
+                      rewardsDescription: e.target.value,
+                    });
+                  }}
+                />
+              </div>
+            </fieldset>
+            <fieldset>
+              <div className="rewards__list">
+                <label htmlFor="reward-points">Enter Point Value:</label>
+                <input
+                  required
+                  autoFocus
+                  type="text"
+                  className="form-control"
+                  placeholder="point value"
+                  value={reward.points}
+                  onChange={(e) => {
+                    setReward({ ...reward, points: e.target.value });
+                  }}
+                />
+              </div>
+            </fieldset>
+            <Button
+              type="submit"
+              value="Save"
+              variant="primary"
+              onClick={submitReward}
+            >
+              Save
+            </Button>
+          </form>
+        </Card.Body>
+      </Card>
+    </>
+  );
+};

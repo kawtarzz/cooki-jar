@@ -1,65 +1,49 @@
-import { useState } from "react"
-import RewardsList from "./Rewards.js"
+import { useState } from "react";
+import { RewardsForm } from "./RewardsForm";
+import { useNavigate } from "react-router-dom";
 
-function CreateReward() {
+export default function CreateReward({ user }) {
   const navigate = useNavigate();
-  const localcookiJarUser = localStorage.getItem("cookijar_user");
-  const cookijarUserObject = JSON.parse(localcookiJarUser)
-  /*
-      TODO: Add the correct default properties to the
-      initial state object
-      */
+
   const [reward, update] = useState({
-    userId: cookijarUserObject.id,
+    userId: user.id,
     rewardsDescription: "",
     points: "",
     redeemed: false,
-  })
-  /*
-  TODO: Use the useNavigation() hook so you can redirect
-  the user to the reward list
-  */
+  });
 
   const submitReward = (event) => {
-    event.preventDefault()
-
-    // TODO: Create the object to be saved to the API
+    event.preventDefault();
 
     const rewardToSendToAPI = {
-      userId: cookijarUserObject.id,
-      rewardsDescription: reward.description,
+      userId: user.id,
+      rewardsDescription: reward.rewardsDescription,
       points: parseInt(reward.points),
-      redeemed: false
-    }
-    // TODO: Perform the fetch() to POST the object to the API
-    return fetch(`http://localhost:8088/rewards?userId=${cookijarUserObject.id}`, {
+      redeemed: false,
+    };
+    return fetch(`http://localhost:8088/rewards?userId=${user.id}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(rewardToSendToAPI)
+      body: JSON.stringify(rewardToSendToAPI),
     })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(() => {
-        navigate("/rewards")
-      })
-  }
+        navigate("/");
+      });
+  };
 
   return (
-
-    <> <div className="reward__header">
-
-      {/* <RewardsForm
-        reward={reward}
-        setReward={update}
-
-        submitReward={submitReward}
-      /> */}
-    </div>
-
+    <>
+      {" "}
+      <div className="reward__header">
+        <RewardsForm
+          reward={reward}
+          setReward={update}
+          submitReward={submitReward}
+        />
+      </div>
     </>
-
-  )
+  );
 }
-
-
