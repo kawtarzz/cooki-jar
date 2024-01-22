@@ -3,7 +3,7 @@
     {
       "email": "molly@email.com",
       "name": "Molly",
-      "userPoints": 115,
+      "userPoints": 75,
       "id": 1
     },
     {
@@ -154,7 +154,7 @@
       "userId": 1,
       "rewardsDescription": "go to the aquarium",
       "points": 40,
-      "redeemed": false
+      "redeemed": true
     },
     {
       "id": 9,

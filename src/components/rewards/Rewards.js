@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import { Row } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import CreateReward from "./CreateReward";
 
 const RewardsList = ({ user }) => {
   const [rewards, setRewards] = useState([]);
@@ -16,7 +17,6 @@ const RewardsList = ({ user }) => {
   };
 
   const redeemReward = (rewardId, pointsNeeded) => {
-    console.log(rewardId, pointsNeeded, myPoints);
     if (myPoints >= pointsNeeded) {
       fetch(`http://localhost:8088/rewards/${rewardId}`, {
         method: "PATCH",
@@ -64,9 +64,7 @@ const RewardsList = ({ user }) => {
                       <h5>{reward.rewardsDescription}</h5>
                     </Card.Title>
 
-                    <Card.Text>
-                      <p>{reward.points}</p>
-                    </Card.Text>
+                    <Card.Text>{reward.points}</Card.Text>
                     <Button
                       variant="primary"
                       onClick={() => redeemReward(reward.id, reward.points)}

@@ -9,6 +9,7 @@ import CreateTask from "../tasks/CreateTask";
 import RewardsList from "../rewards/Rewards";
 import CreateReward from "../rewards/CreateReward";
 import "../../App.css";
+import Col from "react-bootstrap/Col";
 
 export default function Header({ user }) {
   const [userPoints, setUserPoints] = useState(0);
@@ -62,30 +63,34 @@ export default function Header({ user }) {
 
   return (
     <>
-      <div className="header container">
+      <div className="home section">
         <ListGroup>
           <ListGroup.Item>
             <h1>{user.name}'s To-Do List</h1>
             <h3>You have {parseInt(userPoints)} points!</h3>
           </ListGroup.Item>
         </ListGroup>
-      </div>
-      <div className="home section">
         <Outlet />
-        <Button onClick={handleNewTaskClick}>+ New Task</Button>
-        {showTaskForm && <CreateTask user={user} />}
-        <Button onClick={handleTaskListClick}>Tasks</Button>
-        {showTaskList && (
-          <TaskList
-            user={user}
-            awardPoints={awardPoints}
-            getMyPoints={getMyPoints}
-          />
-        )}
-        <Button onClick={handleNewRewardClick}>+ New Reward</Button>
-        {showRewardForm && <CreateReward user={user} />}
-        <Button onClick={handleRewardsClick}>Rewards</Button>
-        {showRewardsList && <RewardsList user={user} />}
+        <Container fluid className="p-0">
+          <Col>
+            <Button onClick={handleNewTaskClick}>+ New Task</Button>
+            {showTaskForm && <CreateTask user={user} />}
+            <Button onClick={handleTaskListClick}>Tasks</Button>
+            {showTaskList && (
+              <TaskList
+                user={user}
+                awardPoints={awardPoints}
+                getMyPoints={getMyPoints}
+                handleTaskListClick={handleTaskListClick}
+                handleNewTaskClick={handleNewTaskClick}
+              />
+            )}
+            <Button onClick={handleNewRewardClick}>+ New Reward</Button>
+            {showRewardForm && <CreateReward user={user} />}
+            <Button onClick={handleRewardsClick}>Rewards</Button>
+            {showRewardsList && <RewardsList user={user} />}
+          </Col>
+        </Container>
       </div>
     </>
   );
