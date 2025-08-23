@@ -3,10 +3,10 @@ import { Navigate, useLocation } from "react-router-dom"
 export const Authorized = ({ children }) => {
     const location = useLocation()
 
-    const cookijar_user = localStorage.getItem("cookijar_user")
-    const cookijar_guest = localStorage.getItem("cookijar_guest")
+    const user = localStorage.getItem("cookijar_user")
+    const guestMode = localStorage.getItem("cookijar_guest_mode")
 
-    if (cookijar_user || cookijar_guest) {
+    if (user || guestMode) {
         return children
     }
     else {
@@ -16,4 +16,3 @@ export const Authorized = ({ children }) => {
             state={{ location }} />
     }
 }
-

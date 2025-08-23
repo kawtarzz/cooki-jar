@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./tasks.css";
 import TaskForm from "./NewTaskForm";
 
-export default function CreateTask({ user }) {
+export default function CreateTask({ user, isGuest = false }) {
   const navigate = useNavigate();
 
   const [task, setTask] = useState({
@@ -22,17 +22,35 @@ export default function CreateTask({ user }) {
       points: parseInt(task.points),
       completed: false,
     };
-    return fetch(`http://localhost:8088/tasks?userId=${user.id}`, {
+
+    if (isGuest) {
+      window.alert("Task created! (Guest mode - changes won't be saved)");
+      navigate("/");
+      return;
+    }
+
+    return fetch(`http://localhost:8088/api/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newTask),
-    }).then(() => {
-      window.alert("You got this!");
-      navigate("/");
-    });
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to create task');
+      }
+      return response.json();
+    })
+      .then(() => {
+        window.alert("You got this!");
+        navigate("/");
+      })
+      .catch(error => {
+        console.error('Error creating task:', error);
+        window.alert("Error creating task. Please try again.");
+      });
   };
+
   return (
     <>
       <TaskForm
@@ -40,6 +58,7 @@ export default function CreateTask({ user }) {
         onSubmit={onFormSubmit}
         task={task}
         setTask={setTask}
+        isGuest={isGuest}
       />
     </>
   );
