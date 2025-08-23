@@ -4,7 +4,6 @@ import { Button, Form, Container, Card } from 'react-bootstrap';
 
 export default function Login() {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -13,7 +12,7 @@ export default function Login() {
       const response = await fetch('/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email })
       });
 
       if (response.ok) {
@@ -52,16 +51,6 @@ export default function Login() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </Form.Group>
