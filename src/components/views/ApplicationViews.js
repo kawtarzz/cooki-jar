@@ -16,14 +16,17 @@ export default function ApplicationViews() {
 
   useEffect(() => {
     const localcookiJarUser = localStorage.getItem("cookijar_user");
-    const guestMode = localStorage.getItem("cookijar_guest_mode");
 
     if (localcookiJarUser) {
       const parsedUser = JSON.parse(localcookiJarUser);
       setUser(parsedUser);
-      setIsGuest(guestMode === 'true');
-      console.log('User:', parsedUser, 'Guest mode:', guestMode === 'true');
+      console.log('User:', parsedUser);
     }
+  }, []);
+
+  useEffect(() => {
+    const guestMode = localStorage.getItem("cookijar_guest_mode");
+    setIsGuest(guestMode === "true");
   }, []);
 
   const handleLogout = () => {
@@ -34,9 +37,14 @@ export default function ApplicationViews() {
     window.location.href = '/login';
   };
 
-  if (!user) {
-    return <div>Loading...</div>;
+
+  const handlePointsUpdate = (points) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      userPoints: prevUser.userPoints + points,
+    }));
   }
+
 
   return (
     <>
@@ -57,7 +65,7 @@ export default function ApplicationViews() {
               <Route index element={<Outlet />} />
             </Route>
             <Route path="/tasks/new" element={<CreateTask user={user} isGuest={isGuest} />} />
-            <Route path="/tasks" element={<TaskList user={user} isGuest={isGuest} />} />
+            <Route path="/tasks" element={<TaskList user={user} isGuest={isGuest} onPointsUpdate={handlePointsUpdate} />} />
             <Route path="/tasks/:id" element={<EditTask user={user} isGuest={isGuest} />} />
 
             <Route path="/rewards" element={<RewardsList user={user} isGuest={isGuest} />} />
