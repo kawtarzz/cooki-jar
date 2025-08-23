@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Card } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import { Row, Col } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 export default function TaskList({ user, awardPoints }) {
   const [tasks, setTasks] = useState([]);
@@ -50,40 +48,43 @@ export default function TaskList({ user, awardPoints }) {
 
   return (
     <>
-      <Container fluid>
-        <Row className="justify-content-md-center">
-          <h2>Tasks</h2>
-
-          {tasks.map((task) => {
-            return (
-              <Col key={task.id}>
-                <Card>
-                  {task.taskDescription}
-                  Point Value:
-                  {task.points}
-                  {""}
-                  <Button
-                    onClick={() => {
-                      setCompletedTask(task);
-                    }}
-                  >
-                    {" "}
-                    Completed{" "}
-                  </Button>
-                  <Button
-                    variant="danger"
-                    onClick={() => {
-                      deleteTask(task.id);
-                    }}
-                  >
-                    Delete{" "}
-                  </Button>
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      {tasks.map((task) => {
+        return (
+          <Card key={task.id} className="mb-4">
+            <Card.Header>{task.taskDescription}{" "}</Card.Header>
+            <Card.Body>
+              <Card.Text>
+                Point Value: {task.points}
+              </Card.Text>
+              <div className="d-flex gap-2">
+                <Button variant="outline-success"
+                  size="sm"
+                  onClick={() => {
+                    setCompletedTask(task);
+                  }}>
+                  Completed{" "}
+                </Button>
+                <Button
+                  variant="outline-primary"
+                  size="sm"
+                  href={`/tasks/${task.id}/edit`}
+                >
+                  Edit{" "}
+                </Button>
+                <Button
+                  variant="outline-danger"
+                  size="sm"
+                  onClick={() => {
+                    deleteTask(task.id);
+                  }}
+                >
+                  Delete{" "}
+                </Button>
+              </div>
+            </Card.Body>
+          </Card>
+        );
+      })}
     </>
   );
 }

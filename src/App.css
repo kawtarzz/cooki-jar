@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.navbar-brand > img {
+.navbar-brand>img {
   padding: 5px 1px;
 }
 
@@ -16,7 +16,6 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  background-color: #e1e158;
   font-size: calc(10px + 2vmin);
   color: rgb(6, 4, 33);
 }

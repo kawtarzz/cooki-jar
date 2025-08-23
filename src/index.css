@@ -1,60 +1,110 @@
+:root {
+  --primary-color: #4361EE;
+  --primary-color-dark: #1F3BC0;
+  --light: #FFFFFF;
+  --light-2: #eff1fe;
+  --light-3: #d5dbfb;
+  --dark-1: #101c5e;
+  --dark-2: #2d3979;
+  --dark-3: #474e6b;
+
+  --secondary-color: #f0f0f0;
+  --accent-color: #ffb400;
+  --highlight-color: #c3eaff;
+  --text-color: #060421;
+
+  --background-color: #fbfdff;
+  --border-radius: 6px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition-duration: 0.3s;
+
+  --font-family: 'Roboto', sans-serif;
+
+  --font-size-h1: clamp(2.5rem, 6vw, 3rem);
+  --font-size-h2: clamp(2.25rem, 5vw, 2.5rem);
+  --font-size-h3: clamp(2rem, 4vw, 2.0625rem);
+  --font-size-h4: clamp(1.75rem, 3vw, 1.75rem);
+  --font-size-h5: clamp(1.4375rem, 2.5vw, 1.4375rem);
+  --font-size-h6: clamp(1.1875rem, 2vw, 1.1875rem);
+  --font-size-body-big: clamp(1rem, 2vw, 1.125rem);
+  --font-size-body: clamp(1rem, 1.5vw, 1rem);
+  --font-size-body-small: clamp(0.875rem, 1vw, 0.875rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #74a9ff;
-  font-family: "Roboto";
-  color: rgb(13, 6, 48);
-}
-
-.task__list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.task {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.centered-bg {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-code {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-}
-
-HTML CSS Result Skip Results Iframe body {
-  background-color: #ecf9ff;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 a {
-  color: rgb(188, 33, 162);
+  text-decoration: none;
+  color: inherit;
 }
 
 a:hover {
-  color: rgb(255, 204, 0);
+  color: var(--primary-color-dark);
 }
 
-.section {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 0 auto;
+h1 {
+  font-size: var(--font-size-h1);
+  margin: 0;
+  font-weight: 700;
+  color: var(--dark-1);
+  text-align: center;
 }
 
-.container {
-  padding: 0 1rem;
-  margin: 0 auto;
+h2 {
+  font-size: var(--font-size-h2);
+  margin: 0;
+  font-weight: 700;
+  color: var(--dark-1);
+  text-align: center;
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  margin: 0;
+  font-weight: 700;
+  color: var(--dark-1);
+  text-align: center;
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  margin: 0;
+  font-weight: 700;
+  color: var(--dark-1);
+  text-align: center;
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+  margin: 0;
+  font-weight: 700;
+  color: var(--dark-1);
+  text-align: center;
+}
+
+p {
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  color: var(--text-color);
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--light);
+  transition: background-color var(--transition-duration);
 }

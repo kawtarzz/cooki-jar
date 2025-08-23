@@ -7,22 +7,19 @@ import RewardsList from "../rewards/Rewards";
 import { Outlet } from "react-router-dom";
 import CreateTask from "../tasks/CreateTask";
 import EditTask from "../tasks/EditTask";
-import { useEffect } from "react";
 import CreateReward from "../rewards/CreateReward";
 
 export default function ApplicationViews() {
   const localcookiJarUser = localStorage.getItem("cookijar_user");
-  const user = JSON.parse(localcookiJarUser);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  const localcookiJarGuest = localStorage.getItem("cookijar_guest");
+  const user = JSON.parse(localcookiJarUser || localcookiJarGuest);
 
   return (
     <>
       <div className="App">
         <NavigationBar user={user} />
         <Container fluid className="p-0">
+
           <Routes>
             <Route path="/" element={<Header user={user} />}>
               <Route index element={<Outlet />} />
