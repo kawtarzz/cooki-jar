@@ -64,7 +64,7 @@ app.get('/api/tasks', (req, res) => {
 
  let tasks = db.tasks;
  if (userId) {
-  tasks = tasks.filter(task => task.userId == userId);
+  tasks = tasks.filter(task => task.userId === userId);
  }
 
  res.json(tasks);
@@ -105,7 +105,7 @@ app.put('/api/tasks/:id', (req, res) => {
   db.tasks[taskIndex] = { ...db.tasks[taskIndex], ...req.body };
 
   if (req.body.completed && db.tasks[taskIndex].points) {
-   const user = db.users.find(u => u.id == db.tasks[taskIndex].userId);
+   const user = db.users.find(u => u.id === db.tasks[taskIndex].userId);
    if (user) {
     user.userPoints = (user.userPoints || 0) + db.tasks[taskIndex].points;
    }
@@ -145,7 +145,7 @@ app.get('/api/rewards', (req, res) => {
 
  let rewards = db.rewards;
  if (userId) {
-  rewards = rewards.filter(reward => reward.userId == userId);
+  rewards = rewards.filter(reward => reward.userId === userId);
  }
 
  res.json(rewards);
@@ -184,7 +184,7 @@ app.put('/api/rewards/:id/redeem', (req, res) => {
  const reward = db.rewards.find(r => r.id === req.params.id);
 
  if (reward) {
-  const user = db.users.find(u => u.id == reward.userId);
+  const user = db.users.find(u => u.id === reward.userId);
 
   if (user && user.userPoints >= reward.points) {
    user.userPoints -= reward.points;
@@ -208,13 +208,11 @@ app.get('/api/types', (req, res) => {
  res.json(db.types);
 });
 
-// Root endpoint to serve entire database (for development)
 app.get('/api/database', (req, res) => {
  const db = readDatabase();
  res.json(db);
 });
 
-// Health check
 app.get('/api/health', (req, res) => {
  res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });

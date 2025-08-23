@@ -1,21 +1,21 @@
-const database = require('../../cooki-jar-api/database.json');
+// const database = require('../../cooki-jar-api/database.json');
 
 
-const pointsManager = () => {
-  const points = 0;
+// const pointsManager = () => {
+//   const points = 0;
 
-  const addPoints = (amount) => {
-    points += amount;
-  };
+//   const addPoints = (amount) => {
+//     points += amount;
+//   };
 
-  const getPoints = () => points;
+//   const getPoints = () => points;
 
-  return {
-    addPoints,
-    getPoints,
-  };
-};
+//   return {
+//     addPoints,
+//     getPoints,
+//   };
+// };
 
-export default pointsManager;
+// export default pointsManager;
 
-// Path: components/tasks/TaskList.js
+// // Path: components/tasks/TaskList.js
