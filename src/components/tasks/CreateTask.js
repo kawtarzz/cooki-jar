@@ -13,8 +13,8 @@ export default function CreateTask({ user }) {
     completed: false,
   });
 
-  const onFormSubmit = (evt) => {
-    evt.preventDefault();
+  const onFormSubmit = (e) => {
+    e.preventDefault();
 
     const newTask = {
       userId: user.id,

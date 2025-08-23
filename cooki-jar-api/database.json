@@ -3,56 +3,56 @@
     {
       "email": "molly@email.com",
       "name": "Molly",
-      "userPoints": 75,
-      "id": 1
+      "userPoints": null,
+      "id": "1"
     },
     {
       "email": "jerry@mydog.com",
       "name": "Jerry",
       "userPoints": 0,
-      "id": 2
+      "id": "2"
     },
     {
       "email": "",
       "name": "mir@email.com",
       "userPoints": 0,
-      "id": 3
+      "id": "3"
     },
     {
       "email": "jane@email.com",
       "name": "Jane",
       "userPoints": 0,
-      "id": 4
+      "id": "4"
     },
     {
       "email": "maria@dance.com",
       "name": "Maria",
       "userPoints": 0,
-      "id": 5
+      "id": "5"
     },
     {
       "email": "evan@coolguy.com",
       "name": "Evan",
       "userPoints": 0,
-      "id": 6
+      "id": "6"
     },
     {
       "email": "feedme123@yahoo.com",
       "name": "cookie monster",
       "userPoints": 0,
-      "id": 7
+      "id": "7"
     },
     {
       "email": "kawtaryazzouzi@gmail.com",
       "name": "Kawtar",
       "userPoints": 0,
-      "id": 8
+      "id": "8"
     },
     {
       "email": "Mom@email.com",
       "name": "Mom",
       "userPoints": 0,
-      "id": 9
+      "id": "9"
     }
   ],
   "tasks": [
@@ -61,166 +61,201 @@
       "taskDescription": "do the dishes",
       "points": 10,
       "completed": true,
-      "id": 1
+      "id": "1"
     },
     {
-      "userId": 1,
+      "userId": "1",
       "taskDescription": "clean your room",
       "points": 5,
-      "completed": false,
-      "id": 3
+      "completed": true,
+      "id": "3"
     },
     {
-      "userId": 1,
+      "userId": "1",
       "taskDescription": "do your homework",
       "points": 10,
-      "completed": false,
-      "id": 4
+      "completed": true,
+      "id": "4"
     },
     {
-      "userId": 1,
-      "taskDescription": "take out the trash",
-      "points": 10,
-      "completed": false,
-      "id": 5
-    },
-    {
-      "userId": 1,
+      "userId": "1",
       "taskDescription": "paint the bathroom!",
       "points": 30,
-      "completed": false,
-      "id": 6
+      "completed": true,
+      "id": "6"
     },
     {
       "userId": 1,
       "taskDescription": "f",
       "points": null,
       "completed": false,
-      "id": 7
+      "id": "7"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "Update Resume",
+      "points": null,
+      "completed": true,
+      "id": "b720"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "Wash my Dog",
+      "points": 10,
+      "completed": true,
+      "id": "9f52"
+    },
+    {
+      "userId": 0,
+      "taskDescription": "Walk the dog",
+      "points": null,
+      "completed": true,
+      "id": "c4d4"
+    },
+    {
+      "id": "5a1c",
+      "userId": 0,
+      "taskDescription": "Task 100000",
+      "points": null,
+      "completed": false
+    },
+    {
+      "id": "fa77",
+      "userId": 0,
+      "taskDescription": "Task 100000",
+      "points": null,
+      "completed": false
+    },
+    {
+      "id": "1d0e",
+      "userId": 0,
+      "taskDescription": "sweep",
+      "points": null,
+      "completed": false
     }
   ],
   "rewards": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "rewardsDescription": "get an ice cream",
       "points": 5,
       "redeemed": true
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 1,
       "rewardsDescription": "take a break",
       "points": 10,
       "redeemed": true
     },
     {
-      "id": 3,
+      "id": "3",
       "userId": 1,
       "rewardsDescription": "get a manicure",
       "points": 50,
       "redeemed": false
     },
     {
-      "id": 4,
+      "id": "4",
       "userId": 1,
       "rewardsDescription": "watch a movie",
       "points": 20,
       "redeemed": false
     },
     {
-      "id": 5,
+      "id": "5",
       "userId": 1,
       "rewardsDescription": "go to the park",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 6,
+      "id": "6",
       "userId": 1,
       "rewardsDescription": "go to the beach",
       "points": 10,
       "redeemed": false
     },
     {
-      "id": 7,
+      "id": "7",
       "userId": 1,
       "rewardsDescription": "go to the zoo",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 8,
+      "id": "8",
       "userId": 1,
       "rewardsDescription": "go to the aquarium",
       "points": 40,
       "redeemed": true
     },
     {
-      "id": 9,
+      "id": "9",
       "userId": 1,
       "rewardsDescription": "go to the museum",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 10,
+      "id": "10",
       "userId": 1,
       "rewardsDescription": "go to the movies",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 11,
+      "id": "11",
       "userId": 1,
       "rewardsDescription": "go to the mall",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 12,
+      "id": "12",
       "userId": 1,
       "rewardsDescription": "go to the arcade",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 13,
+      "id": "13",
       "userId": 1,
       "rewardsDescription": "go to the pool",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 14,
+      "id": "14",
       "userId": 1,
       "rewardsDescription": "go to the park",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 15,
+      "id": "15",
       "userId": 1,
       "rewardsDescription": "go to the park",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 16,
+      "id": "16",
       "userId": 1,
       "rewardsDescription": "go to the park",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 17,
+      "id": "17",
       "userId": 1,
       "rewardsDescription": "go to the park",
       "points": 40,
       "redeemed": false
     },
     {
-      "id": 18,
+      "id": "18",
       "userId": 1,
       "rewardsDescription": "go to the park",
       "points": 40,
@@ -230,44 +265,58 @@
       "userId": 1,
       "points": 10,
       "redeemed": false,
-      "id": 19
+      "id": "19"
     },
     {
       "userId": 1,
       "points": 10,
       "redeemed": false,
-      "id": 20
+      "id": "20"
     },
     {
       "userId": 1,
       "rewardsDescription": "test reward 1",
       "points": 10,
       "redeemed": true,
-      "id": 21
+      "id": "21"
     },
     {
       "userId": 1,
       "rewardsDescription": "test reward 2",
       "points": 20,
       "redeemed": true,
-      "id": 22
+      "id": "22"
+    },
+    {
+      "id": "afa9",
+      "userId": 0,
+      "rewardsDescription": "",
+      "points": null,
+      "redeemed": false
+    },
+    {
+      "id": "9877",
+      "userId": 0,
+      "rewardsDescription": "Ice cream",
+      "points": 20,
+      "redeemed": false
     }
   ],
   "types": [
     {
-      "id": 1,
+      "id": "1",
       "type": "errands"
     },
     {
-      "id": 2,
+      "id": "2",
       "type": "school"
     },
     {
-      "id": 3,
+      "id": "3",
       "type": "work"
     },
     {
-      "id": 4,
+      "id": "4",
       "type": "house chores"
     }
   ]
