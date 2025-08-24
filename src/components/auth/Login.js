@@ -29,7 +29,7 @@ export default function Login() {
     const guestUser = {
       id: 'guest',
       name: 'Guest User',
-      email: 'guest@cookiejar.com',
+      email: 'guest@email.com',
       userPoints: 0
     };
 

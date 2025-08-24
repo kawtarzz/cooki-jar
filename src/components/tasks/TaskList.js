@@ -8,7 +8,6 @@ export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Mock data for guest users
   const mockTasks = [
     {
       id: "mock-1",
@@ -35,7 +34,6 @@ export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
 
   const getMyTasks = () => {
     if (isGuest) {
-      // Use mock data for guest users
       setTasks(mockTasks);
       setLoading(false);
       return;
