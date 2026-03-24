@@ -41,6 +41,7 @@ export const RewardsForm = ({ reward, setReward, submitReward }) => {
                   value={reward.points}
                   onChange={(e) => {
                     setReward({ ...reward, points: e.target.value });
+
                   }}
                 />
               </div>

@@ -43,13 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "vercel": {
-    "builds": [
-      {
-        "src": "vercel-build",
-        "use": "@vercel/static-build"
-      }
-    ]
   }
 }

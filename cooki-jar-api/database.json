@@ -3,7 +3,7 @@
     {
       "email": "molly@email.com",
       "name": "Molly",
-      "userPoints": null,
+      "userPoints": 40,
       "id": "1"
     },
     {
@@ -57,48 +57,6 @@
   ],
   "tasks": [
     {
-      "userId": 1,
-      "taskDescription": "do the dishes",
-      "points": 10,
-      "completed": true,
-      "id": "1"
-    },
-    {
-      "userId": "1",
-      "taskDescription": "clean your room",
-      "points": 5,
-      "completed": true,
-      "id": "3"
-    },
-    {
-      "userId": "1",
-      "taskDescription": "do your homework",
-      "points": 10,
-      "completed": true,
-      "id": "4"
-    },
-    {
-      "userId": "1",
-      "taskDescription": "paint the bathroom!",
-      "points": 30,
-      "completed": true,
-      "id": "6"
-    },
-    {
-      "userId": 1,
-      "taskDescription": "f",
-      "points": null,
-      "completed": false,
-      "id": "7"
-    },
-    {
-      "userId": "1",
-      "taskDescription": "Update Resume",
-      "points": null,
-      "completed": true,
-      "id": "b720"
-    },
-    {
       "userId": "1",
       "taskDescription": "Wash my Dog",
       "points": 10,
@@ -106,39 +64,81 @@
       "id": "9f52"
     },
     {
-      "userId": 0,
-      "taskDescription": "Walk the dog",
-      "points": null,
+      "userId": "1",
+      "taskDescription": "dance",
+      "points": 0,
       "completed": true,
-      "id": "c4d4"
+      "id": "mn4zi37roq8vdkfayj"
     },
     {
-      "id": "5a1c",
-      "userId": 0,
-      "taskDescription": "Task 100000",
-      "points": null,
-      "completed": false
-    },
-    {
-      "id": "fa77",
-      "userId": 0,
-      "taskDescription": "Task 100000",
-      "points": null,
-      "completed": false
-    },
-    {
-      "id": "1d0e",
-      "userId": 0,
-      "taskDescription": "sweep",
-      "points": null,
-      "completed": false
-    },
-    {
-      "userId": "guest",
-      "taskDescription": "new task",
-      "points": 15,
+      "userId": "1",
+      "taskDescription": "walk the dog",
+      "points": 0,
       "completed": true,
-      "id": "meq42ez5i9tw5vwshxo"
+      "id": "mn4zid0bv8wl0lb09cq"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "take out the trash",
+      "points": 0,
+      "completed": false,
+      "id": "mn4zkz7d2iwzgax6tif"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "take out the trash",
+      "points": 0,
+      "completed": false,
+      "id": "mn4zljynwatox82r3rf"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "test",
+      "points": 0,
+      "completed": false,
+      "id": "mn4zmgnwgr3h2dgaboo"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "testing 2",
+      "points": 0,
+      "completed": false,
+      "id": "mn4znpa7ivj4pfmm0q"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "test 3",
+      "points": 30,
+      "completed": true,
+      "id": "mn4zpkphm2dffys9g6"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "4 test",
+      "points": 0,
+      "completed": false,
+      "id": "mn4zr6ad9jsashxynj"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "go to the beach",
+      "pointValue": null,
+      "completed": false,
+      "id": "mn4zszecm2medhwzwaj"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "TEST 5",
+      "points": 10,
+      "completed": false,
+      "id": "mn4zu65cm5b6wjcdos"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "test 6",
+      "points": 10,
+      "completed": true,
+      "id": "mn4zvdsh5hs34pvpc7p"
     }
   ],
   "rewards": [
@@ -234,79 +234,11 @@
       "redeemed": false
     },
     {
-      "id": "14",
-      "userId": 1,
-      "rewardsDescription": "go to the park",
-      "points": 40,
-      "redeemed": false
-    },
-    {
-      "id": "15",
-      "userId": 1,
-      "rewardsDescription": "go to the park",
-      "points": 40,
-      "redeemed": false
-    },
-    {
-      "id": "16",
-      "userId": 1,
-      "rewardsDescription": "go to the park",
-      "points": 40,
-      "redeemed": false
-    },
-    {
-      "id": "17",
-      "userId": 1,
-      "rewardsDescription": "go to the park",
-      "points": 40,
-      "redeemed": false
-    },
-    {
-      "id": "18",
-      "userId": 1,
-      "rewardsDescription": "go to the park",
-      "points": 40,
-      "redeemed": false
-    },
-    {
-      "userId": 1,
-      "points": 10,
+      "userId": "1",
+      "rewardsDescription": "ice cream",
+      "points": 25,
       "redeemed": false,
-      "id": "19"
-    },
-    {
-      "userId": 1,
-      "points": 10,
-      "redeemed": false,
-      "id": "20"
-    },
-    {
-      "userId": 1,
-      "rewardsDescription": "test reward 1",
-      "points": 10,
-      "redeemed": true,
-      "id": "21"
-    },
-    {
-      "userId": 1,
-      "rewardsDescription": "test reward 2",
-      "points": 20,
-      "redeemed": true,
-      "id": "22"
-    },
-    {
-      "id": "afa9",
-      "userId": 0,
-      "rewardsDescription": "",
-      "points": null,
-      "redeemed": false
-    },
-    {
-      "id": "9877",
-      "userId": 0,
-      "rewardsDescription": "Ice cream",
-      "points": 20,
-      "redeemed": false
+      "id": "mn4ziqkf0rwyan4mdxf"
     }
   ],
   "types": [

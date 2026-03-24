@@ -3,47 +3,51 @@ import { RewardsForm } from "./RewardsForm";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateReward({ user }) {
-  const navigate = useNavigate();
+ const navigate = useNavigate();
 
-  const [reward, update] = useState({
-    userId: user.id,
-    rewardsDescription: "",
-    points: "",
-    redeemed: false,
-  });
+ const [reward, setReward] = useState({
+  userId: user.id,
+  rewardsDescription: "",
+  points: "",
+  redeemed: false,
+ });
 
-  const submitReward = (event) => {
-    event.preventDefault();
+ const submitReward = (event) => {
+  event.preventDefault();
 
-    const rewardToSendToAPI = {
-      userId: user.id,
-      rewardsDescription: reward.rewardsDescription,
-      points: parseInt(reward.points),
-      redeemed: false,
-    };
-    return fetch(`http://localhost:8088/rewards?userId=${user.id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(rewardToSendToAPI),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        navigate("/");
-      });
+  const rewardToSendToAPI = {
+   userId: user.id,
+   rewardsDescription: reward.rewardsDescription,
+   points: parseInt(reward.points),
+   redeemed: false,
   };
 
-  return (
-    <>
-      {" "}
-      <div className="reward__header">
-        <RewardsForm
-          reward={reward}
-          setReward={update}
-          submitReward={submitReward}
-        />
-      </div>
-    </>
-  );
+  fetch(`http://localhost:8088/api/rewards`, {
+   method: "POST",
+   headers: { "Content-Type": "application/json" },
+   body: JSON.stringify(rewardToSendToAPI),
+  })
+   .then((res) => {
+    if (!res.ok) throw new Error("Failed to create reward");
+    return res.json();
+   })
+   .then(() => {
+    window.alert("Reward created!");
+    navigate(-1);
+   })
+   .catch((err) => {
+    console.error("Error creating reward:", err);
+    window.alert("Error creating reward. Please try again.");
+   });
+ };
+
+ return (
+  <div className="reward__header">
+   <RewardsForm
+    reward={reward}
+    setReward={setReward}
+    submitReward={submitReward}
+   />
+  </div>
+ );
 }

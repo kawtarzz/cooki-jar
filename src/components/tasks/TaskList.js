@@ -2,43 +2,15 @@ import { useEffect, useState } from "react";
 import { Button, Card, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
+// Removed isGuest prop temporarily - will reintroduce if we decide to bring back guest mode for tasks
+
+export default function TaskList({ user, onPointsUpdate }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const mockTasks = [
-    {
-      id: "mock-1",
-      userId: user.id,
-      taskDescription: "Sample Task 1 - Clean your room",
-      points: 10,
-      completed: false
-    },
-    {
-      id: "mock-2",
-      userId: user.id,
-      taskDescription: "Sample Task 2 - Do homework",
-      points: 15,
-      completed: false
-    },
-    {
-      id: "mock-3",
-      userId: user.id,
-      taskDescription: "Sample Task 3 - Walk the dog",
-      points: 5,
-      completed: false
-    }
-  ];
-
   const getMyTasks = () => {
-    if (isGuest) {
-      setTasks(mockTasks);
-      setLoading(false);
-      return;
-    }
-
     fetch(`http://localhost:8088/api/tasks?userId=${user.id}`)
       .then((res) => {
         if (!res.ok) {
@@ -60,22 +32,13 @@ export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
   };
 
   const deleteTask = (id) => {
-    if (isGuest) {
-      window.alert("Task deleted! (Guest mode - changes won't be saved)");
-      setTasks(tasks.filter(task => task.id !== id));
-
-      return;
-    }
-
     if (window.confirm("Are you sure you want to delete this task?")) {
       fetch(`http://localhost:8088/api/tasks/${id}`, {
         method: "DELETE",
       })
         .then((res) => {
-          if (!res.ok) {
-            throw new Error('Failed to delete task');
-          }
-          return res.json();
+          if (!res.ok) throw new Error('Failed to delete task');
+          return res.status !== 204 ? res.json() : null;
         })
         .then(() => {
           getMyTasks();
@@ -88,14 +51,6 @@ export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
   };
 
   const setCompletedTask = (task) => {
-    if (isGuest) {
-      window.alert(
-        `Great job ${user.name}! You would have earned ${task.points} points (Guest mode)`
-      );
-      setTasks(tasks.filter(t => t.id !== task.id));
-      return;
-    }
-
     const sendToApi = {
       userId: user.id,
       taskDescription: task.taskDescription,
@@ -119,14 +74,8 @@ export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
       })
       .then(() => {
         setTasks(tasks.filter(t => t.id !== task.id));
-
-        if (onPointsUpdate) {
-          onPointsUpdate(task.points);
-        }
-
-        window.alert(
-          `Great job ${user.name}! You have been awarded ${task.points} points!`
-        );
+        if (onPointsUpdate) onPointsUpdate();
+        window.alert(`Great job ${user.name}! You have been awarded ${task.points} points!`);
       })
       .catch((error) => {
         console.error('Error completing task:', error);
@@ -140,7 +89,7 @@ export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
 
   useEffect(() => {
     getMyTasks();
-  }, [user.id, isGuest]);
+  }, [user.id]);
 
   if (loading) {
     return <div className="text-center mt-4">Loading tasks...</div>;
@@ -160,15 +109,6 @@ export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
 
   return (
     <>
-      {
-        isGuest && (
-          <Alert variant="info" className="mb-3">
-            <strong>Guest Mode:</strong>
-            These are sample tasks. Your actions won't be permanently saved.
-          </Alert>
-        )
-      }
-
       {tasks.length === 0 ? (
         <Alert variant="success" className="text-center">
           <h4>All tasks completed! 🎉</h4>
@@ -184,7 +124,7 @@ export default function TaskList({ user, isGuest = false, onPointsUpdate }) {
 
               <Card.Header>
                 <strong>{task.taskDescription}</strong>
-                {isGuest && <span className="badge bg-secondary ms-2">Demo</span>}
+
               </Card.Header>
 
               <Card.Body>

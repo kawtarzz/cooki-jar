@@ -21,83 +21,52 @@ export default function Header({ user, isGuest = false }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // removed userPoints from deps — was causing an infinite fetch loop
   const getMyPoints = useCallback(() => {
-    if (isGuest) {
-      setUserPoints(25);
-      return;
-    }
-
     setLoading(true);
     setError(null);
 
     fetch(`http://localhost:8088/api/users/${user.id}`)
       .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch user points');
-        }
+        if (!res.ok) throw new Error("Failed to fetch user points");
         return res.json();
       })
       .then((data) => {
         setUserPoints(data.userPoints || 0);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error('Error fetching points:', error);
-        setError(error.message);
+      .catch((err) => {
+        console.error("Error fetching points:", err);
+        setError(err.message);
         setLoading(false);
-        setUserPoints(userPoints);
       });
-  }, [isGuest, user, userPoints]);
+  }, [user]); //  removed isGuest and userPoints
 
-  const awardPoints = (task) => {
+  const awardPoints = useCallback((task) => {
     const newPoints = parseInt(userPoints) + parseInt(task.points);
-
-    if (isGuest) {
-      setUserPoints(newPoints);
-      return;
-    }
-
-    const sendToApi = {
-      userPoints: newPoints,
-    };
 
     fetch(`http://localhost:8088/api/users/${user.id}`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(sendToApi),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userPoints: newPoints }),
     })
       .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to update points');
-        }
+        if (!res.ok) throw new Error("Failed to update points");
         return res.json();
       })
       .then(() => {
         getMyPoints();
       })
-      .catch((error) => {
-        console.error('Error updating points:', error);
-        setUserPoints(newPoints);
+      .catch((err) => {
+        console.error("Error updating points:", err);
+        setUserPoints(newPoints); // optimistic fallback
       });
-  };
+  }, [user, userPoints, getMyPoints]);
 
-  const handlePointsUpdate = (points) => {
-    const newPoints = parseInt(userPoints) + parseInt(points);
-    setUserPoints(newPoints);
-
-    if (!isGuest) {
-      const updatedUser = { ...user, userPoints: newPoints };
-      localStorage.setItem('cookijar_user', JSON.stringify(updatedUser));
-    }
-  };
-
+  //  was calling fetchPoints() — function doesn't exist, renamed to getMyPoints
   useEffect(() => {
-    if (user) {
-      getMyPoints();
-    }
-  }, [user, isGuest, getMyPoints]);
+    if (user) getMyPoints();
+  }, [user, getMyPoints]); // getMyPoints added to deps
 
   const handleTaskListClick = () => {
     setShowTaskList(!showTaskList);
@@ -138,14 +107,8 @@ export default function Header({ user, isGuest = false }) {
           <ListGroup.Item>
             <div className="d-flex justify-content-between align-items-center">
               <div>
-                <h1>
-                  {user.name}'s To-Do List
-                  {isGuest && <span className="badge bg-info ms-2">Guest Mode</span>}
-                </h1>
-                <h3>
-                  You have {loading ? '...' : parseInt(userPoints)} points!
-                  {isGuest && <small className="text-muted"> (Demo)</small>}
-                </h3>
+                <h1>{user.name}'s To-Do List</h1>
+                <h3>You have {loading ? "..." : parseInt(userPoints)} points!</h3>
               </div>
               {error && (
                 <Alert variant="warning" className="mb-0">
@@ -155,14 +118,6 @@ export default function Header({ user, isGuest = false }) {
             </div>
           </ListGroup.Item>
         </ListGroup>
-
-        {isGuest && (
-          <Alert variant="info" className="mt-3">
-            <strong>Welcome to Guest Mode!</strong> You're exploring a demo version of Cookie Jar.
-            Your changes won't be permanently saved.
-            <a href="/login" className="alert-link ms-2">Create an account to save your progress!</a>
-          </Alert>
-        )}
 
         <Outlet />
 
@@ -200,31 +155,25 @@ export default function Header({ user, isGuest = false }) {
 
             {showTaskForm && (
               <div className="mb-4">
-                <CreateTask user={user} isGuest={isGuest} />
+                <CreateTask user={user} />
               </div>
             )}
 
             {showTaskList && (
               <div className="mb-4">
-                <TaskList
-                  user={user}
-                  isGuest={isGuest}
-                  onPointsUpdate={handlePointsUpdate}
-                  awardPoints={awardPoints}
-                  getMyPoints={getMyPoints}
-                />
+                <TaskList user={user} onPointsUpdate={getMyPoints} />
               </div>
             )}
 
             {showRewardForm && (
               <div className="mb-4">
-                <CreateReward user={user} isGuest={isGuest} />
+                <CreateReward user={user} />
               </div>
             )}
 
             {showRewardsList && (
               <div className="mb-4">
-                <RewardsList user={user} isGuest={isGuest} userPoints={userPoints} />
+                <RewardsList user={user} userPoints={userPoints} />
               </div>
             )}
           </Col>

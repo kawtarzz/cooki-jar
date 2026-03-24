@@ -1,6 +1,6 @@
 {
  "name": "cookiejar-api",
- "version": "1.0.0",
+ "version": "2.0.0",
  "description": "API server for Cookie Jar application",
  "main": "server.js",
  "scripts": {

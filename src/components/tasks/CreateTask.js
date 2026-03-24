@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./tasks.css";
 import TaskForm from "./NewTaskForm";
 
-export default function CreateTask({ user, isGuest = false }) {
+export default function CreateTask({ user }) {
   const navigate = useNavigate();
 
   const [task, setTask] = useState({
@@ -11,6 +11,7 @@ export default function CreateTask({ user, isGuest = false }) {
     taskDescription: "",
     points: "",
     completed: false,
+    id: "",
   });
 
   const onFormSubmit = (e) => {
@@ -21,13 +22,10 @@ export default function CreateTask({ user, isGuest = false }) {
       taskDescription: task.taskDescription,
       points: parseInt(task.points),
       completed: false,
+      id: task.id,
     };
 
-    if (isGuest) {
-      window.alert("Task created! (Guest mode - changes won't be saved)");
-      navigate("/");
-      return;
-    }
+
 
     return fetch(`http://localhost:8088/api/tasks`, {
       method: "POST",
@@ -58,7 +56,7 @@ export default function CreateTask({ user, isGuest = false }) {
         onSubmit={onFormSubmit}
         task={task}
         setTask={setTask}
-        isGuest={isGuest}
+
       />
     </>
   );
