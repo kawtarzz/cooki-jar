@@ -132,6 +132,13 @@
       "taskDescription": "sweep",
       "points": null,
       "completed": false
+    },
+    {
+      "userId": "guest",
+      "taskDescription": "new task",
+      "points": 15,
+      "completed": true,
+      "id": "meq42ez5i9tw5vwshxo"
     }
   ],
   "rewards": [
