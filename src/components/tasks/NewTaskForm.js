@@ -1,7 +1,7 @@
 import { Button, Container, Form, Card } from "react-bootstrap";
 import "./tasks.css";
 
-export default function TaskForm({ onSubmit, task, setTask, isGuest = false }) {
+export default function TaskForm({ onSubmit, task, setTask }) {
   return (
     <>
       <Container className="mt-4 mb-4">
@@ -9,7 +9,7 @@ export default function TaskForm({ onSubmit, task, setTask, isGuest = false }) {
           <Card.Header className="task__header">
             <Card.Text>
               {task.id ? 'Edit Task' : 'Add New Task'}
-              {isGuest && <small className="text-muted"> (Guest Mode)</small>}
+              {/* {isGuest && <small className="text-muted"> (Guest Mode)</small>} */}
             </Card.Text>
           </Card.Header>
           <Card.Body>
@@ -33,31 +33,28 @@ export default function TaskForm({ onSubmit, task, setTask, isGuest = false }) {
               <fieldset>
                 <div className="task__list">
                   <label htmlFor="points">Set Point Value:</label>
-                  <select
-                    name="points"
+                  <input
+                    required
+                    autoFocus
+                    type="text"
                     className="form-control"
+                    placeholder="Enter Point Value"
                     value={task.points || "5"}
                     onChange={(e) => {
                       setTask({ ...task, points: e.target.value });
                     }}
-                  >
-                    <option value="">Select Points</option>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                  </select>
+                  />
+
                 </div>
               </fieldset>
-              {isGuest && (
+              {/* {isGuest && (
                 <div className="alert alert-warning mt-3">
                   <small>
                     <i className="bi bi-info-circle"></i>
                     Guest mode: This task won't be permanently saved
                   </small>
                 </div>
-              )}
+              )} */}
               <div className="d-flex gap-2 mt-3">
                 <Button
                   type="submit"

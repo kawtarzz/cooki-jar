@@ -107,4 +107,38 @@ button {
   background-color: var(--primary-color);
   color: var(--light);
   transition: background-color var(--transition-duration);
+  max-width: 200px;
+}
+
+/* rewards section */
+
+.rewards__container {
+  margin-top: 2rem;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.rewards__row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+}
+
+.reward__card {
+  text-align: center;
+  color: bisque;
+  border: 1px dotted rgb(38, 38, 122);
+  padding: 2rem 0.7rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  min-width: 300px;
+  min-height: 200px;
 }

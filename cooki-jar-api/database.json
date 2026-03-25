@@ -1,128 +1,93 @@
 {
   "users": [
     {
+      "id": "1",
       "email": "molly@email.com",
       "name": "Molly",
-      "userPoints": 40,
-      "id": "1"
+      "userPoints": 40
     },
     {
+      "id": "2",
       "email": "jerry@mydog.com",
       "name": "Jerry",
-      "userPoints": 0,
-      "id": "2"
+      "userPoints": 0
     },
     {
+      "id": "3",
       "email": "",
       "name": "mir@email.com",
-      "userPoints": 0,
-      "id": "3"
+      "userPoints": 0
     },
     {
+      "id": "4",
       "email": "jane@email.com",
       "name": "Jane",
-      "userPoints": 0,
-      "id": "4"
+      "userPoints": 0
     },
     {
+      "id": "5",
       "email": "maria@dance.com",
       "name": "Maria",
-      "userPoints": 0,
-      "id": "5"
+      "userPoints": 0
     },
     {
+      "id": "6",
       "email": "guest@email.com",
       "name": "Guest",
-      "userPoints": 0,
-      "id": "6"
+      "userPoints": 0
     },
     {
+      "id": "7",
       "email": "feedme123@yahoo.com",
       "name": "cookie monster",
-      "userPoints": 0,
-      "id": "7"
+      "userPoints": 0
     },
     {
+      "id": "8",
       "email": "kawtaryazzouzi@gmail.com",
       "name": "Kawtar",
-      "userPoints": 0,
-      "id": "8"
+      "userPoints": 0
     },
     {
+      "id": "9",
       "email": "Mom@email.com",
       "name": "Mom",
-      "userPoints": 0,
-      "id": "9"
+      "userPoints": 0
     }
   ],
   "tasks": [
     {
       "userId": "1",
-      "taskDescription": "Wash my Dog",
+      "taskDescription": "take out the trash",
       "points": 10,
       "completed": true,
-      "id": "9f52"
-    },
-    {
-      "userId": "1",
-      "taskDescription": "dance",
-      "points": 0,
-      "completed": true,
-      "id": "mn4zi37roq8vdkfayj"
-    },
-    {
-      "userId": "1",
-      "taskDescription": "walk the dog",
-      "points": 0,
-      "completed": true,
-      "id": "mn4zid0bv8wl0lb09cq"
-    },
-    {
-      "userId": "1",
-      "taskDescription": "take out the trash",
-      "points": 0,
-      "completed": false,
       "id": "mn4zkz7d2iwzgax6tif"
     },
     {
       "userId": "1",
-      "taskDescription": "take out the trash",
-      "points": 0,
-      "completed": false,
-      "id": "mn4zljynwatox82r3rf"
-    },
-    {
-      "userId": "1",
       "taskDescription": "test",
-      "points": 0,
-      "completed": false,
+      "points": 10,
+      "completed": true,
       "id": "mn4zmgnwgr3h2dgaboo"
     },
     {
       "userId": "1",
       "taskDescription": "testing 2",
-      "points": 0,
+      "points": 30,
       "completed": false,
       "id": "mn4znpa7ivj4pfmm0q"
     },
     {
       "userId": "1",
-      "taskDescription": "test 3",
-      "points": 30,
-      "completed": true,
-      "id": "mn4zpkphm2dffys9g6"
-    },
-    {
-      "userId": "1",
       "taskDescription": "4 test",
-      "points": 0,
+      "points": 30,
       "completed": false,
       "id": "mn4zr6ad9jsashxynj"
     },
     {
       "userId": "1",
       "taskDescription": "go to the beach",
-      "pointValue": null,
+      "points": 10,
       "completed": false,
       "id": "mn4zszecm2medhwzwaj"
     },
@@ -130,15 +95,36 @@
       "userId": "1",
       "taskDescription": "TEST 5",
       "points": 10,
-      "completed": false,
+      "completed": true,
       "id": "mn4zu65cm5b6wjcdos"
     },
     {
       "userId": "1",
-      "taskDescription": "test 6",
-      "points": 10,
+      "taskDescription": "Study",
+      "points": 5,
+      "completed": false,
+      "id": "mn63afx2hkqznickgd"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "Make Cold Brew",
+      "points": 5,
+      "completed": false,
+      "id": "mn64zjtck2f9zj94bod"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "test 8",
+      "points": 5,
+      "completed": false,
+      "id": "mn658m4vfpo3kg0wcjq"
+    },
+    {
+      "userId": "1",
+      "taskDescription": "Laundry",
+      "points": 15,
       "completed": true,
-      "id": "mn4zvdsh5hs34pvpc7p"
+      "id": "mn65bgc97zeolf2n4aa"
     }
   ],
   "rewards": [
@@ -234,11 +220,32 @@
       "redeemed": false
     },
     {
+      "id": "mn4ziqkf0rwyan4mdxf",
       "userId": "1",
       "rewardsDescription": "ice cream",
       "points": 25,
+      "redeemed": true
+    },
+    {
+      "id": "mn63oxthpplbpo529v",
+      "userId": "1",
+      "rewardsDescription": "Go to the movies",
+      "points": 25,
+      "redeemed": true
+    },
+    {
+      "userId": "1",
+      "rewardsDescription": "Starbucks",
+      "points": 5,
+      "redeemed": true,
+      "id": "mn67bz033e0hu6923xh"
+    },
+    {
+      "userId": "1",
+      "rewardsDescription": "Get an Ice Cream",
+      "points": 10,
       "redeemed": false,
-      "id": "mn4ziqkf0rwyan4mdxf"
+      "id": "mn67oauvtd5a85t8uoq"
     }
   ],
   "types": [
