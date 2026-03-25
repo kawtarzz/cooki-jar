@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Alert } from "react-bootstrap";
+import { Button, Card, Alert, Container, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { API_ENDPOINTS } from "../../api/config";
 
 // Removed isGuest prop temporarily - will reintroduce if we decide to bring back guest mode for tasks
 
@@ -11,23 +12,15 @@ export default function TaskList({ user, onPointsUpdate }) {
   const navigate = useNavigate();
 
   const getMyTasks = () => {
-    fetch(`http://localhost:8088/api/tasks?userId=${user.id}`)
+    fetch(API_ENDPOINTS.TASKS + `?userId=${user.id}`)
       .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch tasks');
-        }
+        if (!res.ok) throw new Error("Failed to fetch tasks");
         return res.json();
       })
-      .then((allTasks) => {
-        const incompleteTasks = allTasks.filter(task => !task.completed);
-
-        setTasks(incompleteTasks);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching tasks:', error);
-        setError(error.message);
-        setLoading(false);
+      .then(setTasks)
+      .catch((err) => {
+        console.error("Error fetching tasks:", err);
+        window.alert("Error loading tasks. Please try again.");
       });
   };
 
@@ -59,18 +52,14 @@ export default function TaskList({ user, onPointsUpdate }) {
       id: task.id,
     };
 
-    fetch(`http://localhost:8088/api/tasks/${task.id}`, {
+    fetch(API_ENDPOINTS.TASKS + `/${task.id}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(sendToApi),
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to complete task');
-        }
-        return response.json();
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to complete task");
+        return res.json();
       })
       .then(() => {
         setTasks(tasks.filter(t => t.id !== task.id));
@@ -83,18 +72,13 @@ export default function TaskList({ user, onPointsUpdate }) {
       });
   };
 
+  useEffect(() => {
+    getMyTasks();
+  }, []);
+
   const handleEditTask = (taskId) => {
     navigate(`/tasks/${taskId}`);
   };
-
-  useEffect(() => {
-    getMyTasks();
-  }, [user.id]);
-
-  if (loading) {
-    return <div className="text-center mt-4">Loading tasks...</div>;
-  }
-
   if (error) {
     return (
       <Alert variant="danger" className="mt-4">
@@ -108,65 +92,51 @@ export default function TaskList({ user, onPointsUpdate }) {
   }
 
   return (
-    <>
-      {tasks.length === 0 ? (
-        <Alert variant="success" className="text-center">
-          <h4>All tasks completed! 🎉</h4>
-          <p>Great job! You don't have any pending tasks.</p>
-          <Button variant="primary" onClick={() => navigate("/tasks/new")}>
-            Add New Task
-          </Button>
-        </Alert>
-      ) : (
-        tasks.map((task) => {
-          return (
-            <Card key={task.id} className="mb-4">
+    <Container fluid className="tasks__container">
+      <h2 className="section-title">Tasks</h2>
+      <Row className="justify-content-md-center tasks__row">
 
-              <Card.Header>
-                <strong>{task.taskDescription}</strong>
+        {tasks.length === 0 ? (
+          <Card className="text-center mt-4">
+            <Alert variant="success" className="text-center">
+              <Card.Img variant="top" src="/assets/celebration.png" style={{ width: "150px", margin: "0 auto" }} />
+              <Card.Title>
+                Congratulations {user.name}!
+              </Card.Title>
+              <Card.Text>
+                You've completed all your tasks! 🎉
+              </Card.Text>
+              <Button variant="primary" onClick={() => navigate("/tasks/new")}>
+                Add New Task
+              </Button>
+            </Alert>
+          </Card>
+        ) : (
+          tasks.map((task) => {
+            return (
+              <Col key={task.id} xs={12} md={6} lg={4} className="mb-4">
+                <Card className="task__card">
+                  <Card.Body>
+                    <Card.Title>{task.taskDescription}</Card.Title>
+                    <Card.Text>Points: {task.points}</Card.Text>
+                    <div className="d-flex gap-2">
+                      <Button variant="outline-success" onClick={() => setCompletedTask(task)}>
+                        Completed
 
-              </Card.Header>
-
-              <Card.Body>
-                <Card.Text>
-                  <strong>
-                    Point Value:
-                  </strong> {task.points || 0} points
-                </Card.Text>
-                <div className="d-flex gap-2">
-                  <Button
-                    variant="success"
-                    size="sm"
-                    onClick={() => {
-                      setCompletedTask(task);
-                    }}
-                  >
-                    Complete
-                  </Button>
-
-                  <Button
-                    variant="outline-primary"
-                    size="sm"
-                    onClick={() => handleEditTask(task.id)}
-                  >
-                    Edit
-                  </Button>
-
-                  <Button
-                    variant="outline-danger"
-                    size="sm"
-                    onClick={() => {
-                      deleteTask(task.id);
-                    }}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          );
-        })
-      )}
-    </>
-  );
+                      </Button>
+                      <Button variant="outline-primary" onClick={() => handleEditTask(task.id)}>
+                        Edit
+                      </Button>
+                      <Button variant="outline-danger" onClick={() => deleteTask(task.id)}>
+                        Delete
+                      </Button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })
+        )}
+      </Row>
+    </Container>);
 }
