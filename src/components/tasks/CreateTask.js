@@ -22,7 +22,7 @@ export default function CreateTask({ user }) {
       const newTask = {
         userId: user.id,
         taskDescription: task.taskDescription,
-        points: parseInt(task.points),
+        points: task.points,
         completed: false,
         id: task.id,
       };
@@ -33,13 +33,15 @@ export default function CreateTask({ user }) {
         },
         body: JSON.stringify(newTask),
       }).then((response) => {
+        console.log("Create Task Response:", response);
+        console.log("new Task", newTask);
         if (!response.ok) {
           throw new Error("Failed to create task");
         }
         return response.json();
       }).then(() => {
         window.alert("You got this!");
-        navigate("/");
+        navigate("/tasks");
       })
         .catch((error) => {
           console.error("Error creating task:", error);

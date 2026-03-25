@@ -7,7 +7,6 @@ import { API_ENDPOINTS } from "../../api/config";
 
 export default function TaskList({ user, onPointsUpdate }) {
   const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -19,14 +18,14 @@ export default function TaskList({ user, onPointsUpdate }) {
       })
       .then(setTasks)
       .catch((err) => {
-        console.error("Error fetching tasks:", err);
+
         window.alert("Error loading tasks. Please try again.");
       });
   };
 
   const deleteTask = (id) => {
     if (window.confirm("Are you sure you want to delete this task?")) {
-      fetch(`http://localhost:8088/api/tasks/${id}`, {
+      fetch(API_ENDPOINTS.TASKS + `/${id}`, {
         method: "DELETE",
       })
         .then((res) => {
@@ -37,7 +36,7 @@ export default function TaskList({ user, onPointsUpdate }) {
           getMyTasks();
         })
         .catch((error) => {
-          console.error('Error deleting task:', error);
+
           window.alert("Error deleting task. Please try again.");
         });
     }
@@ -92,7 +91,7 @@ export default function TaskList({ user, onPointsUpdate }) {
   }
 
   return (
-    <Container fluid className="tasks__container">
+    <Container fluid className="tasks__container mt-4">
       <h2 className="section-title">Tasks</h2>
       <Row className="justify-content-md-center tasks__row">
 

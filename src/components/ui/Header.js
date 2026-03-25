@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
-import ListGroup from "react-bootstrap/ListGroup";
 import { Outlet } from "react-router-dom";
 import TaskList from "../tasks/TaskList";
 import Button from "react-bootstrap/Button";
@@ -13,7 +12,7 @@ import "../../App.css";
 import Col from "react-bootstrap/Col";
 import { API_ENDPOINTS } from "../../api/config";
 
-export default function Header({ user, isGuest = false }) {
+export default function Header({ user }) {
   const [userPoints, setUserPoints] = useState(0);
   const [showTaskList, setShowTaskList] = useState(true);
   const [showTaskForm, setShowTaskForm] = useState(false);

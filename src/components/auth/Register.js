@@ -1,51 +1,55 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { API_ENDPOINTS } from "../../api/config";
+import { Container } from "react-bootstrap";
+import "./Login.css";
 
 export const Register = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
+    id: "",
     email: "",
     name: "",
     userPoints: 0,
   });
-  let navigate = useNavigate();
 
-  const registerNewUser = () => {
-    return fetch("http://localhost:8088/users", {
+  const submitUser = (event) => {
+    event.preventDefault();
+
+    const newUserToAPI = {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      userPoints: 0,
+    };
+
+    fetch(API_ENDPOINTS.USERS, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUserToAPI),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("API response status:", res.status);
+        if (!res.ok) throw new Error("Failed to create user");
+        return res.json();
+      })
       .then((createdUser) => {
-        if (createdUser.hasOwnProperty("id")) {
-          localStorage.setItem(
-            "cookijar_user",
-            JSON.stringify({
-              id: createdUser.id,
-              name: createdUser.name,
-              email: createdUser.email,
-              userPoints: createdUser.userPoints,
-            })
-          );
-          navigate("/");
-        }
-      });
-  };
-
-  const handleRegister = (e) => {
-    e.preventDefault();
-    return fetch(`http://localhost:8088/users?email=${user.email}`)
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.length > 0) {
-          // Duplicate email. No good.
-          window.alert("Account with that email address already exists");
-        } else {
-          // Good email, create user.
-          registerNewUser();
-        }
+        localStorage.setItem(
+          "cookijar_user",
+          JSON.stringify({
+            id: createdUser.id,
+            name: createdUser.name,
+            email: createdUser.email,
+            userPoints: createdUser.userPoints,
+          })
+        );
+        window.alert(`Welcome to cookiJar, ${createdUser.name}!`);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.error("Error creating user:", err);
+        window.alert("Error creating user. Please try again.");
       });
   };
 
@@ -56,40 +60,40 @@ export const Register = () => {
   };
 
   return (
-    <main style={{ textAlign: "center" }}>
-      <form className="form--login" onSubmit={handleRegister}>
-        <h1 className="h3 mb-3 font-weight-normal">
-          Please Register for cookiJar{" "}
-        </h1>
-        <fieldset>
-          <label htmlFor="name"> Name: </label>
-          <input
-            onChange={updateUser}
-            type="text"
-            id="name"
-            className="form-control"
-            placeholder="Whats your name?"
-            required
-            autoFocus
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputEmail"> Email address: </label>
-          <input
-            onChange={updateUser}
-            type="text"
-            id="email"
-            className="form-control"
-            placeholder="Email address"
-            required
-            autoFocus
-          />
-        </fieldset>
-
-        <fieldset>
-          <button type="submit"> Register </button>
-        </fieldset>
-      </form>
-    </main>
+    <>
+      <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+        <form className="form--login" onSubmit={submitUser}>
+          <h1 className="h3 mb-3 font-weight-normal">
+            Please Register for cookiJar
+          </h1>
+          <fieldset>
+            <label htmlFor="name">Name:</label>
+            <input
+              onChange={updateUser}
+              type="text"
+              id="name"
+              className="form-control"
+              placeholder="What's your name?"
+              required
+              autoFocus
+            />
+          </fieldset>
+          <fieldset>
+            <label htmlFor="email">Email address:</label>
+            <input
+              onChange={updateUser}
+              type="email"
+              id="email"
+              className="form-control"
+              placeholder="Email address"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <button type="submit">Register</button>
+          </fieldset>
+        </form>
+      </Container>
+    </>
   );
-};
+}

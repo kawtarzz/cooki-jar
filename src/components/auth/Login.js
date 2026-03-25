@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { Button, Card, Form, Container } from "react-bootstrap";
-import { API_ENDPOINTS } from "../../api/config";
 import logo from "../img/logo.svg";
 import Icon from "../img/logo-icon.svg";
+import { API_ENDPOINTS } from "../../api/config";
 
 export default function Login() {
   const [email, setEmail] = useState("molly@email.com");
@@ -16,33 +16,30 @@ export default function Login() {
     try {
       const res = await fetch(API_ENDPOINTS.LOGIN, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+        headers
+          : {
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({ email }),
       });
 
-      if (res.ok) {
-        const user = await res.json();
-        console.log("User found:", user);
+      if (!res.ok) throw new Error("Invalid login");
 
-        localStorage.setItem(
-          "cookijar_user",
-          JSON.stringify({
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            userPoints: user.userPoints,
-          })
-        );
-        navigate("/");
-        window.alert("Welcome back " + user.name + "!");
-      } else {
-        window.alert("Invalid login. Please Try again.");
-      }
+      const user = await res.json();
+
+      localStorage.setItem(
+        "cookijar_user",
+        JSON.stringify({
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          userPoints: user.userPoints,
+        })
+      );
+      navigate("/");
     } catch (error) {
-      console.error("Login error:", error);
-      window.alert("An error occurred. Please try again.");
+      console.log("Login error", error);
+      window.alert("Login failed. Please check your email and try again.");
     }
   };
 
@@ -71,10 +68,10 @@ export default function Login() {
               width="auto"
               height="450px"
               className="mx-auto d-block align-center"
-            />{" "}
+            />
             <fieldset>
               <label htmlFor="inputEmail">
-                <h5>Email address: </h5>
+                <h5>Email address:</h5>
               </label>
               <input
                 type="email"
@@ -88,7 +85,7 @@ export default function Login() {
             </fieldset>
             <Button type="submit" className="button-1">
               Sign in
-            </Button>{" "}
+            </Button>
             <br /> <hr /> <br />
             <Button
               type="button"
@@ -98,34 +95,33 @@ export default function Login() {
               Create an Account
             </Button>
           </Form>
-          {/* <Button variant="outline-secondary"
-            type="button"
-            onClick={handleGuestLogin}
-          >
-            Continue as Guest
-          </Button> */}
-        </Card>{" "}
-        <div className="promo section">
-          <div className="promo container">
-            <h3>How it works:</h3> <hr />
-            <p>1. Create a task.</p>
-            <p>2. Assign a point value to the task.</p>
-            <p>
-              3. When the task is complete, mark it as complete and receive
-              points!
-            </p>
-            <p>4. Cash in your points for rewards!</p>
-            <img
-              alt=""
-              src={Icon}
-              width="auto"
-              height="200px"
-              className="mx-auto d-block align-center"
-            />{" "}
-            <hr />
-          </div>
-        </div>
+        </Card>
+        <Card className="explainer-card container mx-auto mt-5 p-4">
+          <Card.Body>
+            <Card.Title>How it Works</Card.Title>
+            <ol>
+              <li>
+                <strong>Register:</strong> Create an account to start using
+                cookiJar. Your account will track your points and rewards.
+              </li>
+              <li>
+                <strong>Create Tasks:</strong> Add tasks you want to complete.
+                Assign point values to each task based on difficulty or
+                importance.
+              </li>
+              <li>
+                <strong>Complete Tasks:</strong> Finish your tasks and earn
+                points. Use your points to unlock rewards and track your
+                progress.
+              </li>
+              <li>
+                <strong>Redeem Rewards:</strong> Create rewards that you can
+                redeem with your points. Treat yourself for a job well done!
+              </li>
+            </ol>
+          </Card.Body>
+        </Card>
       </Container>
     </>
   );
-};
+}
