@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import TaskForm from "./NewTaskForm";
+import { API_ENDPOINTS } from "../../api/config";
 
 export default function EditTask() {
     const navigate = useNavigate();
@@ -8,7 +9,7 @@ export default function EditTask() {
     const [task, setTask] = useState()
 
     const getTasks = (id) => {
-        fetch(`http://localhost:8088/tasks/${id}`)
+        fetch(API_ENDPOINTS.TASKS + `/${id}`)
             .then((res) => res.json())
             .then(setTask);
     };
@@ -19,7 +20,7 @@ export default function EditTask() {
 
     const onFormSubmit = (evt) => {
         evt.preventDefault();
-        fetch(`http://localhost:8088/tasks/${id}`, {
+        fetch((API_ENDPOINTS.TASKS + `/${id}`), {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

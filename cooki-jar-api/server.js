@@ -30,10 +30,17 @@ const writeDatabase = (data) => {
  }
 };
 
+// USER ROUTES
+// Get all users or filter by email
+
 app.get('/api/users', (req, res) => {
  const db = readDatabase();
- res.json(db.users);
+ const { email } = req.query;
+ const users = email ? db.users.filter(u => u.email === email) : db.users;
+ res.json(users);
 });
+
+// Get user by ID (for fetching points)
 
 app.get('/api/users/:id', (req, res) => {
  const db = readDatabase();
@@ -57,6 +64,35 @@ app.post('/api/users/login', (req, res) => {
  }
 });
 
+app.post('/api/users', (req, res) => {
+ const db = readDatabase();
+ const newUser = {
+  ...req.body,
+  id: Date.now().toString(36) + Math.random().toString(36).substr(2),
+  userPoints: 0,
+ };
+ db.users.push(newUser);
+ if (writeDatabase(db)) {
+  res.status(201).json(newUser);
+ } else {
+  res.status(500).json({ error: 'Failed to create user' });
+ }
+});
+
+app.patch('/api/users/:id', (req, res) => {
+ const db = readDatabase();
+ const userIndex = db.users.findIndex(u => u.id === req.params.id);
+ if (userIndex !== -1) {
+  db.users[userIndex] = { ...db.users[userIndex], ...req.body };
+  if (writeDatabase(db)) {
+   res.json(db.users[userIndex]);
+  } else {
+   res.status(500).json({ error: 'Failed to update user' });
+  }
+ } else {
+  res.status(404).json({ error: 'User not found' });
+ }
+});
 
 app.get('/api/tasks', (req, res) => {
  const db = readDatabase();
