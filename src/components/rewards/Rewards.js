@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import { Row } from "react-bootstrap";
@@ -17,7 +17,7 @@ const RewardsList = ({ user }) => {
 
   }
 
-  const getMyRewards = () => {
+  const getMyRewards = useCallback(() => {
     fetch(API_ENDPOINTS.REWARDS + `?userId=${user.id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch rewards");
@@ -28,7 +28,7 @@ const RewardsList = ({ user }) => {
         console.error("Error fetching rewards:", err);
         window.alert("Error loading rewards. Please try again.");
       });
-  };
+  });
 
   const redeemReward = (rewardId, pointsNeeded) => {
     if (userPoints < pointsNeeded) {
@@ -68,7 +68,7 @@ const RewardsList = ({ user }) => {
   useEffect(() => {
     getMyRewards();
     getCurrentUserPoints();
-  }, []);
+  }, [getMyRewards, getCurrentUserPoints]);
 
   return (
     <>

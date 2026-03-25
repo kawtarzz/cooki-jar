@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { Button, Card, Form, Container } from "react-bootstrap";
 import logo from "../img/logo.svg";
-import Icon from "../img/logo-icon.svg";
 import { API_ENDPOINTS } from "../../api/config";
 
 export default function Login() {

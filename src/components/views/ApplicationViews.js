@@ -12,14 +12,12 @@ import CreateReward from "../rewards/CreateReward";
 
 export default function ApplicationViews() {
   const [user, setUser] = useState(null);
-  const [login, setLogin] = useState(false);
 
   useEffect(() => {
     const localcookiJarUser = localStorage.getItem("cookijar_user");
     if (localcookiJarUser) {
       const parsedUser = JSON.parse(localcookiJarUser);
       setUser(parsedUser);
-      setLogin(true);
     } else {
       setUser(null);
       window.location.href = '/login';

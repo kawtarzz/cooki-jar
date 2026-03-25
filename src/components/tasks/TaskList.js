@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Button, Card, Alert, Container, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { API_ENDPOINTS } from "../../api/config";
@@ -7,10 +7,10 @@ import { API_ENDPOINTS } from "../../api/config";
 
 export default function TaskList({ user, onPointsUpdate }) {
   const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
   const navigate = useNavigate();
 
-  const getMyTasks = () => {
+  const getMyTasks = useCallback(() => {
     fetch(API_ENDPOINTS.TASKS + `?userId=${user.id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch tasks");
@@ -21,7 +21,7 @@ export default function TaskList({ user, onPointsUpdate }) {
 
         window.alert("Error loading tasks. Please try again.");
       });
-  };
+  }, [user.id]);
 
   const deleteTask = (id) => {
     if (window.confirm("Are you sure you want to delete this task?")) {
@@ -36,7 +36,6 @@ export default function TaskList({ user, onPointsUpdate }) {
           getMyTasks();
         })
         .catch((error) => {
-
           window.alert("Error deleting task. Please try again.");
         });
     }
@@ -73,7 +72,7 @@ export default function TaskList({ user, onPointsUpdate }) {
 
   useEffect(() => {
     getMyTasks();
-  }, []);
+  }, [getMyTasks]);
 
   const handleEditTask = (taskId) => {
     navigate(`/tasks/${taskId}`);
