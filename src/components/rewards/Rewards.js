@@ -11,11 +11,6 @@ const RewardsList = ({ user }) => {
   const [userPoints, setUserPoints] = useState(0);
 
   // Get current user points from localStorage
-  const getCurrentUserPoints = () => {
-    const userPoints = user.points;
-    setUserPoints(userPoints);
-
-  }
 
   const getMyRewards = useCallback(() => {
     fetch(API_ENDPOINTS.REWARDS + `?userId=${user.id}`)
@@ -28,7 +23,7 @@ const RewardsList = ({ user }) => {
         console.error("Error fetching rewards:", err);
         window.alert("Error loading rewards. Please try again.");
       });
-  });
+  }, [user.id]);
 
   const redeemReward = (rewardId, pointsNeeded) => {
     if (userPoints < pointsNeeded) {
@@ -47,7 +42,6 @@ const RewardsList = ({ user }) => {
         return res.json();
       })
       .then((data) => {
-        // Update user points in localStorage
         const updatedPoints = userPoints - pointsNeeded;
         localStorage.setItem(
           "cookijar_user",
@@ -64,11 +58,11 @@ const RewardsList = ({ user }) => {
       });
 
   };
-
   useEffect(() => {
     getMyRewards();
-    getCurrentUserPoints();
-  }, [getMyRewards, getCurrentUserPoints]);
+    const points = user.userPoints || 0;
+    setUserPoints(points);
+  }, [getMyRewards, user.userPoints]); // ✅ clean deps
 
   return (
     <>
@@ -104,52 +98,3 @@ const RewardsList = ({ user }) => {
 };
 
 export default RewardsList;
-
-// const getMyRewards = () => {
-//   fetch(API_ENDPOINTS.REWARDS + `?userId=${user.id}`)
-//     .then((res) => {
-//       if (!res.ok) throw new Error("Failed to fetch rewards");
-//       return res.json();
-//     })
-//     .then(setRewards)
-//     .catch((err) => {
-//       console.error("Error fetching rewards:", err);
-//       window.alert("Error loading rewards. Please try again.");
-//     });
-// };
-
-// const redeemReward = (reward, pointsNeeded) => {
-//   if (userPoints < reward.points) {
-//     window.alert("You don't have enough points to redeem this reward.");
-//     return;
-//   }
-
-//   fetch(API_ENDPOINTS.REWARDS, {
-//     method: "PATCH",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ redeemed: true }),
-//   })
-//     .then((res) => {
-//       if (!res.ok) throw new Error("Failed to redeem reward");
-//       return res.json();
-//     })
-//     .then(() =>
-//       fetch(`${API_ENDPOINTS} / users / ${user.id}`, {
-//         method: "PATCH",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ userPoints: userPoints - pointsNeeded }),
-//       })
-//     )
-//     .then((res) => {
-//       if (!res.ok) throw new Error("Failed to update points");
-//       return res.json();
-//     })
-//     .then(() => {
-//       window.alert("You have redeemed this reward!");
-//       getMyRewards();
-//     })
-//     .catch((err) => {
-//       console.error("Error redeeming reward:", err);
-//       window.alert("Error redeeming reward. Please try again.");
-//     });
-// };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import { Outlet } from "react-router-dom";
 import TaskList from "../tasks/TaskList";
@@ -42,26 +41,6 @@ export default function Header({ user }) {
       });
   }, [user]); //  removed isGuest and userPoints
 
-  const awardPoints = useCallback((task) => {
-    const newPoints = parseInt(userPoints) + parseInt(task.points);
-
-    fetch(`${API_ENDPOINTS.USERS}/${user.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userPoints: newPoints }),
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to update points");
-        return res.json();
-      })
-      .then(() => {
-        getMyPoints();
-      })
-      .catch((err) => {
-        console.error("Error updating points:", err);
-        setUserPoints(newPoints);
-      });
-  }, [user, userPoints, getMyPoints]);
 
   useEffect(() => {
     if (user) getMyPoints();
