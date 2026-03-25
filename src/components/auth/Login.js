@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { Button, Card, Form, Container } from "react-bootstrap";
+import { API_ENDPOINTS } from "../../api/config";
 import logo from "../img/logo.svg";
 import Icon from "../img/logo-icon.svg";
 
@@ -12,23 +13,36 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`http://localhost:8088/users?email=${email}`);
-    const foundUser = await res.json();
-    if (foundUser.length === 1) {
-      const user = foundUser[0];
-      localStorage.setItem(
-        "cookijar_user",
-        JSON.stringify({
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          userPoints: user.userPoints,
-        })
-      );
-      navigate("/");
-      window.alert("Welcome back " + user.name + "!");
-    } else {
-      window.alert("Invalid login. Please Try again.");
+    try {
+      const res = await fetch(API_ENDPOINTS.LOGIN, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        const user = await res.json();
+        console.log("User found:", user);
+
+        localStorage.setItem(
+          "cookijar_user",
+          JSON.stringify({
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            userPoints: user.userPoints,
+          })
+        );
+        navigate("/");
+        window.alert("Welcome back " + user.name + "!");
+      } else {
+        window.alert("Invalid login. Please Try again.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      window.alert("An error occurred. Please try again.");
     }
   };
 

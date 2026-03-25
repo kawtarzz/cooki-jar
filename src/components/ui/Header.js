@@ -11,6 +11,7 @@ import CreateReward from "../rewards/CreateReward";
 import Alert from "react-bootstrap/Alert";
 import "../../App.css";
 import Col from "react-bootstrap/Col";
+import { API_ENDPOINTS } from "../../api/config";
 
 export default function Header({ user, isGuest = false }) {
   const [userPoints, setUserPoints] = useState(0);
@@ -26,7 +27,7 @@ export default function Header({ user, isGuest = false }) {
     setLoading(true);
     setError(null);
 
-    fetch(`http://localhost:8088/api/users/${user.id}`)
+    fetch(`${API_ENDPOINTS.USERS}/${user.id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch user points");
         return res.json();
@@ -45,7 +46,7 @@ export default function Header({ user, isGuest = false }) {
   const awardPoints = useCallback((task) => {
     const newPoints = parseInt(userPoints) + parseInt(task.points);
 
-    fetch(`http://localhost:8088/api/users/${user.id}`, {
+    fetch(`${API_ENDPOINTS.USERS}/${user.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userPoints: newPoints }),
@@ -59,11 +60,10 @@ export default function Header({ user, isGuest = false }) {
       })
       .catch((err) => {
         console.error("Error updating points:", err);
-        setUserPoints(newPoints); // optimistic fallback
+        setUserPoints(newPoints);
       });
   }, [user, userPoints, getMyPoints]);
 
-  //  was calling fetchPoints() — function doesn't exist, renamed to getMyPoints
   useEffect(() => {
     if (user) getMyPoints();
   }, [user, getMyPoints]); // getMyPoints added to deps
@@ -102,83 +102,75 @@ export default function Header({ user, isGuest = false }) {
 
   return (
     <>
-      <div className="home section">
-        <ListGroup>
-          <ListGroup.Item>
-            <div className="d-flex justify-content-between align-items-center">
-              <div>
-                <h1>{user.name}'s To-Do List</h1>
-                <h3>You have {loading ? "..." : parseInt(userPoints)} points!</h3>
-              </div>
-              {error && (
-                <Alert variant="warning" className="mb-0">
-                  <small>Unable to sync points: {error}</small>
-                </Alert>
-              )}
+      <Container fluid className="p-0 mt-5">
+        <div className="header__container">
+          <h1>{user.name}'s To-Do List</h1>
+          <h3>You have {loading ? "..." : parseInt(userPoints)} points!</h3>
+          {error && (
+            <Alert variant="warning" className="mb-0">
+              <small>Unable to sync points: {error}</small>
+            </Alert>
+          )}
+          <Outlet />
+          <div className="d-flex gap-2 mt-3 justify-content-center">
+            <Button
+              variant={showTaskForm ? "primary" : "outline-primary"}
+              onClick={handleNewTaskClick}
+            >
+              + New Task
+            </Button>
+
+            <Button
+              variant={showTaskList ? "success" : "outline-success"}
+              onClick={handleTaskListClick}
+            >
+              Tasks
+            </Button>
+
+            <Button
+              variant={showRewardForm ? "warning" : "outline-warning"}
+              onClick={handleNewRewardClick}
+            >
+              + New Reward
+            </Button>
+
+            <Button
+              variant={showRewardsList ? "info" : "outline-info"}
+              onClick={handleRewardsClick}
+            >
+              Rewards
+            </Button>
+          </div>
+        </div>
+      </Container>
+
+      <Container fluid className="p-0 main__container mt-5">
+        <Col>
+          {showTaskForm && (
+            <div className="mb-4">
+              <CreateTask user={user} />
             </div>
-          </ListGroup.Item>
-        </ListGroup>
+          )}
 
-        <Outlet />
-
-        <Container fluid className="p-0">
-          <Col>
-            <div className="d-flex gap-2 mb-3 flex-wrap">
-              <Button
-                variant={showTaskForm ? "primary" : "outline-primary"}
-                onClick={handleNewTaskClick}
-              >
-                + New Task
-              </Button>
-
-              <Button
-                variant={showTaskList ? "success" : "outline-success"}
-                onClick={handleTaskListClick}
-              >
-                Tasks
-              </Button>
-
-              <Button
-                variant={showRewardForm ? "warning" : "outline-warning"}
-                onClick={handleNewRewardClick}
-              >
-                + New Reward
-              </Button>
-
-              <Button
-                variant={showRewardsList ? "info" : "outline-info"}
-                onClick={handleRewardsClick}
-              >
-                Rewards
-              </Button>
+          {showTaskList && (
+            <div className="mb-4">
+              <TaskList user={user} onPointsUpdate={getMyPoints} />
             </div>
+          )}
 
-            {showTaskForm && (
-              <div className="mb-4">
-                <CreateTask user={user} />
-              </div>
-            )}
+          {showRewardForm && (
+            <div className="mb-4">
+              <CreateReward user={user} />
+            </div>
+          )}
 
-            {showTaskList && (
-              <div className="mb-4">
-                <TaskList user={user} onPointsUpdate={getMyPoints} />
-              </div>
-            )}
-
-            {showRewardForm && (
-              <div className="mb-4">
-                <CreateReward user={user} />
-              </div>
-            )}
-
-            {showRewardsList && (
-              <div className="mb-4">
-                <RewardsList user={user} userPoints={userPoints} />
-              </div>
-            )}
-          </Col>
-        </Container>
-      </div>
+          {showRewardsList && (
+            <div className="mb-4">
+              <RewardsList user={user} />
+            </div>
+          )}
+        </Col>
+      </Container>
     </>
   );
 }
