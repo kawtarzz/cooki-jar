@@ -39,7 +39,7 @@ export default function TaskForm({ onSubmit, task, setTask }) {
                     type="text"
                     className="form-control"
                     placeholder="Enter Point Value"
-                    value={task.points || "5"}
+                    value={task.points}
                     onChange={(e) => {
                       setTask({ ...task, points: e.target.value });
                     }}

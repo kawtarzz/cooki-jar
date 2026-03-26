@@ -144,7 +144,7 @@ export default function Header({ user }) {
 
           {showRewardsList && (
             <div className="mb-4">
-              <RewardsList user={user} />
+              <RewardsList user={user} userPoints={userPoints} />
             </div>
           )}
         </Col>

@@ -1,16 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import { Row } from "react-bootstrap";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+import { Row, Col, Card, Container, Button, Alert } from "react-bootstrap";
 import { API_ENDPOINTS } from "../../api/config";
+import { useNavigate } from "react-router-dom";
 
-const RewardsList = ({ user }) => {
+const RewardsList = ({ user, userPoints }) => {
   const [rewards, setRewards] = useState([]);
-  const [userPoints, setUserPoints] = useState(0);
-
-  // Get current user points from localStorage
+  const navigate = useNavigate();
 
   const getMyRewards = useCallback(() => {
     fetch(API_ENDPOINTS.REWARDS + `?userId=${user.id}`)
@@ -18,7 +13,12 @@ const RewardsList = ({ user }) => {
         if (!res.ok) throw new Error("Failed to fetch rewards");
         return res.json();
       })
-      .then(setRewards)
+      .then((rewardsData) => {
+        const unredeemedRewards = rewardsData.filter(
+          (reward) => reward.userId === user.id && reward.redeemed === false
+        );
+        setRewards(unredeemedRewards);
+      })
       .catch((err) => {
         console.error("Error fetching rewards:", err);
         window.alert("Error loading rewards. Please try again.");
@@ -27,8 +27,6 @@ const RewardsList = ({ user }) => {
 
   const redeemReward = (rewardId, pointsNeeded) => {
     if (userPoints < pointsNeeded) {
-      console.log('user points:', userPoints, 'points needed:', pointsNeeded);
-      console.log('user:', user);
       window.alert("You don't have enough points to redeem this reward.");
       return;
     }
@@ -41,60 +39,53 @@ const RewardsList = ({ user }) => {
         if (!res.ok) throw new Error("Failed to redeem reward");
         return res.json();
       })
-      .then((data) => {
-        const updatedPoints = userPoints - pointsNeeded;
-        localStorage.setItem(
-          "cookijar_user",
-          JSON.stringify({ ...user, points: updatedPoints })
-        );
-        setUserPoints(updatedPoints);
+      .then(() => {
         window.alert("You have redeemed this reward!");
-        window.location.reload();
-
+        getMyRewards();
       })
       .catch((err) => {
         console.error("Error redeeming reward:", err);
         window.alert("Error redeeming reward. Please try again.");
       });
-
   };
+
   useEffect(() => {
     getMyRewards();
-    const points = user.userPoints || 0;
-    setUserPoints(points);
-  }, [getMyRewards, user.userPoints]); // ✅ clean deps
+  }, [getMyRewards]);
 
   return (
-    <>
-      <Container fluid className="rewards__container">
-        <h2 className="section-title">Rewards</h2>
-        <Row className="justify-content-md-center rewards__row">
-          {rewards.map((reward) => {
-            console.log("Reward:", reward);
-            if (reward.userId === user.id && reward.redeemed === false) {
-              return (
-                <Col key={reward.id}>
-                  <Card className="reward__card">
-                    <Card.Title>
-                      <h5>{reward.rewardsDescription}</h5>
-                    </Card.Title>
-                    <Card.Text>{reward.points} points</Card.Text>
-                    <Button
-                      variant="primary"
-                      onClick={() => redeemReward(reward.id, reward.points)}
-                    >
-                      Redeem
-                    </Button>
-                  </Card>
-                </Col>
-              );
-            }
-            return null;
-          })}
-        </Row>
-      </Container>
-    </>
+    <Container fluid className="rewards__container">
+      <h2 className="section-title">Rewards</h2>
+      <Row className="justify-content-md-center rewards__row">
+        {rewards.length === 0 ? (
+          <Alert variant="success" className="text-center">
+            <Card.Img variant="top" src="/assets/celebration.png" style={{ width: "150px", margin: "0 auto" }} />
+            <Card.Title>Hi {user.name}! You don't have any rewards to redeem yet.</Card.Title>
+            <Card.Text>Add rewards to redeem your points! 🎉</Card.Text>
+            <Button variant="primary" onClick={() => navigate("/rewards/new")}>
+              Add New Reward
+            </Button>
+          </Alert>
+        ) : (
+          rewards.map((reward) => (
+            <Col key={reward.id}>
+              <Card className="reward__card">
+                <Card.Title>
+                  <h5>{reward.rewardsDescription}</h5>
+                </Card.Title>
+                <Card.Text>{reward.points} points</Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() => redeemReward(reward.id, reward.points)}
+                >
+                  Redeem
+                </Button>
+              </Card>
+            </Col>
+          ))
+        )}
+      </Row>
+    </Container>
   );
-};
-
+}
 export default RewardsList;
