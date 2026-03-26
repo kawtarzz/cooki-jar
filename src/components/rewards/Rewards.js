@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { Row, Col, Card, Container, Button, Alert } from "react-bootstrap";
 import { API_ENDPOINTS } from "../../api/config";
 import { useNavigate } from "react-router-dom";
 
@@ -54,38 +53,35 @@ const RewardsList = ({ user, userPoints }) => {
   }, [getMyRewards]);
 
   return (
-    <Container fluid className="rewards__container">
+    <div className="rewards__container">
       <h2 className="section-title">Rewards</h2>
-      <Row className="justify-content-md-center rewards__row">
+      <div className="flex flex-wrap justify-center rewards__row mt-4">
         {rewards.length === 0 ? (
-          <Alert variant="success" className="text-center">
-            <Card.Img variant="top" src="/assets/celebration.png" style={{ width: "150px", margin: "0 auto" }} />
-            <Card.Title>Hi {user.name}! You don't have any rewards to redeem yet.</Card.Title>
-            <Card.Text>Add rewards to redeem your points! 🎉</Card.Text>
-            <Button variant="primary" onClick={() => navigate("/rewards/new")}>
+          <div className="text-center">
+            <img src="/assets/celebration.png" style={{ width: "150px", margin: "0 auto" }} alt="" />
+            <h3>Hi {user.name}! You don't have any rewards to redeem yet.</h3>
+            <p>Add rewards to redeem your points! 🎉</p>
+            <button onClick={() => navigate("/rewards/new")}>
               Add New Reward
-            </Button>
-          </Alert>
+            </button>
+          </div>
         ) : (
           rewards.map((reward) => (
-            <Col key={reward.id}>
-              <Card className="reward__card">
-                <Card.Title>
-                  <h5>{reward.rewardsDescription}</h5>
-                </Card.Title>
-                <Card.Text>{reward.points} points</Card.Text>
-                <Button
-                  variant="primary"
+            <div key={reward.id}>
+              <div className="reward__card">
+                <h5>{reward.rewardsDescription}</h5>
+                <p>{reward.points} points</p>
+                <button
                   onClick={() => redeemReward(reward.id, reward.points)}
                 >
                   Redeem
-                </Button>
-              </Card>
-            </Col>
+                </button>
+              </div>
+            </div>
           ))
         )}
-      </Row>
-    </Container>
+      </div>
+    </div>
   );
 }
 export default RewardsList;

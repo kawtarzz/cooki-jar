@@ -1,62 +1,61 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Icon from "./img/logo-icon.svg";
 
 function NavigationBar({ user, onLogout }) {
-  const isGuest = !user || !user.id;
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("cookijar_user");
-    if (onLogout) onLogout();
-    navigate("/login");
-  };
+  const isGuest = !user;
 
   return (
-    <Navbar bg="primary" className="m-auto" data-bs-theme="dark" expand="lg">
-      <Navbar.Brand as={Link} to="/">
+    <nav className="navbar">
+      <Link to="/" className="logo__container">
         <img
-          alt=""
+          alt="CookiJar Logo"
           src={Icon}
-          width="160"
-          height="160"
-          className="d-inline-block align-center"
-        />{" "}
-        CookiJar
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
-          <Nav.Link as={Link} to="/tasks">To-do</Nav.Link>
-          {!isGuest ? (
-            <NavDropdown title={`${user.name}'s Jar`} id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/createreward">
-                + New Reward
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/rewards">
-                Cash-In
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              {/*  removed /users/:id — no route exists, replaced with home */}
-              <NavDropdown.Item as={Link} to="/">
-                Home
-              </NavDropdown.Item>
-            </NavDropdown>
-          ) : (
-            <Nav.Link as={Link} to="/login">Login</Nav.Link>
-          )}
-          {!isGuest && (
-            <Nav.Link onClick={handleLogout} style={{ cursor: "pointer" }}>
+          className="logo"
+        />
+        <p className="logo__text">CookiJar</p>
+      </Link>
+
+      <ul className="nav__links">
+        <li>
+          <Link to="/tasks" className="text-blue-700 hover:text-purple-700 transition-colors">
+            Tasks
+          </Link>
+        </li>
+        <li>
+          <Link to="/rewards" className="text-blue-700 hover:text-purple-700 transition-colors">
+            Rewards
+          </Link>
+        </li>
+
+        {isGuest ? (
+          <>
+            <li>
+              <Link to="/login" className="hover:text-blue-600 transition-colors">
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/register"
+                className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors"
+              >
+                Register
+              </Link>
+            </li>
+          </>
+        ) : (
+          <li>
+            <button
+              onClick={onLogout}
+              className="transition-colors font-medium"
+            >
               Logout
-            </Nav.Link>
-          )}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+            </button>
+          </li>
+        )}
+      </ul>
+    </nav>
   );
 }
 

@@ -43,12 +43,10 @@ export default function CreateReward({ user }) {
   };
 
   return (
-    <div className="reward__header">
-      <RewardsForm
-        reward={reward}
-        setReward={setReward}
-        submitReward={submitReward}
-      />
-    </div>
+    <RewardsForm
+      reward={reward}
+      setReward={setReward}
+      submitReward={submitReward}
+    />
   );
 }

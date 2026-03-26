@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { Button, Card, Form, Container } from "react-bootstrap";
 import logo from "../img/logo.svg";
 import { API_ENDPOINTS } from "../../api/config";
 
@@ -15,8 +14,7 @@ export default function Login() {
     try {
       const res = await fetch(API_ENDPOINTS.LOGIN, {
         method: "POST",
-        headers
-          : {
+        headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({ email }),
@@ -42,31 +40,17 @@ export default function Login() {
     }
   };
 
-  // const handleGuestLogin = () => {
-  //   const guestUser = {
-  //     id: 0,
-  //     name: "Guest",
-  //     email: "guest@cookijar.com",
-  //     userPoints: 0,
-  //   };
-
-  //   localStorage.setItem("cookijar_guest", JSON.stringify(guestUser));
-  //   localStorage.setItem('cookijar_guest_mode', 'true');
-  //   navigate("/");
-  //   window.alert("Welcome Guest! Feel free to explore the app.");
-  // }
-
   return (
     <>
-      <Container fluid className="p-0 login-background">
-        <Card className="login-card container mx-auto mt-5 p-4">
-          <Form onSubmit={handleLogin} className="form--login">
+      <div className="login-background">
+        <div className="login-card">
+          <form onSubmit={handleLogin} className="form--login">
             <img
               alt=""
               src={logo}
               width="auto"
               height="450px"
-              className="mx-auto d-block align-center"
+              className="block mx-auto"
             />
             <fieldset>
               <label htmlFor="inputEmail">
@@ -76,28 +60,27 @@ export default function Login() {
                 type="email"
                 value={email}
                 onChange={(evt) => setEmail(evt.target.value)}
-                className="form-control"
+                className="w-full border border-gray-300 rounded px-3 py-2"
                 placeholder="Email address"
                 required
                 autoFocus
               />
             </fieldset>
-            <Button type="submit" className="button-1">
+            <button type="submit" className="button-1">
               Sign in
-            </Button>
+            </button>
             <br /> <hr /> <br />
-            <Button
+            <button
               type="button"
-              variant="secondary"
               onClick={() => navigate("/register")}
             >
               Create an Account
-            </Button>
-          </Form>
-        </Card>
-        <Card className="explainer-card container mx-auto mt-5 p-4">
-          <Card.Body>
-            <Card.Title>How it Works</Card.Title>
+            </button>
+          </form>
+        </div>
+        <div className="explainer-card">
+          <div>
+            <h3>How it Works</h3>
             <ol>
               <li>
                 <strong>Register:</strong> Create an account to start using
@@ -118,9 +101,9 @@ export default function Login() {
                 redeem with your points. Treat yourself for a job well done!
               </li>
             </ol>
-          </Card.Body>
-        </Card>
-      </Container>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,6 +1,5 @@
 import NavigationBar from "../Navbar";
 import Header from "../ui/Header";
-import { Container } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
 import TaskList from "../tasks/TaskList";
 import RewardsList from "../rewards/Rewards";
@@ -24,20 +23,20 @@ export default function ApplicationViews() {
     }
   }, []);
 
-  const handleLogout = () => {
+  const onLogout = () => {
     localStorage.removeItem("cookijar_user");
     setUser(null);
-    window.location.href = '/login';
+    window.location.href = '/';
   };
 
   return (
     <>
-      <div className="App">
-        <NavigationBar
-          user={user}
-          onLogout={handleLogout}
-        />
-        <Container fluid className="p-0">
+      <NavigationBar
+        user={user}
+        onLogout={onLogout}
+      />
+      <main className="App">
+        <div className="page__home">
           <Routes>
             <Route path="/" element={<Header user={user} />}>
               <Route index element={<Outlet />} />
@@ -52,8 +51,8 @@ export default function ApplicationViews() {
               element={<CreateReward user={user} />}
             />
           </Routes>
-        </Container>
-      </div>
+        </div>
+      </main>
     </>
   );
 }
