@@ -82,7 +82,13 @@
       "id": "mn6i84cozmpd9gvg4qj",
       "email": "DoggyDog@gmail.com",
       "name": "Dog",
-      "userPoints": 15
+      "userPoints": 80
+    },
+    {
+      "id": "mn7nd09mvd5bld26vmf",
+      "email": "stan@email.com",
+      "name": "Stan",
+      "userPoints": 25
     }
   ],
   "tasks": [
@@ -159,9 +165,72 @@
     {
       "userId": "mn6i84cozmpd9gvg4qj",
       "taskDescription": "clean garage for real",
-      "points": "30",
+      "points": 30,
       "completed": true,
       "id": "mn6iv89c9v6s9dr4wgd"
+    },
+    {
+      "userId": "mn6i84cozmpd9gvg4qj",
+      "taskDescription": "rake the leaves",
+      "points": "15",
+      "completed": false,
+      "id": "mn7n9zwl8n665rmvpaj"
+    },
+    {
+      "userId": "mn6i84cozmpd9gvg4qj",
+      "taskDescription": "Dancing",
+      "points": 15,
+      "completed": false,
+      "id": "mn7nbfh0jr6a78secan"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "taskDescription": "study",
+      "points": 15,
+      "completed": true,
+      "id": "mn7nde83c1slht9xzwj"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "taskDescription": "clean",
+      "points": 25,
+      "completed": true,
+      "id": "mn7nhiduwyribhm6a1o"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "taskDescription": "1",
+      "points": 15,
+      "completed": true,
+      "id": "mn7o0ls1fasw4gsa2h"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "taskDescription": "2",
+      "points": 25,
+      "completed": true,
+      "id": "mn7o0t9nvu35uhtx0i"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "taskDescription": "1",
+      "points": 15,
+      "completed": true,
+      "id": "mn7o2fsobogws7ym5ou"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "taskDescription": "walk 10 miles",
+      "points": 50,
+      "completed": true,
+      "id": "mn7o3i3ja8vjhhialo"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "taskDescription": "clean out closet",
+      "points": 25,
+      "completed": true,
+      "id": "mn7o7icgpk61h2kzezr"
     }
   ],
   "rewards": [
@@ -290,6 +359,55 @@
       "points": 15,
       "redeemed": true,
       "id": "mn6i9lzy0o29c13i2sg"
+    },
+    {
+      "userId": "mn6i84cozmpd9gvg4qj",
+      "rewardsDescription": "ice cream",
+      "points": 1530303030,
+      "redeemed": false,
+      "id": "mn7mydi4so1dusvqub"
+    },
+    {
+      "userId": "mn6i84cozmpd9gvg4qj",
+      "rewardsDescription": "walk",
+      "points": 5,
+      "redeemed": false,
+      "id": "mn7n5w3vywlbwxhrfxe"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "rewardsDescription": "chocolate",
+      "points": 20,
+      "redeemed": true,
+      "id": "mn7nh82eaef0g5ca57m"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "rewardsDescription": "Buy Pants",
+      "points": 35,
+      "redeemed": true,
+      "id": "mn7o194iexs6vdb25gk"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "rewardsDescription": "dinner",
+      "points": 50,
+      "redeemed": true,
+      "id": "mn7o3thvyivuqv4ktc"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "rewardsDescription": "manicure",
+      "points": 25,
+      "redeemed": true,
+      "id": "mn7o5f8dbv40pbfmbp"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "rewardsDescription": "movies",
+      "points": 15,
+      "redeemed": true,
+      "id": "mn7o78tbt9ytwim3t3r"
     }
   ],
   "types": [

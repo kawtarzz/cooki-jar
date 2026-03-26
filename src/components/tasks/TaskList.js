@@ -16,9 +16,14 @@ export default function TaskList({ user, onPointsUpdate }) {
         if (!res.ok) throw new Error("Failed to fetch tasks");
         return res.json();
       })
-      .then(setTasks)
+      .then((tasksData) => {
+        const incompleteTasks = tasksData.filter(
+          (task) => task.userId === user.id && !task.completed
+        );
+        setTasks(incompleteTasks);
+      })
       .catch((err) => {
-
+        console.error("Error fetching tasks:", err);
         window.alert("Error loading tasks. Please try again.");
       });
   }, [user.id]);
@@ -45,10 +50,11 @@ export default function TaskList({ user, onPointsUpdate }) {
     const sendToApi = {
       userId: user.id,
       taskDescription: task.taskDescription,
-      points: task.points,
+      points: parseInt(task.points),
       completed: true,
       id: task.id,
     };
+    console.log("Sending to API:", sendToApi);
 
     fetch(API_ENDPOINTS.TASKS + `/${task.id}`, {
       method: "PUT",
@@ -63,6 +69,7 @@ export default function TaskList({ user, onPointsUpdate }) {
         setTasks(tasks.filter(t => t.id !== task.id));
         if (onPointsUpdate) onPointsUpdate();
         window.alert(`Great job ${user.name}! You have been awarded ${task.points} points!`);
+        getMyTasks();
       })
       .catch((error) => {
         console.error('Error completing task:', error);

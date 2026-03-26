@@ -22,7 +22,7 @@ export default function CreateTask({ user }) {
       const newTask = {
         userId: user.id,
         taskDescription: task.taskDescription,
-        points: task.points,
+        points: parseInt(task.points),
         completed: false,
         id: task.id,
       };

@@ -48,7 +48,7 @@ export default function ApplicationViews() {
 
             <Route path="/rewards" element={<RewardsList user={user} />} />
             <Route
-              path="/createreward"
+              path="/rewards/new"
               element={<CreateReward user={user} />}
             />
           </Routes>
