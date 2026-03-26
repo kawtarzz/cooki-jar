@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_ENDPOINTS } from "../../api/config";
-import { Container } from "react-bootstrap";
 import "./Login.css";
 
 export const Register = () => {
@@ -61,18 +60,16 @@ export const Register = () => {
 
   return (
     <>
-      <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+      <div className="flex justify-center items-center" style={{ minHeight: "100vh" }}>
         <form className="form--login" onSubmit={submitUser}>
-          <h1 className="h3 mb-3 font-weight-normal">
-            Please Register for cookiJar
-          </h1>
+          <h1>Please Register for cookiJar</h1>
           <fieldset>
             <label htmlFor="name">Name:</label>
             <input
               onChange={updateUser}
               type="text"
               id="name"
-              className="form-control"
+              className="w-full border border-gray-300 rounded px-3 py-2"
               placeholder="What's your name?"
               required
               autoFocus
@@ -84,7 +81,7 @@ export const Register = () => {
               onChange={updateUser}
               type="email"
               id="email"
-              className="form-control"
+              className="w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Email address"
               required
             />
@@ -93,7 +90,7 @@ export const Register = () => {
             <button type="submit">Register</button>
           </fieldset>
         </form>
-      </Container>
+      </div>
     </>
   );
 }

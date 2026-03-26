@@ -408,6 +408,13 @@
       "points": 15,
       "redeemed": true,
       "id": "mn7o78tbt9ytwim3t3r"
+    },
+    {
+      "userId": "mn7nd09mvd5bld26vmf",
+      "rewardsDescription": "Ice Cream",
+      "points": 50,
+      "redeemed": false,
+      "id": "mn7xfilot2qt9lltmxe"
     }
   ],
   "types": [
