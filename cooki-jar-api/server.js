@@ -7,7 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 8088;
 const dbPath = path.join(__dirname, 'database.json');
 
-app.use(cors());
+app.use(cors({
+ origin: ['http://localhost:3000', 'https://cookijar.netlify.app']
+}));
 app.use(express.json());
 
 const readDatabase = () => {
